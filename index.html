@@ -45,10 +45,38 @@
             margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .info a {
+        .sponsors {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row; /* Align items in a row */
+            flex-wrap: wrap; /* Allows items to wrap as needed */
+            background-color: #112240;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .info a, .sponsors a {
             color: #64ffda;
             text-decoration: none;
             transition: color 0.3s ease;
+        }
+        .sponsors img {
+            width: 150px;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+        .sponsors img:hover {
+            transform: scale(1.1);
+        }
+        .sponsors h3 {
+            margin-top: 0;
+        }
+        .sponsors .sponsor-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 10px;
         }
         .mission {
             background-color: #112240;
@@ -172,14 +200,31 @@
             </ul>
         </div>
 
+        <h2>Sponsors <span class="emoji">🌟</span></h2>
+        <div class="sponsors">
+            <a href="https://netrality.com/" target="_blank">
+                <img src="Netrality.png" alt="Netrality">
+            </a>    
+            <a href="https://www.claconnect.com/" target="_blank">
+                <img style="filter: brightness(0) invert(1);" src="cla.svg" alt="CLA Logo">
+            </a>
+            <a href="https://www.linkedin.com/in/narayan-chowdhury" target="_blank">
+                <img src="Narayan.png" alt="Narayan Pic">
+            </a>
+            <a href="https://medusaintel.co/" target="_blank">
+                <img src="Medusa.png" alt="Medusa Logo">
+            </a>
+            <a href="https://inoxoft.com/" target="_blank">
+                <img src="Inoxoft.png" alt="Inoxoft Logo">
+            </a>
+        </div>
+        
         <h2>Coaches <span class="emoji">👨‍🏫</span></h2>
         <div class="coaches">
             <ul>
-                <li>Brad Flaugher - <a href="https://medusaintel.co/" target="_blank">Medusa Intelligence Corp.</a></li>
                 <li>Josh Devon - <a href="https://www.sublimestrategy.com/" target="_blank">Sublime Strategy</a></li>
                 <li>Jesse DiLaura - <a href="https://leadleopard.ai/" target="_blank">Lead Leopard</a></li>
                 <li>Todor Raykov - <a href="https://nextfabventures.com/" target="_blank">NextFab Ventures</a></li>
-                <li>Liubomyr Pohreliuk  - <a href="https://inoxoft.com/" target="_blank">Inoxoft</a></li>
             </ul>
         </div>
 
