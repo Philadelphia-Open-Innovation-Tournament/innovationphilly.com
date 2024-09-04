@@ -46,33 +46,46 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .sponsors {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row; /* Align items in a row */
-            flex-wrap: wrap; /* Allows items to wrap as needed */
             background-color: #112240;
             padding: 30px;
             border-radius: 10px;
             margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .info a, .sponsors a {
+
+        .sponsor-category {
+            margin-bottom: 30px;
+        }
+
+        .sponsor-category h3 {
+            color: #64ffda;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .sponsor-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .sponsors a {
             color: #64ffda;
             text-decoration: none;
             transition: color 0.3s ease;
         }
+
         .sponsors img {
             width: 150px;
             margin: 10px;
             transition: transform 0.3s ease;
         }
+
         .sponsors img:hover {
             transform: scale(1.1);
         }
-        .sponsors h3 {
-            margin-top: 0;
-        }
+
         .sponsors .sponsor-name {
             font-weight: bold;
             font-size: 1.2em;
@@ -202,28 +215,44 @@
 
         <h2>Sponsors <span class="emoji">🌟</span></h2>
         <div class="sponsors">
-            <a href="https://netrality.com/" target="_blank">
-                <img src="Netrality.png" alt="Netrality">
-            </a>    
-            <a href="https://www.claconnect.com/" target="_blank">
-                <img style="filter: brightness(0) invert(1);" src="cla.svg" alt="CLA Logo">
-            </a>
-            <a href="https://www.linkedin.com/in/narayan-chowdhury" target="_blank">
-                <img src="Narayan.png" alt="Narayan Pic">
-            </a>
-            <a href="https://inoxoft.com/" target="_blank">
-                <img src="Inoxoft.png" alt="Inoxoft Logo">
-            </a>
-            <a href="https://nextfabventures.com/" target="_blank">
-                <img src="nfv.png" alt="NextFab Logo">
-            </a>
-            <a href="https://medusaintel.co/" target="_blank">
-                <img src="Medusa.png" alt="Medusa Logo">
-            </a>
-            <a href="https://www.sublimestrategy.com/" target="_blank">
-                <img src="sublime.png" alt="Sublime Logo">
-            </a>
+            <div class="sponsor-category">
+                <h3>Platinum Sponsors</h3>
+                <div class="sponsor-logos">
+                    <a href="https://www.claconnect.com/" target="_blank">
+                        <img style="filter: brightness(0) invert(1);" src="cla.svg" alt="CLA Logo">
+                    </a>
+                    <a href="https://inoxoft.com/" target="_blank">
+                        <img style="filter: brightness(0) invert(1);" src="inoxoft.svg" alt="Inoxoft Logo">
+                    </a>
+                    <a href="https://www.bigideaplatform.com/" target="_blank">
+                        <img style="filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.7));" src="bigidea.svg" alt="Big Idea Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="sponsor-category">
+                <h3>Gold Sponsors</h3>
+                <div class="sponsor-logos">
+                    <a href="https://www.linkedin.com/in/narayan-chowdhury" target="_blank">
+                        <img src="Narayan.png" alt="Narayan Pic">
+                    </a>
+                    <a href="https://medusaintel.co/" target="_blank">
+                        <img src="Medusa.png" alt="Medusa Logo">
+                    </a>
+                    <a href="https://www.sublimestrategy.com/" target="_blank">
+                        <img style="filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.7));" src="sublime.png" alt="Sublime Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="sponsor-category">
+                <h3>Silver Sponsors</h3>
+                <div class="sponsor-logos">
+                    <a href="https://nextfabventures.com/" target="_blank">
+                        <img src="nfv.png" alt="NextFab Logo">
+                    </a>
+                </div>
+            </div>
         </div>
+
         
         <h2>What's an Open Innovation Tournament? <span class="emoji">🤔</span></h2>
         <div class="info">
