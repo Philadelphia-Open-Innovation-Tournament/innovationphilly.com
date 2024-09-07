@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovation Generator</title>
+    <meta name="description" content="Enter a noun, an adjective, and a verb to generate 12 innovative ideas!">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        h1 {
+            color: #007BFF;
+            text-align: center;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .form-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            width: 100%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .footer a {
+            color: grey;
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        async function generateIdeas(event) {
+            event.preventDefault();
+            const noun = document.getElementById('noun').value;
+            const adjective = document.getElementById('adjective').value;
+            const verb = document.getElementById('verb').value;
+
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ noun, adjective, verb })
+            };
+
+            const resultDiv = document.getElementById("result");
+            resultDiv.classList.remove("hidden");
+            resultDiv.innerHTML = '<p>🤖 Generating innovative ideas, this could take a minute ⏳.</p>';
+
+            try {
+                // Replace 'https://your-worker-url.workers.dev' with your actual Cloudflare Worker URL
+                const response = await fetch('http://localhost:8787/generate', requestOptions);
+                const data = await response.json();
+
+                if (data.ideas && typeof data.ideas === 'string' && data.ideas.trim() !== "") {
+                    resultDiv.innerHTML = `<h2>Generated Ideas:</h2><pre>${data.ideas}</pre>`;
+                } else {
+                    resultDiv.innerHTML = '<p>😕 Error generating ideas. Please try again. ‍♀️</p>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.innerHTML = '<p>😕 Error generating ideas. Please try again. ‍♀️</p>';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Innovation Generator 💡</h1>
+    <form onsubmit="generateIdeas(event)">
+        <div class="form-content">
+            <input type="text" id="noun" name="noun" placeholder="Enter a noun (e.g., Robot, Bike, Garden)" required>
+            <input type="text" id="adjective" name="adjective" placeholder="Enter an adjective (e.g., Smart, Eco-friendly, Fast)" required>
+            <input type="text" id="verb" name="verb" placeholder="Enter a verb (e.g., Build, Fly, Connect)" required>
+            <input type="submit" value="Generate Ideas 🚀">
+        </div>
+    </form>
+    <div class="hidden" id="result"></div>
+    <div class="footer"><a target="_blank" href="https://github.com/YourGitHubRepo">source code</a></div>
+</body>
+</html>
+
