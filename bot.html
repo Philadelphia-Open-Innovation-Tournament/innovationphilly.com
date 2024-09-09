@@ -3,125 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovation Generator</title>
-    <meta name="description" content="Enter a noun, an adjective, and a verb to generate 12 innovative ideas!">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <title>Innovation Generator Terminal</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
+        body, html {
             margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            flex-direction: column;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
         }
-        h1 {
-            color: #007BFF;
+        #terminal {
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #input-line {
+            display: flex;
+            align-items: center;
+        }
+        #prompt {
+            margin-right: 10px;
+        }
+        #user-input {
+            background-color: transparent;
+            border: none;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            flex-grow: 1;
+            outline: none;
+        }
+        .output {
+            margin-bottom: 10px;
+            white-space: pre-wrap;
+        }
+        .promo {
+            color: #ffff00;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ffff00;
             text-align: center;
         }
-        form {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 500px;
-        }
-        .form-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        input[type="submit"] {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        #result {
-            width: 100%;
-            max-width: 600px;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .footer a {
-            color: grey;
+        .promo a {
+            color: #ffff00;
             text-decoration: underline;
         }
-        .hidden {
-            display: none;
-        }
     </style>
-    <script>
-        async function generateIdeas(event) {
-            event.preventDefault();
-            const noun = document.getElementById('noun').value;
-            const adjective = document.getElementById('adjective').value;
-            const verb = document.getElementById('verb').value;
-
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ noun, adjective, verb })
-            };
-
-            const resultDiv = document.getElementById("result");
-            resultDiv.classList.remove("hidden");
-            resultDiv.innerHTML = '<p>🤖 Generating innovative ideas, this could take a minute ⏳.</p>';
-
-            try {
-                // Replace 'https://your-worker-url.workers.dev' with your actual Cloudflare Worker URL
-                const response = await fetch('http://localhost:8787/generate', requestOptions);
-                const data = await response.json();
-
-                if (data.ideas && typeof data.ideas === 'string' && data.ideas.trim() !== "") {
-                    resultDiv.innerHTML = `<h2>Generated Ideas:</h2><pre>${data.ideas}</pre>`;
-                } else {
-                    resultDiv.innerHTML = '<p>😕 Error generating ideas. Please try again. ‍♀️</p>';
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                resultDiv.innerHTML = '<p>😕 Error generating ideas. Please try again. ‍♀️</p>';
-            }
-        }
-    </script>
 </head>
 <body>
-    <h1>Innovation Generator 💡</h1>
-    <form onsubmit="generateIdeas(event)">
-        <div class="form-content">
-            <input type="text" id="noun" name="noun" placeholder="Enter a noun (e.g., Robot, Bike, Garden)" required>
-            <input type="text" id="adjective" name="adjective" placeholder="Enter an adjective (e.g., Smart, Eco-friendly, Fast)" required>
-            <input type="text" id="verb" name="verb" placeholder="Enter a verb (e.g., Build, Fly, Connect)" required>
-            <input type="submit" value="Generate Ideas 🚀">
+    <div id="terminal">
+        <div id="output"></div>
+        <div id="input-line" style="display: none;">
+            <span id="prompt">&gt;</span>
+            <input type="text" id="user-input" autofocus>
         </div>
-    </form>
-    <div class="hidden" id="result"></div>
-    <div class="footer"><a target="_blank" href="https://github.com/YourGitHubRepo">source code</a></div>
+    </div>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+        const output = document.getElementById('output');
+        const userInput = document.getElementById('user-input');
+        const inputLine = document.getElementById('input-line');
+        let currentStep = 0;
+        let isWaitingForResponse = false;
+        const inputs = { noun: '', adjective: '', verb: '' };
+
+        const prompts = [
+            "Enter a noun (e.g., Robot, Bike, Garden):",
+            "Enter an adjective (e.g., Smart, Eco-friendly, Fast):",
+            "Enter a verb (e.g., Build, Fly, Connect):"
+        ];
+
+        function addOutput(text, isPromo = false) {
+            const outputElement = document.createElement('div');
+            outputElement.classList.add('output');
+            if (isPromo) {
+                outputElement.classList.add('promo');
+                outputElement.innerHTML = text; // Use innerHTML for the promo to allow for the link
+            } else {
+                outputElement.textContent = text;
+            }
+            output.appendChild(outputElement);
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function showPrompt() {
+            inputLine.style.display = 'flex';
+            userInput.focus();
+            isWaitingForResponse = false;
+        }
+
+        function hidePrompt() {
+            inputLine.style.display = 'none';
+            isWaitingForResponse = true;
+        }
+
+        function processInput(input) {
+            addOutput(`> ${input}`);
+            hidePrompt();
+
+            if (input.toLowerCase() === 'clear') {
+                output.innerHTML = '';
+                currentStep = 0;
+                Object.keys(inputs).forEach(key => inputs[key] = '');
+                addPromo();
+                addOutput("Terminal cleared. Let's start over!");
+                addOutput(prompts[currentStep]);
+                showPrompt();
+                return;
+            }
+
+            if (currentStep < 3) {
+                const currentInput = Object.keys(inputs)[currentStep];
+                inputs[currentInput] = input;
+                currentStep++;
+
+                if (currentStep < 3) {
+                    addOutput(prompts[currentStep]);
+                    showPrompt();
+                } else {
+                    generateIdeas();
+                }
+            }
+        }
+
+        async function generateIdeas() {
+            const loadingElement = document.createElement('div');
+            loadingElement.classList.add('output');
+            output.appendChild(loadingElement);
+
+            const loadingChars = ['|', '/', '-', '\\'];
+            let i = 0;
+            const loadingInterval = setInterval(() => {
+                loadingElement.textContent = `Generating innovative ideas ${loadingChars[i]} `;
+                i = (i + 1) % loadingChars.length;
+                terminal.scrollTop = terminal.scrollHeight;
+            }, 100);
+
+            try {
+                const response = await fetch('https://innovationphilly-bot.billowing-feather-6a63.workers.dev/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(inputs)
+                });
+
+                const data = await response.json();
+
+                clearInterval(loadingInterval);
+                loadingElement.remove();
+
+                if (data.ideas && typeof data.ideas === 'string' && data.ideas.trim() !== "") {
+                    addOutput(data.ideas);
+                } else {
+                    addOutput('😕 Error generating ideas. Please try again.');
+                }
+            } catch (error) {
+                clearInterval(loadingInterval);
+                loadingElement.remove();
+                console.error('Error:', error);
+                addOutput('😕 Error generating ideas. Please try again.');
+            }
+
+            addOutput("\nType 'clear' to start over or enter a new noun to begin again.");
+            currentStep = 0;
+            addOutput(prompts[currentStep]);
+            showPrompt();
+        }
+
+        function addPromo() {
+            const promoText = `Brought to you by <a href="https://innovationphilly.com" target="_blank">innovationphilly.com</a>
+Register now for the Philadelphia Open Innovation Tournament on October 26 and 27th, 2024!`;
+            addOutput(promoText, true);
+        }
+
+        userInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter' && !isWaitingForResponse) {
+                const input = userInput.value.trim();
+                userInput.value = '';
+                processInput(input);
+            }
+        });
+
+        // Initial prompt
+        addPromo();
+        addOutput("Welcome to the Innovation Generator Terminal!");
+        addOutput("Let's create some innovative ideas.");
+        addOutput(prompts[currentStep]);
+        showPrompt();
+    </script>
 </body>
 </html>
 
