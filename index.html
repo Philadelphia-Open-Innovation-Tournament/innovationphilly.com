@@ -1,340 +1,478 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Philadelphia Open Innovation Tournament 🏆</title>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #0a192f;
-            color: #8892b0;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        h1, h2 {
-            color: #64ffda;
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-        }
-        h2 {
-            font-size: 1.8em;
-            margin-top: 40px;
-        }
-        .info {
-            background-color: #112240;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .info a {
-            color: #ffffff;
-        }
-        .info .button {
-            color: #0a192f;
-        }
-        .sponsors {
-            background-color: #112240;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .sponsor-category {
-            margin-bottom: 30px;
-        }
-
-        .sponsor-category h3 {
-            color: #64ffda;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .sponsor-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .sponsors a {
-            color: #64ffda;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .sponsors img {
-            width: 150px;
-            margin: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .sponsors img:hover {
-            transform: scale(1.1);
-        }
-
-        .sponsors .sponsor-name {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-        .mission {
-            background-color: #112240;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            font-style: italic;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .leagues, .coaches {
-            background-color: #112240;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .button, .book-link {
-            background-color: #64ffda;
-            color: #0a192f;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-        .button {
-            font-size: 1.2em;
-            margin: 20px 0;
-        }
-        .button:hover, .book-link:hover {
-            background-color: #4cccb0;
-            transform: translateY(-2px);
-        }
-        .leagues ul, .coaches ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .leagues li {
-            background-color: #1d3557;
-            padding: 15px;
-            margin: 10px;
-            border-radius: 5px;
-            text-align: center;
-            flex: 1 1 calc(33% - 20px);
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-        .leagues li:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        .coaches li {
-            background-color: #1d3557;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 5px;
-            text-align: left;
-        }
-        .coaches a {
-            color: #64ffda;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .coaches a:hover {
-            color: #4cccb0;
-        }
-        .trophy {
-            font-size: 5em;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .emoji {
-            font-size: 1.2em;
-            margin-right: 5px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="trophy">🏆</div>
-        <h1>Philadelphia Open Innovation Tournament</h1>
-
-        <div style="text-align: center;">
-            <p>Join us for the second annual Philadelphia Open Innovation Tournament! We're calling all <span style="color: #64ffda; font-weight: bold;">🚀 Visionary Founders</span>, <span style="color: #ff6b6b; font-weight: bold;">💼 Intrapreneurs</span>, <span style="color: #feca57; font-weight: bold;">💪 Doers & Makers</span>, <span style="color: #54a0ff; font-weight: bold;">🏛️ Policy Implementers</span>, and anyone else who needs to innovate to get their jobs done. Be part of a groundbreaking event where ideas collide, innovation thrives, and solutions to real-world challenges are born. Your unique perspective is crucial to our collective success. <span style="color: #ff9ff3; font-weight: bold; font-size: 1.1em;">🌈 Register now to collaborate, compete, and create the future! 🚀</span></p>
-            
-        
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScjayml5NCNxtBZUqYAZPUs0s8kKzn57K4dYIc-OKO4Bz-HYg/viewform?usp=sf_link" class="button" target="_blank">🔔 Get Early Access to 2025 Registration</a>
-            <p style="font-size: 0.9em; margin-top: 10px;"><span class="emoji">☝️</span> Our 2024 event sold out with a waitlist! Don't miss out - sign up now for priority access to 2025 registration.</p>
-            <a href="https://innovationphilly.com/bot" class="button" target="_blank">🤖 Spark Ideas with Our Innovation Bot</a>
-            <p style="font-size: 0.9em; margin-top: 10px;">
-                <span class="emoji">☝️</span> Jumpstart your creativity! Our AI-powered Innovation Bot uses LLaMA to generate unique innovation concepts. Perfect for brainstorming or just for fun.
-            </p>
-        </div>
-
-        <h2>2025 Event Details <span class="emoji">🗓️</span></h2>
-        <div class="info">
-            <h3>Day 1 - Open Ideation Round</h3>
-                Up to 200 participants will form teams and brainstorm ideas to solve real-world challenges. Teams will create rapid prototypes and present them to peers for evaluation. The top teams, as determined by participant votes, will advance to the second day.
-                <p><span class="emoji">🗓️</span> Date: TBD October, 2025</p>
-                <p><span class="emoji">⏰</span> Time: 9:00 AM - 4:00 PM (followed by optional happy hour)</p>
-                <p><span class="emoji">📍</span> Venue: <a href="https://nextfab.com" target="_blank">NextFab, 1800 North American Street, Philadelphia, PA</a> | <a href="https://maps.apple.com/?daddr=NextFab,%201800%20N%20American%20St,%20Philadelphia,%20PA%2019122">🍏 Apple Maps</a> | <a href="https://www.google.com/maps/dir/?api=1&destination=NextFab,%201800%20N%20American%20St,%20Philadelphia,%20PA%2019122">🗺️ Google Maps</a></p>
-            <h3>Day 2 - Finalists Presenting</h3>
-                Finalists (no more than 7 teams) will refine their ideas and prepare final presentations. Expert judges will evaluate the pitches, and awards will be given to the most promising solutions.
-                <p><span class="emoji">🗓️</span> Date: TBD October, 2025</p>
-                <p><span class="emoji">⏰</span> Time: Finalists will schedule time to present</p>
-                <p><span class="emoji">📍</span> Venue: <a href="https://netrality.com/locations/data-center-philadelphia/" target="_blank">Netrality Data Center Conference Room, 401 North Broad St, Philadelphia, PA</a> | <a href="https://maps.apple.com/place?q=Netrality%20Data%20Centers&auid=5041278287119687789&address=401%20N%20Broad%20St,%20Philadelphia,%20PA%20%2019123,%20United%20States&ll=39.9599367,-75.161758">🍏 Apple Maps</a> | <a href="https://www.google.com/maps/search/?api=1&query=Netrality+Data+Centers+401+N+Broad+St%2C+Philadelphia%2C+PA++19123%2C+United+States">🗺️ Google Maps</a></p>
-        </div>
-
-        <h2>Our Mission <span class="emoji">🎯</span></h2>
-        <div class="mission">
-            <p>"Our goal is to accelerate Philadelphia's growth by spotlighting and empowering the city's most promising innovators."</p>
-        </div>
-
-        <h2>Leagues <span class="emoji">🏅</span></h2>
-        <div class="leagues">
-            <ul>
-                <li><span class="emoji">🌿</span> GREEN:TECH</li>
-                <li><span class="emoji">🎓</span> EDUTECH</li>
-                <li><span class="emoji">🏥</span> HEALTHCARE</li>
-                <li><span class="emoji">🔧</span> HARDTECH</li>
-                <li><span class="emoji">💻</span> SOFTWARE</li>
-                <li><span class="emoji">⚽</span> SPORTSTECH</li>
-            </ul>
-        </div>
-
-        <h2>Sponsors <span class="emoji">🌟</span></h2>
-        <div class="sponsors">
-            <div class="sponsor-category">
-                <h3>Platinum Sponsors</h3>
-                <div class="sponsor-logos">
-                    <a href="https://www.claconnect.com/" target="_blank">
-                        <img style="filter: brightness(0) invert(1);" src="cla.svg" alt="CLA Logo">
-                    </a>
-                    <a href="https://inoxoft.com/" target="_blank">
-                        <img style="filter: brightness(0) invert(1);" src="inoxoft.svg" alt="Inoxoft Logo">
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/devgon/" target="_blank">
-                        <img style="filter: grayscale(100%) brightness(100%)" src="Pitou.png" alt="Pitou">
-                    </a>
-                    <a href="https://www.bigideaplatform.com/" target="_blank">
-                        <img style="filter: invert(1) grayscale(100%) brightness(100%)" src="bigidea.svg" alt="Big Idea Logo">
-                    </a>
-                    <a href="https://www.lowenstein.com/" target="_blank">
-                        <img style="filter: grayscale(100%) brightness(100%)" src="ls.svg" alt="Lowenstein Sandler Logo">
-                    </a>
-                    <a href="https://benfranklin.org/" target="_blank">
-                        <img style="filter: grayscale(100%) brightness(100%) invert(1)" src="bftp.svg" alt="BFTP Logo">
-                    </a>
-                </div>
-            </div>
-            <div class="sponsor-category">
-                <h3>Gold Sponsors</h3>
-                <div class="sponsor-logos">
-                    <a href="https://medusaintel.co/" target="_blank">
-                        <img style="filter: grayscale(100%) brightness(100%) contrast(90%);" src="Medusa.png" alt="Medusa Logo">
-                    </a>
-                    <a href="https://www.sublimestrategy.com/" target="_blank">
-                        <img style="filter: invert(1) grayscale(100%) brightness(100%)" src="sublime.png" alt="Sublime Logo">
-                    </a>
-                    <a href="https://www.linkedin.com/in/narayan-chowdhury" target="_blank">
-                        <img style="filter: grayscale(100%) brightness(100%)" src="Narayan.png" alt="Narayan Pic">
-                    </a>
-                    <a href="https://missionog.com/" target="_blank">
-                        <img style="filter: grayscale(100%) brightness(100%)" src="missionOG.png" alt="Sublime Logo">
-                    </a>                    
-                    <a href="https://www2.deloitte.com/us/en.html" target="_blank">
-                        <img style="filter: grayscale(100%) brightness(100%)" src="deloitte.svg" alt="Deloitte Logo">
-                    </a>
-                    <a href="https://www.rccblaw.com/" target="_blank">
-                        <img style="filter: grayscale(100%) brightness(100%)" src="rccb.svg" alt="RCCB Logo">
-                    </a>
-                </div>
-            </div>
-            <div class="sponsor-category">
-                <h3>Silver Sponsors</h3>
-                <div class="sponsor-logos">
-                    <a href="https://nextfabventures.com/" target="_blank">
-                        <img style="filter: invert(1) grayscale(100%) brightness(100%)" src="Nextfab.png" alt="NextFab Logo">
-                    </a>
-                    <a href="https://tactix.com/" target="_blank">
-                        <img style="filter: grayscale(100%) brightness(100%)" src="Tactix.png" alt="Tactix Logo">
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        
-        <h2>What's an Open Innovation Tournament? <span class="emoji">🤔</span></h2>
-        <div class="info">
-            <p>An Open Innovation Tournament is a dynamic event that brings together diverse minds to solve real-world challenges. Inspired by the framework developed by Profs. Karl Ulrich and Christian Terwiesch at UPenn, it's a systematic approach to generating and evaluating innovative ideas through friendly competition.</p>
-
-            <div style="text-align: center; margin: 20px 0;">
-                <a href="https://www.youtube.com/watch?v=aRZCD8wU5bw" class="button" target="_blank">🎥 Watch: Innovation Tournaments Explained</a>
-            </div>
-
-            <p>Key features of our tournament:</p>
-            <ul>
-                <li><strong>Diverse Participation:</strong> Entrepreneurs, intrapreneurs, policymakers, and makers collaborate.</li>
-                <li><strong>Rapid Innovation:</strong> From brainstorming to prototyping and pitching in just two days.</li>
-                <li><strong>Real Impact:</strong> Solutions address pressing challenges in various sectors.</li>
-                <li><strong>Networking:</strong> Connect with potential partners, mentors, and investors.</li>
-            </ul>
-
-            <p>The tournament unfolds in two exciting stages:</p>
-            <ol>
-                <li><strong>Open Ideation Round:</strong> Teams form, brainstorm, and create rapid prototypes. Top ideas advance via peer voting.</li>
-                <li><strong>Finals:</strong> Selected teams refine their ideas and pitch to expert judges. The most promising solutions win awards and potential support for further development.</li>
-            </ol>
-
-            <p>Join us in this exhilarating journey of innovation and impact. Be part of shaping Philadelphia's future!</p>
-        </div>
-
-
-        <h2>Past Tournaments and Resources <span class="emoji">ℹ️</span></h2>
-        <div class="info">
-            <h3>First Annual Philadelphia Open Innovation Tournament - 2024</h3>
-            <ul>
-                <li><a href="https://lu.ma/clcrvyvw" target="_blank">2024 Tournament Participants and Announcements</a></li>
-                <li><a href="https://www.linkedin.com/posts/josh-devon_innovation-philadelphia-entrepreneurship-activity-7256652680134111233-VFiN" target="_blank">2024 Winner Announcement (LinkedIn)</a></li>
-                <li><a href="https://innovationphilly.com/guide.pdf" target="_blank">2024 Participant Guide</a> (<a href="https://innovationphilly.com/guide.mp3" target="_blank">Audio Brief</a>)</li>
-                <li><a href="https://photos.app.goo.gl/MrFBjVSSjvspUu3k9" target="_blank">2024 Photo Album</a></li>
-            </ul>
-
-            <h3>Open Source Tournament Resources</h3>
-            <ul>
-                <li><a href="https://github.com/Philadelphia-Open-Innovation-Tournament" target="_blank">POIT GitHub</a></li>
-            </ul>
-        </div>
-
-        <div style="text-align: center;">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScjayml5NCNxtBZUqYAZPUs0s8kKzn57K4dYIc-OKO4Bz-HYg/viewform?usp=sf_link" class="button" target="_blank">🔔 Get Early Access to 2025 Registration</a>
-        </div>
-
-    </div>
-</body>
-</html>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Philadelphia Open Innovation Tournament 2025</title>  
+    <style>  
+        :root {  
+            --bg-color: #0d1117;  
+            --text-color: #e6edf3;  
+            --accent-color: #58a6ff;  
+            --secondary-color: #64ffda;  
+            --warning-color: #f97583;  
+            --comment-color: #8b949e;  
+            --link-color: #58a6ff;  
+            --section-bg: #161b22;  
+            --code-bg: #1f2428;  
+        }  
+  
+        * {  
+            box-sizing: border-box;  
+            margin: 0;  
+            padding: 0;  
+        }  
+  
+        body {  
+            background-color: var(--bg-color);  
+            color: var(--text-color);  
+            font-family: 'Fira Code', monospace;  
+            line-height: 1.6;  
+            padding: 20px;  
+            max-width: 1000px;  
+            margin: 0 auto;  
+            font-size: 16px;  
+        }  
+  
+        @media (max-width: 600px) {  
+            body {  
+                font-size: 14px;  
+                padding: 15px;  
+            }  
+        }  
+  
+        header {  
+            margin-bottom: 30px;  
+        }  
+  
+        h1, h2, h3, h4 {  
+            color: var(--secondary-color);  
+        }  
+  
+        h1 {  
+            font-size: 1.8rem;  
+            margin-bottom: 10px;  
+        }  
+  
+        h2 {  
+            font-size: 1.5rem;  
+            margin: 25px 0 15px;  
+            padding-bottom: 5px;  
+            border-bottom: 1px solid #30363d;  
+        }  
+  
+        h3 {  
+            font-size: 1.25rem;  
+            margin: 20px 0 10px;  
+        }  
+  
+        p {  
+            margin-bottom: 15px;  
+        }  
+  
+        a {  
+            color: var(--link-color);  
+            text-decoration: none;  
+            transition: opacity 0.2s;  
+        }  
+  
+        a:hover {  
+            opacity: 0.8;  
+            text-decoration: underline;  
+        }  
+  
+        .prompt {  
+            color: var(--accent-color);  
+            font-weight: bold;  
+            margin-right: 8px;  
+        }  
+  
+        .section {  
+            background-color: var(--section-bg);  
+            border-radius: 6px;  
+            padding: 20px;  
+            margin-bottom: 25px;  
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+        }  
+  
+        .code-block {  
+            background-color: var(--code-bg);  
+            padding: 15px;  
+            border-radius: 4px;  
+            overflow-x: auto;  
+            margin: 15px 0;  
+        }  
+  
+        .highlight {  
+            color: var(--accent-color);  
+            font-weight: bold;  
+        }  
+  
+        .warning {  
+            color: var(--warning-color);  
+        }  
+  
+        .comment {  
+            color: var(--comment-color);  
+            font-style: italic;  
+        }  
+  
+        .blink {  
+            animation: blink-animation 1s steps(2, start) infinite;  
+        }  
+  
+        @keyframes blink-animation {  
+            to {  
+                visibility: hidden;  
+            }  
+        }  
+  
+        .expandable-header {  
+            cursor: pointer;  
+            display: flex;  
+            align-items: center;  
+        }  
+  
+        .expandable-header::before {  
+            content: "+ ";  
+            color: var(--secondary-color);  
+            margin-right: 5px;  
+            transition: transform 0.3s;  
+        }  
+  
+        .expandable-header.expanded::before {  
+            content: "- ";  
+        }  
+  
+        .expandable-content {  
+            display: none;  
+            padding-left: 20px;  
+            margin-top: 10px;  
+            border-left: 1px solid var(--comment-color);  
+        }  
+  
+        .info-section {  
+            background-color: rgba(88, 166, 255, 0.05);  
+            border: 1px solid rgba(88, 166, 255, 0.1);  
+            border-radius: 6px;  
+            padding: 20px;  
+            margin: 30px 0;  
+            font-size: 0.9rem;  
+        }  
+  
+        .info-header {  
+            color: var(--accent-color);  
+            font-weight: 500;  
+            margin-bottom: 10px;  
+            font-size: 1rem;  
+        }  
+  
+        .terminal-prompt::before {  
+            content: "$ ";  
+            color: var(--secondary-color);  
+        }  
+      
+        .button {  
+            background-color: var(--secondary-color);  
+            color: var(--bg-color);  
+            padding: 12px 24px;  
+            text-decoration: none;  
+            border-radius: 5px;  
+            font-weight: bold;  
+            display: inline-block;  
+            transition: all 0.3s ease;  
+            margin: 15px 0;  
+        }  
+      
+        .button:hover {  
+            opacity: 0.8;  
+            transform: translateY(-2px);  
+        }  
+      
+        .trophy {  
+            font-size: 3em;  
+            text-align: center;  
+            margin-bottom: 20px;  
+        }  
+      
+        .sponsor-category {  
+            margin-bottom: 30px;  
+        }  
+      
+        .sponsor-row {  
+            display: flex;  
+            flex-wrap: wrap;  
+            justify-content: center;  
+            gap: 15px;  
+            margin-top: 15px;  
+        }  
+      
+        .sponsor-name {  
+            background-color: var(--code-bg);  
+            padding: 8px 15px;  
+            border-radius: 4px;  
+            margin: 5px;  
+            display: inline-block;  
+            transition: transform 0.2s ease;  
+        }  
+          
+        .sponsor-name:hover {  
+            transform: translateY(-2px);  
+        }  
+      
+        .leagues-grid {  
+            display: grid;  
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));  
+            gap: 15px;  
+            margin-top: 20px;  
+        }  
+      
+        .league-item {  
+            background-color: var(--code-bg);  
+            padding: 15px;  
+            border-radius: 4px;  
+            text-align: center;  
+        }  
+      
+        .emoji {  
+            margin-right: 5px;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <header>  
+        <div class="trophy">🏆</div>  
+        <h1>$ Philadelphia Open Innovation Tournament 2025</h1>  
+        <p>Join us for the annual Philadelphia Open Innovation Tournament - where ideas collide, innovation thrives, and solutions to real-world challenges are born.</p>  
+    </header>  
+  
+    <div class="section">  
+        <h2><span class="prompt">~/overview</span> Tournament Details</h2>  
+        <div class="code-block">  
+            <div class="tree-branch"><span class="highlight">EVENT_TYPE</span> = "innovation_tournament"<span class="comment"> # Systematic approach to generating and evaluating ideas</span></div>  
+            <div class="tree-branch"><span class="highlight">DATE_DAY1</span> = "October 25, 2025"<span class="comment"> # Open Ideation Round</span></div>  
+            <div class="tree-branch"><span class="highlight">DATE_DAY2</span> = "October 26, 2025"<span class="comment"> # Finalists Presenting</span></div>  
+            <div class="tree-branch"><span class="highlight">VENUE</span> = "Racquet Club of Philadelphia"<span class="comment"> # 215 South 16th Street</span></div>  
+            <div class="tree-branch"><span class="highlight">DRESS_CODE</span> = "business_casual"<span class="comment"> # <a href="https://rcop.com/dress-code/" target="_blank">View dress code requirements</a></span></div>  
+            <div class="tree-branch"><span class="highlight">CAPACITY</span> = "200_participants"<span class="comment"> # Maximum participants</span></div>  
+            <div class="tree-branch"><span class="highlight">FINALISTS</span> = "7_teams"<span class="comment"> # Max teams advancing to Day 2</span></div>  
+        </div>  
+  
+        <div style="text-align: center; margin-top: 20px;">  
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScjayml5NCNxtBZUqYAZPUs0s8kKzn57K4dYIc-OKO4Bz-HYg/viewform?usp=sf_link" class="button" target="_blank">🔔 Get Early Access to 2025 Registration</a>  
+            <p style="font-size: 0.9em; margin-top: 10px;"><span class="emoji">☝️</span> Our 2024 event sold out with a waitlist! Don't miss out - sign up now for priority access.</p>  
+        </div>  
+    </div>  
+  
+    <div class="section">  
+        <h2><span class="prompt">~/ai_advantage</span> Winning with AI</h2>  
+      
+        <p>Based on insights from previous tournaments, here's how to leverage AI to gain a competitive edge in the Innovation Tournament:</p>  
+  
+        <h3 class="expandable-header">01: Idea Generation at Scale</h3>  
+        <div class="expandable-content">  
+            <p>Use AI to rapidly generate diverse ideas across different domains:</p>  
+            <ul style="list-style-type: none; padding-left: 20px;">  
+                <li>• <span class="highlight">Domain Mapping:</span> Have AI create a comprehensive map of the problem space, identifying all possible angles and approaches</li>  
+                <li>• <span class="highlight">Constraint Exploitation:</span> Ask AI to generate ideas that explicitly leverage or bypass specific constraints</li>  
+                <li>• <span class="highlight">Combinatorial Thinking:</span> Use AI to combine concepts from different domains for novel solutions</li>  
+                <li>• <span class="highlight">Quantity First:</span> Generate hundreds of ideas quickly, then filter for quality</li>  
+            </ul>  
+            <p>Successful participants typically generate 50-100 ideas using AI before selecting their top concepts to develop further.</p>  
+        </div>  
+  
+        <h3 class="expandable-header">02: Synthetic Customer Feedback</h3>  
+        <div class="expandable-content">  
+            <p>Use AI to simulate diverse customer perspectives:</p>  
+            <ul style="list-style-type: none; padding-left: 20px;">  
+                <li>• <span class="highlight">Persona Embodiment:</span> Create detailed user personas and have AI respond as those users would to your concept</li>  
+                <li>• <span class="highlight">Objection Anticipation:</span> Ask AI to generate likely objections from different stakeholder groups</li>  
+                <li>• <span class="highlight">Preference Simulation:</span> Use AI to simulate how different customer segments would prioritize features</li>  
+                <li>• <span class="highlight">Edge Case Identification:</span> Have AI identify unusual use cases or extreme user scenarios</li>  
+            </ul>  
+            <p>This approach provides rapid feedback that helps refine concepts before real-world testing, dramatically accelerating the innovation cycle.</p>  
+        </div>  
+  
+        <h3 class="expandable-header">03: Rapid Prototyping</h3>  
+        <div class="expandable-content">  
+            <p>Leverage AI to create functional prototypes across different modalities:</p>  
+            <ul style="list-style-type: none; padding-left: 20px;">  
+                <li>• <span class="highlight">Visual Design:</span> Generate UI mockups, product visualizations, and branding elements</li>  
+                <li>• <span class="highlight">Content Creation:</span> Develop marketing copy, documentation, and user guides</li>  
+                <li>• <span class="highlight">Code Generation:</span> Create functional code snippets or entire proof-of-concept applications</li>  
+                <li>• <span class="highlight">Process Mapping:</span> Design service blueprints and implementation roadmaps</li>  
+            </ul>  
+            <p>Teams that effectively use AI for prototyping can present more polished concepts with less effort, allowing them to focus on differentiation and core value.</p>  
+        </div>  
+  
+        <h3 class="expandable-header">04: Structured Criticism</h3>  
+        <div class="expandable-content">  
+            <p>Use AI to critically evaluate your ideas from multiple perspectives:</p>  
+            <ul style="list-style-type: none; padding-left: 20px;">  
+                <li>• <span class="highlight">Competitive Analysis:</span> Have AI evaluate your concept against potential competitors</li>  
+                <li>• <span class="highlight">Implementation Challenges:</span> Ask AI to identify technical, operational, or market barriers</li>  
+                <li>• <span class="highlight">Regulatory Concerns:</span> Use AI to highlight potential compliance issues</li>  
+                <li>• <span class="highlight">Business Model Evaluation:</span> Have AI analyze the viability of your revenue and cost assumptions</li>  
+            </ul>  
+            <p>By proactively addressing weaknesses identified through AI criticism, teams can develop more robust solutions that stand up to judge scrutiny.</p>  
+        </div>  
+  
+        <h3 class="expandable-header">05: Presentation Optimization</h3>  
+        <div class="expandable-content">  
+            <p>Use AI to refine your final pitch:</p>  
+            <ul style="list-style-type: none; padding-left: 20px;">  
+                <li>• <span class="highlight">Narrative Structure:</span> Have AI help craft a compelling story around your innovation</li>  
+                <li>• <span class="highlight">Visual Enhancement:</span> Generate professional slides and visual aids</li>  
+                <li>• <span class="highlight">Objection Preparation:</span> Practice with AI by simulating judge questions</li>  
+                <li>• <span class="highlight">Data Visualization:</span> Create impactful charts and graphs to support your claims</li>  
+            </ul>  
+            <p>The most successful teams use AI not just for content creation but as a collaborative partner throughout the entire presentation development process.</p>  
+        </div>  
+  
+        <div class="info-section">  
+            <div class="info-header">AI Tools for Innovation Tournaments</div>  
+            <p>Based on previous tournament participants, these tools have proven most effective:</p>  
+            <ul style="list-style-type: none; padding-left: 0;">  
+                <li>• <span class="highlight">Conversational AI:</span> Claude, Mistral, ChatGPT, Gemini</li>  
+                <li>• <span class="highlight">Visual Design:</span> Midjourney, DALL-E, or Stable Diffusion</li>  
+                <li>• <span class="highlight">Coding & Prototyping:</span> Claude Code, GitHub Copilot, Loveable.dev, Replit, Bolt</li>  
+                <li>• <span class="highlight">Research:</span> Perplexity AI, Elicit, or Consensus for deeper analysis</li>  
+            </ul>  
+            <p class="terminal-prompt">The most successful teams combine multiple AI tools in creative ways rather than relying on just one system.</p>  
+        </div>  
+    </div>  
+  
+    <div class="section">  
+        <h2><span class="prompt">~/structure</span> Tournament Format</h2>  
+      
+        <h3>Day 1 - Open Ideation Round</h3>  
+        <p>Up to 200 participants will form teams and brainstorm ideas to solve real-world challenges. Teams will create rapid prototypes and present them to peers for evaluation. The top teams, as determined by participant votes, will advance to the second day.</p>  
+        <div class="code-block">  
+            <div class="tree-branch"><span class="highlight">DATE</span> = "October 25, 2025"</div>  
+            <div class="tree-branch"><span class="highlight">TIME</span> = "9:00 AM - 4:00 PM"<span class="comment"> # Followed by optional happy hour</span></div>  
+            <div class="tree-branch"><span class="highlight">VENUE</span> = "Racquet Club of Philadelphia, 215 South 16th Street, Philadelphia, PA 19102"</div>  
+            <div class="tree-branch"><span class="highlight">DRESS_CODE</span> = "<a href="https://rcop.com/dress-code/" target="_blank">Business Casual Required</a>"</div>  
+            <div class="tree-branch"><span class="highlight">MAPS</span> = ["<a href="https://maps.apple.com/?daddr=The%20Racquet%20Club%20of%20Philadelphia,%20215%20S%2016th%20St,%20Philadelphia,%20PA%20%2019102,%20United%20States" target="_blank">Apple Maps</a>", "<a href="https://www.google.com/maps/dir/?api=1&destination=The%20Racquet%20Club%20of%20Philadelphia,%20215%20S%2016th%20St,%20Philadelphia,%20PA%20%2019102,%20United%20States" target="_blank">Google Maps</a>"]</div>  
+        </div>  
+  
+        <h3>Day 2 - Finalists Presenting</h3>  
+        <p>Finalists (no more than 7 teams) will refine their ideas and prepare final presentations. Expert judges will evaluate the pitches, and awards will be given to the most promising solutions.</p>  
+        <div class="code-block">  
+            <div class="tree-branch"><span class="highlight">DATE</span> = "October 26, 2025"</div>  
+            <div class="tree-branch"><span class="highlight">TIME</span> = "Finalists will schedule time to present"</div>  <span class="comment"> # Slots will be assigned the day before, expect to present between 9am and 2pm</span> 
+            <div class="tree-branch"><span class="highlight">VENUE</span> = "Racquet Club of Philadelphia, 215 South 16th Street, Philadelphia, PA 19102"</div>  
+            <div class="tree-branch"><span class="highlight">DRESS_CODE</span> = "<a href="https://rcop.com/dress-code/" target="_blank">Business Casual Required</a>"</div>  
+            <div class="tree-branch"><span class="highlight">MAPS</span> = ["<a href="https://maps.apple.com/?daddr=The%20Racquet%20Club%20of%20Philadelphia,%20215%20S%2016th%20St,%20Philadelphia,%20PA%20%2019102,%20United%20States" target="_blank">Apple Maps</a>", "<a href="https://www.google.com/maps/dir/?api=1&destination=The%20Racquet%20Club%20of%20Philadelphia,%20215%20S%2016th%20St,%20Philadelphia,%20PA%20%2019102,%20United%20States" target="_blank">Google Maps</a>"]</div>  
+        </div>  
+    </div>  
+  
+    <div class="info-section">  
+        <div class="info-header">Our Mission</div>  
+        <p>"Our goal is to accelerate Philadelphia's growth by spotlighting and empowering the city's most promising innovators."</p>  
+        <p class="terminal-prompt">Join us in this exhilarating journey of innovation and impact. Be part of shaping Philadelphia's future!</p>  
+    </div>  
+  
+    <div class="section">  
+        <h2><span class="prompt">~/leagues</span> Competition Categories</h2>  
+        <div class="leagues-grid">  
+            <div class="league-item"><span class="emoji">🌿</span> GREENTECH</div>  
+            <div class="league-item"><span class="emoji">🎓</span> EDTECH</div>  
+            <div class="league-item"><span class="emoji">🏥</span> HEALTHCARE</div>  
+            <div class="league-item"><span class="emoji">⚖️ </span> LEGALTECH</div>  
+            <div class="league-item"><span class="emoji">🔧</span> HARDTECH</div>  
+            <div class="league-item"><span class="emoji">⚽</span> SPORTSTECH</div>  
+        </div>  
+        <p class="comment">// Note: These categories are suggestions developed by the hosts, sponsors and judges as being important to the community and likely to be supported, funded and staffed in Philadelphia... some even come with handshake deals to follow up and provide funding (e.g if NextFab Ventures finds the right hardware-focused team, they will give them cash, product development support and put them in their Venture Studio). That said, if you'd like to pitch a video game or something off the wall you are welcome to</p>  
+    </div>  
+  
+    <div class="section">  
+        <h2><span class="prompt">~/sponsors</span> 2025 Sponsors</h2>  
+        <p class="comment">// Note: This list is not final and will be updated as sponsorships are addded for 2025</p>  
+      
+        <div class="sponsor-category">  
+            <h3>Founding Sponsors</h3>  
+            <div class="sponsor-row">  
+                <a href="https://www.sublimestrategy.com/" target="_blank" class="sponsor-name">Sublime Strategy</a>  
+                <a href="https://bradflaugher.com" target="_blank" class="sponsor-name">Brad Flaugher</a>  
+                <a href="https://www.ideastogo.com/" target="_blank" class="sponsor-name">Ideas To Go</a>  
+                <a href="https://nextfabventures.com/" target="_blank" class="sponsor-name">NextFab</a>  
+                <a href="https://benfranklin.org/" target="_blank" class="sponsor-name">BFTP</a>  
+            </div>  
+        </div>  
+      
+        <div class="sponsor-category">  
+            <h3>Innovation Partners</h3>  
+            <div class="sponsor-row">  
+                <a href="https://www.lowenstein.com/" target="_blank" class="sponsor-name">Lowenstein Sandler</a>  
+                <a href="https://inoxoft.com/" target="_blank" class="sponsor-name">Inoxoft</a>  
+                <a href="https://www.bigideaplatform.com/" target="_blank" class="sponsor-name">Big Idea Platform</a>  
+                <a href="https://www.claconnect.com/" target="_blank" class="sponsor-name">CLA</a>  
+                <a href="https://www.linkedin.com/in/narayan-chowdhury" target="_blank" class="sponsor-name">Narayan Chowdhury</a>  
+                <a href="https://missionog.com/" target="_blank" class="sponsor-name">Mission OG</a>  
+                <a href="https://www2.deloitte.com/us/en.html" target="_blank" class="sponsor-name">Deloitte</a>  
+                <a href="https://www.rccblaw.com/" target="_blank" class="sponsor-name">RCCB Law</a>  
+                <a href="https://tactix.com/" target="_blank" class="sponsor-name">Tactix</a>  
+                <a href="https://www.linkedin.com/in/devgon/" target="_blank" class="sponsor-name">Pitou Devgon</a>  
+            </div>  
+        </div>  
+      
+    </div>  
+  
+    <div class="section">  
+        <h2><span class="prompt">~/resources</span> Past Tournaments and Resources</h2>  
+      
+        <div class="code-block">  
+            <div class="tree-branch"><span class="highlight">2024_TOURNAMENT</span> = {</div>  
+            <div class="tree-branch" style="margin-left: 20px;">"participants": "<a href="https://lu.ma/clcrvyvw" target="_blank">Announcements & Participant List</a>",</div>  
+            <div class="tree-branch" style="margin-left: 20px;">"winners": "<a href="https://www.linkedin.com/posts/josh-devon_innovation-philadelphia-entrepreneurship-activity-7256652680134111233-VFiN" target="_blank">2024 Winner Announcement (LinkedIn)</a>",</div>  
+            <div class="tree-branch" style="margin-left: 20px;">"guide": "<a href="https://innovationphilly.com/guide.pdf" target="_blank">2024 Participant Guide</a>",</div>  
+            <div class="tree-branch" style="margin-left: 20px;">"audio_brief": "<a href="https://innovationphilly.com/guide.mp3" target="_blank">Audio Brief</a>",</div>  
+            <div class="tree-branch" style="margin-left: 20px;">"photos": "<a href="https://photos.app.goo.gl/MrFBjVSSjvspUu3k9" target="_blank">2024 Photo Album</a>"</div>  
+            <div class="tree-branch">}</div>  
+            <div class="tree-branch"><span class="highlight">OPEN_SOURCE</span> = "<a href="https://github.com/Philadelphia-Open-Innovation-Tournament" target="_blank">POIT GitHub</a>"</div>  
+        </div>  
+    </div>  
+  
+    <div class="info-section">  
+        <div class="info-header">About the Tournament</div>  
+        <p>The Philadelphia Open Innovation Tournament is an annual event inspired by the framework developed by Profs. Karl Ulrich and Christian Terwiesch at UPenn. It brings together diverse minds to solve real-world challenges through friendly competition.</p>  
+        <p>Our tournament is designed to accelerate innovation in Philadelphia by connecting entrepreneurs, intrapreneurs, policymakers, and makers in a collaborative environment.</p>  
+        <p class="terminal-prompt">Interested in learning more? <a href="https://www.youtube.com/watch?v=aRZCD8wU5bw" target="_blank">Watch this overview of Innovation Tournaments</a> or <a href="https://docs.google.com/forms/d/e/1FAIpQLScjayml5NCNxtBZUqYAZPUs0s8kKzn57K4dYIc-OKO4Bz-HYg/viewform?usp=sf_link" target="_blank">sign up for priority access to our 2025 event</a>.</p>  
+    </div>  
+  
+    <script>  
+document.addEventListener('DOMContentLoaded', function() {  
+    // Expandable sections functionality  
+    const expandableHeaders = document.querySelectorAll('.expandable-header');  
+    expandableHeaders.forEach(header => {  
+        header.addEventListener('click', function() {  
+            this.classList.toggle('expanded');  
+            const content = this.nextElementSibling;  
+            if (content.style.display === 'block') {  
+                content.style.display = 'none';  
+            } else {  
+                content.style.display = 'block';  
+            }  
+        });  
+    });  
+  
+    // Simulate typing effect for header  
+    const header = document.querySelector('header h1');  
+    const headerText = header.innerHTML;  
+    header.innerHTML = '';  
+    let i = 0;  
+    const typeHeader = () => {  
+        if (i < headerText.length) {  
+            header.innerHTML += headerText.charAt(i);  
+            i++;  
+            setTimeout(typeHeader, 50);  
+        } else {  
+            // Add blinking cursor after typing  
+            header.innerHTML += '<span class="blink">_</span>';  
+        }  
+    };  
+    typeHeader();  
+});  
+    </script>  
+</body>  
+</html>  
