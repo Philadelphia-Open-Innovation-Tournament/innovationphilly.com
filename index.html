@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Philadelphia Open Innovation Tournament 2025</title>
+<title>Philadelphia Open Innovation Tournament 2025</title>
 
 <style>
 :root{
@@ -14,7 +14,6 @@
   --fs-hero:clamp(1.9rem,6.5vw,2.7rem);
   --fs-h2:clamp(1.35rem,3vw,1.7rem);--fs-h3:1.1rem;
 }
-/* reset & base */
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 body{background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
@@ -22,7 +21,7 @@ body{background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;-webk
 img,iframe{max-width:100%;display:block;border-radius:var(--radius)}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 
-/* layout helpers */
+/* layout */
 .wrapper{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gap)}
 .card{background:var(--card);border-radius:var(--radius);padding:2.4rem var(--gap);box-shadow:var(--shadow);transition:transform .25s}
 @media(max-width:600px){.card:hover{transform:translateY(-2px)}}@media(min-width:601px){.card:hover{transform:translateY(-4px)}}
@@ -43,7 +42,8 @@ nav .cta:hover{background:var(--accent-hover)}
 
 /* hero */
 .hero{text-align:center;padding:6rem var(--gap) 4rem;background:linear-gradient(145deg,#fff 0%,#ecf3ff 100%)}
-.hero h1{font-size:var(--fs-hero);font-weight:700;margin:0 0 1.1rem;letter-spacing:-.02em;word-break:normal;overflow-wrap:normal}
+.hero h1{font-size:var(--fs-hero);font-weight:700;margin:0 0 1.1rem;letter-spacing:-.02em;
+        overflow-wrap:break-word;white-space:normal}
 .hero p{font-size:1.1rem;color:var(--muted);max-width:40ch;margin-inline:auto}
 .trophy{font-size:3.8rem;margin-bottom:1.1rem}
 .button{display:inline-block;background:var(--accent);color:#fff;font-weight:600;padding:.85em 1.8em;border-radius:40px;margin-top:2rem;transition:.25s}
@@ -75,7 +75,7 @@ section[id]{scroll-margin-top:5.2rem}
 <!-- HERO -->
 <header class="hero" id="top"><div class="wrapper">
   <div class="trophy">🏆</div>
-  <h1>Philadelphia Open Innovation Tournament 2025</h1>
+  <h1>Philadelphia Open Innovation Tournament 2025</h1>
   <p>✨ A weekend where bright ideas collide with opportunity.</p>
   <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLScjayml5NCNxtBZUqYAZPUs0s8kKzn57K4dYIc-OKO4Bz-HYg/viewform?usp=sf_link" target="_blank">Secure your spot</a>
 </div></header>
@@ -85,28 +85,29 @@ section[id]{scroll-margin-top:5.2rem}
 <!-- OVERVIEW -->
 <section id="overview" class="card">
   <h2>📋 Quick facts</h2>
-  <p>Two days. Two hundred innovators. One big spotlight. Day 1 is for everyone to brainstorm, prototype, and celebrate. Day 2 is a closed‑door showdown where the <strong>top seven teams</strong> pitch for glory.</p>
+  <p>Two days. Two hundred innovators. One spotlight. Day 1 is for everyone to brainstorm, prototype, and celebrate. Day 2 is a closed‑door showdown for the <strong>top seven teams</strong>.</p>
 
   <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.3rem">
     <div><h3>Date & Venue</h3><p>📅 Oct 25–26 · Racquet Club of Philadelphia</p></div>
-    <div><h3>Cost</h3><p>💸 $20 event pass<br>🍻 +$20 Happy‑Hour wristband (optional)</p></div>
-    <div><h3>Capacity</h3><p>👥 200 participants → 7 finalist teams</p></div>
+    <div><h3>Cost</h3><p>💸 $20 event pass<br>🍻 +$20 Happy‑Hour wristband</p></div>
+    <div><h3>Capacity</h3><p>👥 200 participants → 7 finalists</p></div>
     <div><h3>Dress code</h3><p>🕴️ Smart casual (<a href="https://rcop.com/dress-code/" target="_blank">details</a>)</p></div>
   </div>
 
   <h3 style="margin-top:2rem">🗓️ Weekend Flow</h3>
-  <p><span class="badge">Sat 10 AM – 5 PM</span> Ideation sprint, landing‑page build, peer voting<br>
-     <span class="badge">Sat 5 PM – 7 PM</span> Happy‑Hour 🍻 (open bar with wristband)<br>
-     <span class="badge">Sun 10 AM – 2 PM</span> Finalist pitches (invite‑only)<br>
-     <span class="badge">Sun 3 PM</span> Awards & toasts 🥂
+  <p>
+    <span class="badge">Sat 10 AM–5 PM</span> Ideation sprint & landing‑page build<br>
+    <span class="badge">Sat 5 PM–7 PM</span> Happy‑Hour 🍻 (open bar with wristband)<br>
+    <span class="badge">Sun 10 AM–2 PM</span> Finalist pitches (invite‑only)<br>
+    <span class="badge">Sun 3 PM</span> Awards & toasts 🥂
   </p>
 
-  <h3 style="margin-top:2rem">🏅 Why bother?</h3>
+  <h3 style="margin-top:2rem">🏅 What winners walk away with</h3>
   <p>
-    • <strong>$100 k in AWS credits*</strong> (the AWS Startup team promised to chat—impress them and the vouchers are yours).<br>
-    • <strong>$25 k+ potential cheque</strong> from our venture partners after their friendly due‑diligence coffee.<br>
-    • A shiny trophy 🏆, lifetime bragging rights, and an alumni network that actually picks up the phone.<br>
-    <em style="font-size:.85rem;color:var(--muted)">*AWS can withdraw the offer if you’re secretly a trillion‑dollar unicorn—fair’s fair.</em>
+    • <strong>Invitation to apply for up to $100 k in AWS Activate credits</strong> — AWS Startup team meets our champs and decides on the voucher.<br>
+    • <strong>Fast‑tracked diligence for a potential $25 k seed cheque</strong> from venture partners (coffee first, term‑sheet next).<br>
+    • A trophy 🏆 and instant cred in Philly’s founder community.<br>
+    • Lifetime access to an alumni network that actually helps.
   </p>
 
   <p style="margin-top:1.4rem;color:var(--muted)">2024 sold out – snag your ticket while you can!</p>
@@ -115,62 +116,39 @@ section[id]{scroll-margin-top:5.2rem}
 <!-- HOW TO WIN -->
 <section id="how" class="card">
   <h2>🚀 How to Win</h2>
-  <p>Five moves that separated last year’s champs from the pack. Tap any card 👇</p>
+  <p>Five moves that separated last year’s champs from the pack. Tap to expand 👇</p>
 
   <details><summary>1. Idea Storm 🌩️ — Quantity before quality</summary><div>
-    <p>Start with a “no‑idea‑left‑behind” blast. Ask your frontier model to:</p>
+    <p>Fire a “no‑idea‑left‑behind” prompt at your model:</p>
     <ul>
-      <li>Map every constraint (“must use existing city data”, “zero hardware”) and intentionally violate each to spark fresh angles.</li>
-      <li>Combine random domains (e.g. healthcare × fantasy sports) for unexpected mash‑ups.</li>
-      <li>Generate at least 100 bullet ideas in under 10 minutes—it’s a numbers game.</li>
+      <li>Break, bend, or reverse every stated constraint.</li>
+      <li>Cross‑pollinate random industries to spark novelty.</li>
+      <li>Hit 100 raw bullets in 10 min, then shortlist three keepers.</li>
     </ul>
-    <p>Only then slice mercilessly until 3 concepts survive the cull.</p>
   </div></details>
 
-  <details><summary>2. Synthetic User Feedback 🗣️ — AI as your focus group</summary><div>
-    <p>Create 3–5 rich personas (age, job, frustrations, wild opinions). Prompt the model to <em>role‑play</em> each:</p>
-    <ul>
-      <li>“As Alex, a 34‑year‑old nurse, what’s the first thing you’d check on this landing page?”</li>
-      <li>“List three deal‑breakers that would stop you signing up.”</li>
-    </ul>
-    <p>You’ll surface objections, jargon confusion, and killer feature ideas without scheduling a single Zoom call.</p>
+  <details><summary>2. Synthetic User Feedback 🗣️ — AI focus group</summary><div>
+    <p>Ask the model to role‑play customers, partners, even regulators. Extract emotional quotes and hidden objections fast.</p>
   </div></details>
 
-  <details><summary>3. Prototype Lightning‑Fast ⚡ — Ship a page in 5 minutes</summary><div>
-    <p>Use <strong>Manus</strong> (Starter/Basic plan) or a barebones Replit site:</p>
-    <ol>
-      <li>Paste your hero headline & pain‑point bullets.</li>
-      <li>Let the AI designer pick a palette and stock icons.</li>
-      <li>Press ⬆︎ Publish. Shareable URL = instant social proof.</li>
-    </ol>
-    <p>Landing page > slide deck. Real links feel real.</p>
+  <details><summary>3. Prototype Lightning‑Fast ⚡ — Ship a page in 5 min</summary><div>
+    <p>Use <strong>Manus</strong> (Starter/Basic) or Replit:</p>
+    <ol><li>Paste your headline + pain bullets.</li><li>Auto‑theme, hit publish.</li><li>Share link → instant proof.</li></ol>
   </div></details>
 
-  <details><summary>4. Stress‑Test 🛡️ — Debate your idea to death</summary><div>
-    <p>Run an internal red‑team session:</p>
-    <ul>
-      <li>“Argue why this will never hit 10 k users.”</li>
-      <li>“List regulations that could shut us down.”</li>
-      <li>“Pretend you’re our fiercest competitor—how do you out‑innovate us?”</li>
-    </ul>
-    <p>Patch every hole, or pivot early and save face.</p>
+  <details><summary>4. Stress‑Test 🛡️ — Debate to improve</summary><div>
+    <p>Run an AI red‑team session: “Why would only 50 people care?” “What law could kill us?” Patch or pivot.</p>
   </div></details>
 
   <details><summary>5. Nail the Narrative 🎤 — Pitch like a trailer</summary><div>
-    <p>Structure:</p>
-    <ol>
-      <li><strong>Cold open (Problem):</strong> 15‑second pain story.</li>
-      <li><strong>Aha moment (Solution):</strong> demo gif or mock‑up gif.</li>
-      <li><strong>Impact montage:</strong> numbers, testimonials, future roadmap.</li>
-    </ol>
-    <p>Rehearse Q&A with ChatGPT as a grumpy board member until nothing rattles you.</p>
+    <p>Problem → aha moment → impact montage. Rehearse Q&A with ChatGPT acting as your grumpiest investor.</p>
   </div></details>
 
   <details open><summary>Starter Toolkit 🔧</summary><div>
     <ul>
-      <li>📱 <strong>Smartphone</strong> – everything works mobile‑web.</li>
+      <li>📱 <strong>Smartphone</strong> — the entire workflow is mobile‑web.</li>
       <li>🤖 <strong>Frontier‑model subscription</strong> (ChatGPT Plus, Claude Pro, Gemini Advanced).</li>
-      <li>🛠️ <strong>Manus</strong> for the landing page (coaches on‑site to help newbies).</li>
+      <li>🛠️ <strong>Manus</strong> for the landing page (coaches on‑site to help).</li>
     </ul>
   </div></details>
 </section>
