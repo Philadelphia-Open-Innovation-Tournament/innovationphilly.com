@@ -3,269 +3,210 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Philadelphia Open Innovation Tournament 2025</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code&display=swap" rel="stylesheet">
+<title>Philadelphia Open Innovation Tournament 2025</title>
 
+<!--  Apple‑style system font stack -->
 <style>
-/* ---------- Theme tokens ---------- */
+/* ─── Tokens ───────────────────────────────────────────── */
 :root{
-  --bg:#0d1117;
-  --bg-alt:#161b22;
-  --fg:#e6edf3;
-  --accent:#58a6ff;
-  --accent-soft:#1f6feb;
-  --secondary:#7affd2;
-  --code-bg:#1f2428;
-  --gutter:clamp(.75rem,2vw,1.25rem);
-  --radius:8px;
-  --shadow:0 6px 14px rgb(0 0 0 /.25);
-  --maxw:1000px;
+  --bg:#fafafa;
+  --card:#ffffff;
+  --card-light:#f3f5f7;
+  --text:#1c1c1e;
+  --muted:#6e6e73;
+  --accent:#007aff;
+  --accent-hover:#0065d6;
+
+  --radius:14px;
+  --shadow:0 8px 24px rgb(0 0 0 /.06);
+  --maxw:920px;
+  --gap:clamp(1rem,4vw,1.8rem);
+
+  --fs-hero:clamp(2.3rem,5vw,3.2rem);
+  --fs-h2:clamp(1.45rem,3.2vw,1.8rem);
+  --fs-h3:1.15rem;
 }
 
-/* ---------- Reset ---------- */
-*,
-*::before,
-*::after{box-sizing:border-box}
-html,body{margin:0;padding:0}
-img,iframe{max-width:100%}
+/* ─── Base ─────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+body{background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+@media(max-width:500px){body{font-size:15px}}
 
-/* ---------- Base ---------- */
-html{
-  background:var(--bg);
-  color:var(--fg);
-  font-family:Inter,system-ui,sans-serif;
-  line-height:1.6;
-  font-size:16px;
-  scroll-behavior:smooth;
+img,iframe{max-width:100%;display:block;border-radius:var(--radius)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ─── Utility ──────────────────────────────────────────── */
+.wrapper{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gap)}
+.card{
+  background:var(--card);border-radius:var(--radius);
+  padding:2.5rem var(--gap);box-shadow:var(--shadow);
+  transition:transform .25s;
 }
-@media(max-width:600px){html{font-size:15px}}
-body{max-width:var(--maxw);margin-inline:auto;padding-bottom:4rem}
+.card:hover{transform:translateY(-4px)}
+.card+section{margin-top:3rem}
 
-/* ---------- Navigation ---------- */
+h2{font-size:var(--fs-h2);margin:0 0 1.4rem;font-weight:700;letter-spacing:-.02em}
+h3{font-size:var(--fs-h3);margin:1.9rem 0 .9rem}
+ul,ol{padding-left:1.1em}
+
+.badge{
+  display:inline-block;background:var(--card-light);padding:.55em .9em;
+  border-radius:9999px;font-size:.85rem;margin:.25rem .35rem 0 0;
+}
+.grid{display:grid;gap:1rem}
+.leagues{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.league{background:var(--card-light);padding:1rem;border-radius:var(--radius);text-align:center}
+
+/* ─── Buttons ─────────────────────────────────────────── */
+.button{
+  display:inline-block;background:var(--accent);color:#fff;font-weight:600;
+  padding:.9em 1.9em;border-radius:40px;margin-top:2rem;transition:.25s
+}
+.button:hover{background:var(--accent-hover);transform:translateY(-2px)}
+
+/* ─── Nav ──────────────────────────────────────────────── */
 nav{
-  position:sticky;top:0;z-index:20;
-  backdrop-filter:blur(6px);
-  background:rgb(13 17 23 /.8);
-  border-bottom:1px solid #30363d;
+  position:sticky;top:0;z-index:10;
+  background:rgba(250,250,250,.9);backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid #e7e7ea;
 }
 nav ul{
-  margin:0;padding:.3rem var(--gutter);
-  list-style:none;
-  display:flex;gap:.75rem;
-  justify-content:center;
-  overflow-x:auto;
+  margin:0;padding:.6rem var(--gap);
+  display:flex;gap:.8rem;justify-content:center;overflow-x:auto;list-style:none
 }
 nav a{
-  font-family:Fira Code,monospace;
-  font-size:.85rem;
-  color:var(--fg);
-  padding:.4em .8em;
-  border-radius:4px;
-  text-decoration:none;
-  white-space:nowrap;
+  font-size:.85rem;color:var(--text);padding:.45em .95em;border-radius:9px;white-space:nowrap;transition:.25s
 }
-nav a:hover,
-nav a:focus{background:var(--bg-alt)}
-nav a.active{background:var(--accent-soft);color:#fff}
+nav a:hover{background:var(--card-light)}
+nav a.active{background:var(--accent);color:#fff}
 
-/* ---------- Hero ---------- */
+/* ─── Hero ────────────────────────────────────────────── */
 .hero{
-  padding:6rem var(--gutter) 4rem;
-  text-align:center;
-  background:
-    radial-gradient(circle at top left,var(--accent-soft) 0%,transparent 55%),
-    var(--bg);
+  text-align:center;padding:7rem var(--gap) 5rem;
+  background:linear-gradient(145deg,#fff 0%,#ecf3ff 100%);
 }
-h1{
-  font-family:Fira Code,monospace;
-  font-size:clamp(2rem,5vw,2.75rem);
-  color:var(--secondary);
-  margin:0 0 1rem;
-}
-.hero p{font-size:1.1rem;max-width:36ch;margin-inline:auto}
-.trophy{font-size:4rem;margin-bottom:1rem}
+.hero h1{font-size:var(--fs-hero);font-weight:700;margin:0 0 1.2rem;letter-spacing:-.03em}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:40ch;margin-inline:auto}
+.trophy{font-size:4.2rem;margin-bottom:1.2rem}
 
-.button{
-  display:inline-block;margin-top:2rem;
-  background:var(--secondary);
-  color:var(--bg);
-  padding:.9em 1.8em;
-  font-weight:700;
-  border-radius:var(--radius);
-  transition:.25s;
-}
-.button:hover{transform:translateY(-3px);opacity:.9}
-
-/* ---------- Sections ---------- */
-section{
-  background:var(--bg-alt);
-  border-radius:var(--radius);
-  padding:var(--gutter) calc(var(--gutter)*1.6);
-  box-shadow:var(--shadow);
-}
-section+section{margin-top:3rem}
-h2{
-  font-size:1.4rem;
-  color:var(--secondary);
-  margin:0 0 1.2rem;
-  font-family:Fira Code,monospace;
-}
-h3{margin:1.6rem 0 .7rem;font-size:1.15rem}
-
-.code{
-  background:var(--code-bg);
-  padding:1.1rem 1rem;
-  border-radius:6px;
-  font-family:Fira Code,monospace;
-  font-size:.88rem;
-  overflow-x:auto;
-}
-
-/* ---------- Accordions ---------- */
+/* ─── Accordion ───────────────────────────────────────── */
 details{
-  margin:1rem 0;
-  border:1px solid #30363d;
-  border-radius:var(--radius);
-  background:rgb(255 255 255 /.03);
-  transition:background .25s;
+  background:var(--card-light);border-radius:var(--radius);margin:1rem 0;border:1px solid #e1e1e5;overflow:hidden
 }
 summary{
-  cursor:pointer;
-  padding:.9rem 1.2rem;
-  list-style:none;
-  font-weight:600;
-  position:relative;
+  cursor:pointer;padding:1.1rem 1.3rem;font-weight:600;list-style:none;position:relative
 }
 summary::before{
   content:'+';
-  color:var(--secondary);
-  font-weight:800;
-  margin-right:.6rem;
-  transition:.3s;
+  position:absolute;left:1rem;top:50%;translate:0 -50%;font-weight:700;color:var(--accent)
 }
 details[open] summary::before{content:'–'}
-details[open]{background:rgb(255 255 255 /.06)}
-details>div{padding:0 1.2rem 1.2rem}
+details[open]{background:#eaf0ff}
+details>div{padding:0 1.3rem 1.3rem}
 
-/* ---------- Grids ---------- */
-.grid{display:grid;gap:1rem}
-.leagues{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
-.league{
-  background:var(--code-bg);
-  padding:1rem;
-  text-align:center;
-  border-radius:6px;
-}
+/* ─── Footer ──────────────────────────────────────────── */
+.back{text-align:center;margin:4rem 0;font-size:.9rem}
 
-.flex{display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center}
-.sponsor{
-  background:var(--code-bg);
-  padding:.55em 1em;
-  border-radius:5px;
-  transition:.2s;
-  white-space:nowrap;
-}
-.sponsor:hover{transform:translateY(-2px)}
-
-/* ---------- Footer link ---------- */
-.back-top{text-align:center;margin-top:4rem;font-size:.9rem}
-
-/* ---------- Scroll spy ---------- */
-section[id]{scroll-margin-top:4.5rem}
+/* ─── Scroll‑spy ──────────────────────────────────────── */
+section[id]{scroll-margin-top:5.2rem}
 </style>
 </head>
 <body>
 
-<!-- ── NAV ──────────────────────────────────────────────────────────────── -->
+<!-- NAV -->
 <nav>
-  <ul id="navList">
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#ai">AI Advantage</a></li>
-    <li><a href="#structure">Format</a></li>
-    <li><a href="#leagues">Categories</a></li>
-    <li><a href="#prizes">Prizes</a></li>
-    <li><a href="#sponsors">Sponsors</a></li>
-    <li><a href="#resources">Resources</a></li>
-  </ul>
+  <div class="wrapper">
+    <ul id="nav">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#ai">AI Edge</a></li>
+      <li><a href="#structure">Format</a></li>
+      <li><a href="#leagues">Categories</a></li>
+      <li><a href="#prizes">Prizes</a></li>
+      <li><a href="#sponsors">Sponsors</a></li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+  </div>
 </nav>
 
-<!-- ── HERO ─────────────────────────────────────────────────────────────── -->
+<!-- HERO -->
 <header class="hero" id="top">
-  <div class="trophy">🏆</div>
-  <h1>$ Philadelphia Open Innovation Tournament 2025</h1>
-  <p>Where ideas collide, innovation thrives, and real‑world solutions are born.</p>
-  <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLScjayml5NCNxtBZUqYAZPUs0s8kKzn57K4dYIc-OKO4Bz-HYg/viewform?usp=sf_link" target="_blank">🔔 Priority Registration</a>
+  <div class="wrapper">
+    <div class="trophy">🏆</div>
+    <h1>Philadelphia Open Innovation Tournament 2025</h1>
+    <p>✨ A weekend where bright ideas grow into real‑world solutions.</p>
+    <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLScjayml5NCNxtBZUqYAZPUs0s8kKzn57K4dYIc-OKO4Bz-HYg/viewform?usp=sf_link" target="_blank">Get priority access</a>
+  </div>
 </header>
 
-<!-- ── OVERVIEW ─────────────────────────────────────────────────────────── -->
-<section id="overview">
-  <h2>~/overview Tournament Details</h2>
-  <pre class="code">
-EVENT_TYPE   = "innovation_tournament"
-DATE_DAY1    = "October 25, 2025"   # Open Ideation
-DATE_DAY2    = "October 26, 2025"   # Finalists
-VENUE        = "Racquet Club of Philadelphia"
-DRESS_CODE   = "business_casual"
-CAPACITY     = "200_participants"
-FINALISTS    = "7_teams"
-  </pre>
-  <p style="font-size:.9rem;text-align:center;margin-top:.4rem">☝️ 2024 sold out – secure early access now.</p>
+<main class="wrapper">
+
+<!-- OVERVIEW -->
+<section id="overview" class="card">
+  <h2>📋 Quick facts</h2>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem">
+    <div>
+      <h3>Date & Venue</h3>
+      <p>📅 Oct 25 – 26 · Racquet Club of Philadelphia</p>
+    </div>
+    <div>
+      <h3>Capacity</h3>
+      <p>👥 200 participants · 7 finalist teams</p>
+    </div>
+    <div>
+      <h3>Dress code</h3>
+      <p>🕴️ Business‑casual &nbsp;(<a href="https://rcop.com/dress-code/" target="_blank">details</a>)</p>
+    </div>
+  </div>
+  <p style="margin-top:1.6rem;color:var(--muted)">2024 sold out with a wait‑list — reserve early!</p>
 </section>
 
-<!-- ── AI ADVANTAGE ─────────────────────────────────────────────────────── -->
-<section id="ai">
-  <h2>~/ai_advantage Winning with AI</h2>
-  <p>Insights from previous champions on harnessing AI:</p>
+<!-- AI EDGE -->
+<section id="ai" class="card">
+  <h2>🤖 Your AI edge</h2>
+  <p>The smartest teams treat AI as a teammate, not a tool.</p>
 
-  <iframe height="380" src="https://www.youtube.com/embed/FW3Eflph0sQ" title="How to Win" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border:none;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:.8rem"></iframe>
+  <iframe height="350" src="https://www.youtube.com/embed/FW3Eflph0sQ" title="How to Win" allowfullscreen></iframe>
 
-  <details>
-    <summary>01 · Idea Generation at Scale</summary>
-    <div><p>Rapidly generate diverse ideas with domain mapping, constraint exploitation, combinatorial thinking, and high‑volume synthesis.</p></div>
-  </details>
-  <details>
-    <summary>02 · Synthetic Customer Feedback</summary>
-    <div><p>Simulate personas, objections, and edge‑cases before real‑world testing.</p></div>
-  </details>
-  <details>
-    <summary>03 · Rapid Prototyping</summary>
-    <div><p>Create UI mockups, content, and code proof‑of‑concepts in minutes.</p></div>
-  </details>
-  <details>
-    <summary>04 · Structured Criticism</summary>
-    <div><p>Let AI stress‑test competitive positioning, technical hurdles, and compliance.</p></div>
-  </details>
-  <details>
-    <summary>05 · Presentation Optimization</summary>
-    <div><p>Craft narrative, visuals, and Q&amp;A prep with frontier models.</p></div>
-  </details>
-  <details>
-    <summary>Recommended Tool‑Stack</summary>
-    <div><p>Paid tiers of ChatGPT, Claude, Gemini, DeepSeek, or Mistral, plus an agentic orchestrator like <a href="https://manus.im/" target="_blank">Manus</a>.</p></div>
-  </details>
+  <details><summary>Idea storms 🌩️</summary><div>
+    <p>Map the problem, remix domains, and spin up 100+ concepts in minutes.</p>
+  </div></details>
+
+  <details><summary>Instant user feedback 🗣️</summary><div>
+    <p>Generate detailed personas and let AI challenge your assumptions early.</p>
+  </div></details>
+
+  <details><summary>Prototype lightning‑fast ⚡</summary><div>
+    <p>From UI mock‑ups to runnable code, frontier models shorten build time dramatically.</p>
+  </div></details>
+
+  <details><summary>Bullet‑proof your pitch 🛡️</summary><div>
+    <p>AI drills you on tough questions, ensuring you shine on stage.</p>
+  </div></details>
+
+  <details><summary>Recommended stack 🧰</summary><div>
+    <p>Paid tiers of ChatGPT, Claude, Gemini, DeepSeek, or Mistral, orchestrated by an agentic layer like <a href="https://manus.im/" target="_blank">Manus</a>.</p>
+  </div></details>
 </section>
 
-<!-- ── STRUCTURE ────────────────────────────────────────────────────────── -->
-<section id="structure">
-  <h2>~/structure Tournament Format</h2>
+<!-- STRUCTURE -->
+<section id="structure" class="card">
+  <h2>🕰️ Weekend flow</h2>
 
-  <h3>Day 1 – Open Ideation</h3>
-  <p>200 participants brainstorm, prototype, and peer‑review concepts. Top‑voted teams progress.</p>
-  <pre class="code">
-DATE  = "Oct 25 2025" | 10 AM–5 PM
-NOTE  = Networking & open‑bar 5‑7 PM ($20 wristband)
-  </pre>
+  <h3>Day 1 — Ideation sprint</h3>
+  <p>Teams form, brainstorm, build quick demos, and vote for the top seven.</p>
+  <p class="badge">Saturday • 10 AM – 5 PM</p>
+  <p class="badge">Networking social 🎉 5 PM – 7 PM (open bar, $20 wristband)</p>
 
-  <h3>Day 2 – Finalist Pitches</h3>
-  <p>Seven teams refine and present to judges.</p>
-  <pre class="code">
-DATE  = "Oct 26 2025" | 10 AM–2 PM (slots assigned Oct 25)
-  </pre>
+  <h3 style="margin-top:2.2rem">Day 2 — Final pitches</h3>
+  <p>Finalists refine and present to a panel of expert judges.</p>
+  <p class="badge">Sunday • 10 AM – 2 PM</p>
 </section>
 
-<!-- ── CATEGORIES ───────────────────────────────────────────────────────── -->
-<section id="leagues">
-  <h2>~/leagues Competition Categories</h2>
+<!-- CATEGORIES -->
+<section id="leagues" class="card">
+  <h2>🏷️ Competition categories</h2>
   <div class="grid leagues">
     <div class="league">🌿 Greentech</div>
     <div class="league">🎓 Edtech</div>
@@ -273,103 +214,83 @@ DATE  = "Oct 26 2025" | 10 AM–2 PM (slots assigned Oct 25)
     <div class="league">⚖️ Legaltech</div>
     <div class="league">⚽ Sportstech</div>
   </div>
-  <p class="code" style="margin-top:.8rem">// Other ideas welcome; these align best with local funding.</p>
+  <p style="margin-top:1rem;color:var(--muted)">Any problem is fair game; these themes simply match local momentum.</p>
 </section>
 
-<!-- ── PRIZES ───────────────────────────────────────────────────────────── -->
-<section id="prizes">
-  <h2>~/prizes Tournament Prizes</h2>
+<!-- PRIZES -->
+<section id="prizes" class="card">
+  <h2>🎁 What you can win</h2>
   <ul>
-    <li><strong>$100k AWS credits</strong> (startup program)</li>
-    <li><strong>$25k + studio</strong> from NextFab Ventures</li>
-    <li>Champion trophy & investor introductions</li>
-    <li>Lifetime founder network & media exposure</li>
+    <li><strong>$100 k AWS credits</strong> to scale in the cloud</li>
+    <li><strong>$25 k + studio</strong> support from NextFab Ventures</li>
+    <li>Custom champion trophy 🏆 plus investor introductions</li>
+    <li>Lifetime founder network & media spotlight</li>
   </ul>
-  <p>Past winners emphasize relationships & skills as the real jackpot.</p>
+  <p style="color:var(--muted)">Pro‑tip: the relationships you forge are the real jackpot.</p>
 </section>
 
-<!-- ── SPONSORS ─────────────────────────────────────────────────────────── -->
-<section id="sponsors">
-  <h2>~/sponsors 2025 Sponsors</h2>
-  <p class="code">// Line‑up still growing – contact us to join.</p>
+<!-- SPONSORS -->
+<section id="sponsors" class="card">
+  <h2>🤝 Sponsors</h2>
+  <p style="color:var(--muted)">Interested in partnering? Let’s chat!</p>
 
-  <h3>Founding Sponsors</h3>
+  <h3>Founding sponsors</h3>
   <div class="flex">
-    <a class="sponsor" href="https://www.sublimestrategy.com/" target="_blank">Sublime Strategy</a>
-    <a class="sponsor" href="https://bradflaugher.com" target="_blank">Brad Flaugher</a>
-    <a class="sponsor" href="https://www.ideastogo.com/" target="_blank">Ideas To Go</a>
-    <a class="sponsor" href="https://nextfabventures.com/" target="_blank">NextFab Ventures</a>
-    <a class="sponsor" href="https://benfranklin.org/" target="_blank">BFTP</a>
+    <a class="badge" href="https://www.sublimestrategy.com/" target="_blank">Sublime Strategy</a>
+    <a class="badge" href="https://bradflaugher.com" target="_blank">Brad Flaugher</a>
+    <a class="badge" href="https://www.ideastogo.com/" target="_blank">Ideas To Go</a>
+    <a class="badge" href="https://nextfabventures.com/" target="_blank">NextFab Ventures</a>
+    <a class="badge" href="https://benfranklin.org/" target="_blank">BFTP</a>
   </div>
 
-  <h3 style="margin-top:2rem">Innovation Partners</h3>
+  <h3 style="margin-top:2rem">Innovation partners</h3>
   <div class="flex">
-    <a class="sponsor" href="https://www.lowenstein.com/" target="_blank">Lowenstein Sandler</a>
-    <a class="sponsor" href="https://inoxoft.com/" target="_blank">Inoxoft</a>
-    <a class="sponsor" href="https://www.bigideaplatform.com/" target="_blank">Big Idea Platform</a>
-    <a class="sponsor" href="https://www.claconnect.com/" target="_blank">CLA</a>
-    <a class="sponsor" href="https://www.linkedin.com/in/narayan-chowdhury" target="_blank">Narayan Chowdhury</a>
-    <a class="sponsor" href="https://missionog.com/" target="_blank">Mission OG</a>
-    <a class="sponsor" href="https://www.rccblaw.com/" target="_blank">RCCB Law</a>
-    <a class="sponsor" href="https://tactix.com/" target="_blank">Tactix</a>
-    <a class="sponsor" href="https://www.linkedin.com/in/devgon/" target="_blank">Pitou Devgon</a>
+    <a class="badge" href="https://www.lowenstein.com/" target="_blank">Lowenstein Sandler</a>
+    <a class="badge" href="https://inoxoft.com/" target="_blank">Inoxoft</a>
+    <a class="badge" href="https://www.bigideaplatform.com/" target="_blank">Big Idea Platform</a>
+    <a class="badge" href="https://www.claconnect.com/" target="_blank">CLA</a>
+    <a class="badge" href="https://www.linkedin.com/in/narayan-chowdhury" target="_blank">Narayan Chowdhury</a>
+    <a class="badge" href="https://missionog.com/" target="_blank">Mission OG</a>
+    <a class="badge" href="https://www.rccblaw.com/" target="_blank">RCCB Law</a>
+    <a class="badge" href="https://tactix.com/" target="_blank">Tactix</a>
+    <a class="badge" href="https://www.linkedin.com/in/devgon/" target="_blank">Pitou Devgon</a>
   </div>
 </section>
 
-<!-- ── RESOURCES ────────────────────────────────────────────────────────── -->
-<section id="resources">
-  <h2>~/resources Past Tournaments & Assets</h2>
-  <details open>
-    <summary>Example: Manus‑Generated Landing Page</summary>
-    <div>
-      <p>Round‑one deliverable demo: <a href="https://lnupsupz.manus.space" target="_blank">lnupsupz.manus.space</a>.  
-      <a href="https://manus.im/share/aoNH8bcsb75aKUUjSPzWJU?replay=1" target="_blank">View prompt‑engineering breakdown.</a></p>
-    </div>
-  </details>
+<!-- RESOURCES -->
+<section id="resources" class="card">
+  <h2>📚 Resources & Past events</h2>
+  <details open><summary>Manus demo site 🌐</summary><div>
+    <p>Peek at a 5‑minute landing page: <a href="https://lnupsupz.manus.space" target="_blank">demo link</a> &nbsp;|&nbsp;
+       <a href="https://manus.im/share/aoNH8bcsb75aKUUjSPzWJU?replay=1" target="_blank">watch the build replay</a></p>
+  </div></details>
 
-  <pre class="code">
-2024_TOURNAMENT = {
-  "participants": "Announcements & Participant List",
-  "winners": "2024 Winner Announcement (LinkedIn)",
-  "guide": "2024 Participant Guide",
-  "audio_brief": "Audio Brief",
-  "photos": "2024 Photo Album"
-}
-OPEN_SOURCE = "POIT GitHub"
-  </pre>
+  <h3>2024 highlights</h3>
+  <ul style="columns:2;max-width:650px">
+    <li><a href="https://lu.ma/clcrvyvw" target="_blank">Participant list</a></li>
+    <li><a href="https://www.linkedin.com/posts/josh-devon_innovation-philadelphia-entrepreneurship-activity-7256652680134111233-VFiN" target="_blank">Winner announcement</a></li>
+    <li><a href="https://innovationphilly.com/guide.pdf" target="_blank">Guide PDF</a></li>
+    <li><a href="https://innovationphilly.com/guide.mp3" target="_blank">Audio brief</a></li>
+    <li><a href="https://photos.app.goo.gl/MrFBjVSSjvspUu3k9" target="_blank">Photo album</a></li>
+    <li><a href="https://github.com/Philadelphia-Open-Innovation-Tournament" target="_blank">Open‑source repo</a></li>
+  </ul>
 </section>
 
-<!-- ── FOOTER ───────────────────────────────────────────────────────────── -->
-<p class="back-top"><a href="#top">⏏︎ Back to top</a></p>
+<p class="back"><a href="#top">Back to top ⬆️</a></p>
+</main>
 
-<!-- ── JS: Typewriter & Scroll‑spy ──────────────────────────────────────── -->
+<!-- Scroll‑spy -->
 <script>
-// typewriter
-document.addEventListener('DOMContentLoaded',()=>{
-  const h=document.querySelector('h1');
-  const text=h.textContent;
-  h.textContent='';
-  let i=0;
-  (function type(){
-    if(i<text.length){
-      h.textContent+=text.charAt(i++);
-      setTimeout(type,45);
-    }
-  })();
-});
-
-// scroll‑spy
-const links=[...document.querySelectorAll('nav a')];
-const secs=[...document.querySelectorAll('section')];
-const opts={rootMargin:'-50% 0px -45% 0px'};
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(ent=>{
-    if(ent.isIntersecting){
-      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href').substring(1)===ent.target.id));
+const navLinks=[...document.querySelectorAll('#nav a')];
+const sections=[...document.querySelectorAll('main>section')];
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href').slice(1)===e.target.id));
     }
   });
-},opts);
-secs.forEach(s=>io.observe(s));
+},{rootMargin:'-55% 0px -40% 0px'});
+sections.forEach(s=>obs.observe(s));
 </script>
 </body>
 </html>
