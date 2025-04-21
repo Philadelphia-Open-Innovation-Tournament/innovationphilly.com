@@ -7,155 +7,156 @@
 
 <style>
 :root{
-  --bg:#fafafa;
-  --card:#fff;
-  --card-light:#f3f5f7;
-  --text:#1c1c1e;
-  --muted:#6e6e73;
-  --accent:#007aff;
-  --accent-hover:#0065d6;
-
-  --radius:14px;
-  --shadow:0 8px 22px rgb(0 0 0 /.06);
-  --maxw:920px;
-  --gap:clamp(1rem,4vw,1.8rem);
-
-  --fs-hero:clamp(2rem,7vw,2.8rem);   /* ⇠ slightly smaller */
-  --fs-h2:clamp(1.35rem,3.2vw,1.7rem);
-  --fs-h3:1.1rem;
+  --bg:#fafafa;--card:#fff;--card-light:#f3f5f7;--text:#1c1c1e;--muted:#6e6e73;
+  --accent:#007aff;--accent-hover:#0065d6;--radius:14px;--shadow:0 8px 22px rgb(0 0 0 /.06);
+  --gap:clamp(1rem,4vw,1.8rem);--maxw:920px;
+  --fs-hero:clamp(1.9rem,6.5vw,2.7rem);--fs-h2:clamp(1.35rem,3vw,1.7rem);--fs-h3:1.1rem;
 }
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-body{background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
 @media(max-width:500px){body{font-size:15px}}
 img,iframe{max-width:100%;display:block;border-radius:var(--radius)}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 
-/* utility */
-.wrapper{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gap);overflow-wrap:anywhere}
+/* layout */
+.wrapper{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gap)}
 .card{background:var(--card);border-radius:var(--radius);padding:2.3rem var(--gap);box-shadow:var(--shadow);transition:transform .25s}
 @media(max-width:600px){.card:hover{transform:translateY(-2px)}}@media(min-width:601px){.card:hover{transform:translateY(-4px)}}
 .card+section{margin-top:3rem}
 h2{font-size:var(--fs-h2);margin:0 0 1.3rem;font-weight:700;letter-spacing:-.015em}
 h3{font-size:var(--fs-h3);margin:1.8rem 0 .8rem}
 
-/* nav */
+/* nav */
 nav{position:sticky;top:0;z-index:10;background:rgba(250,250,250,.9);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid #e7e7ea}
 nav ul{margin:0;padding:.6rem var(--gap);display:flex;gap:.7rem;list-style:none;overflow-x:auto;scrollbar-width:none}
 nav ul::-webkit-scrollbar{display:none}
 nav a{font-size:.85rem;color:var(--text);padding:.45em .9em;border-radius:9px;white-space:nowrap;flex:0 0 auto;transition:.25s}
-nav a:hover{background:var(--card-light)}
-nav a.active{background:var(--accent);color:#fff}
+nav a:hover{background:var(--card-light)}nav a.active{background:var(--accent);color:#fff}
 
-/* hero */
+/* hero */
 .hero{text-align:center;padding:6rem var(--gap) 4rem;background:linear-gradient(145deg,#fff 0%,#ecf3ff 100%)}
-.hero h1{font-size:var(--fs-hero);font-weight:700;margin:0 0 1.2rem;letter-spacing:-.02em;word-wrap:break-word}
-.hero p{font-size:1.1rem;color:var(--muted);max-width:38ch;margin-inline:auto}
-.trophy{font-size:4rem;margin-bottom:1.1rem}
+.hero h1{font-size:var(--fs-hero);font-weight:700;margin:0 0 1.1rem;letter-spacing:-.02em;word-break:normal;overflow-wrap:normal}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:40ch;margin-inline:auto}
+.trophy{font-size:3.8rem;margin-bottom:1.1rem}
 .button{display:inline-block;background:var(--accent);color:#fff;font-weight:600;padding:.85em 1.8em;border-radius:40px;margin-top:2rem;transition:.25s}
 .button:hover{background:var(--accent-hover);transform:translateY(-2px)}
 
-/* lists / chips */
+/* chips & grids */
 .badge{display:inline-block;background:var(--card-light);padding:.55em .9em;border-radius:9999px;font-size:.85rem;margin:.25rem .3rem 0 0}
 .grid{display:grid;gap:1rem}
-.leagues{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
-.league{background:var(--card-light);padding:1rem;border-radius:var(--radius);text-align:center}
 .flex{display:flex;flex-wrap:wrap;gap:.6rem}
 
-/* accordion */
+/* accordion */
 details{background:var(--card-light);border-radius:var(--radius);margin:1rem 0;border:1px solid #e1e1e5}
 summary{cursor:pointer;padding:1.05rem 1.25rem;font-weight:600;list-style:none;position:relative}
 summary::before{content:'+';position:absolute;left:1rem;top:50%;translate:0 -50%;font-weight:700;color:var(--accent)}
-details[open] summary::before{content:'–'}
-details[open]{background:#eaf0ff}
+details[open] summary::before{content:'–'}details[open]{background:#eaf0ff}
 details>div{padding:0 1.25rem 1.25rem}
 
-/* footer */
+/* footer */
 .back{text-align:center;margin:3.5rem 0 4rem;font-size:.9rem}
 
-/* section offset */
+/* offset */
 section[id]{scroll-margin-top:5.2rem}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
- <div class="wrapper">
-  <!-- five crisp links only -->
-  <ul id="nav">
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#ai">AI Edge</a></li>
-    <li><a href="#structure">Format</a></li>
-    <li><a href="#prizes">Prizes</a></li>
-    <li><a href="#resources">Resources</a></li>
-  </ul>
- </div>
-</nav>
+<!-- NAV (only four sections) -->
+<nav><div class="wrapper"><ul id="nav">
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#how">How to Win</a></li>
+  <li><a href="#format">Weekend Flow</a></li>
+  <li><a href="#prizes">Rewards</a></li>
+</ul></div></nav>
 
 <!-- HERO -->
-<header class="hero" id="top">
-  <div class="wrapper">
-    <div class="trophy">🏆</div>
-    <h1>Philadelphia Open Innovation Tournament 2025</h1>
-    <p>✨ A weekend where bright ideas grow into real‑world solutions.</p>
-    <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLScjayml5NCNxtBZUqYAZPUs0s8kKzn57K4dYIc-OKO4Bz-HYg/viewform?usp=sf_link" target="_blank">Get priority access</a>
-  </div>
-</header>
+<header class="hero" id="top"><div class="wrapper">
+  <div class="trophy">🏆</div>
+  <h1>Philadelphia Open Innovation Tournament 2025</h1>
+  <p>✨ A weekend where bright ideas grow into real‑world solutions.</p>
+  <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLScjayml5NCNxtBZUqYAZPUs0s8kKzn57K4dYIc-OKO4Bz-HYg/viewform?usp=sf_link" target="_blank">Get priority access</a>
+</div></header>
 
 <main class="wrapper">
 
 <!-- OVERVIEW -->
 <section id="overview" class="card">
   <h2>📋 Quick facts</h2>
+  <p>The Philadelphia Open Innovation Tournament brings together creators, technologists, and change‑makers for a high‑energy, 48‑hour sprint. Build something bold, pitch it, and open doors to funding, mentorship, and a like‑minded founder community.</p>
   <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.3rem">
-    <div><h3>Date & Venue</h3><p>📅 Oct 25 – 26 · Racquet Club of Philadelphia</p></div>
-    <div><h3>Capacity</h3><p>👥 200 participants · 7 finalist teams</p></div>
-    <div><h3>Dress code</h3><p>🕴️ Business‑casual (<a href="https://rcop.com/dress-code/" target="_blank">details</a>)</p></div>
+    <div><h3>Date & Venue</h3><p>📅 Oct 25–26 · Racquet Club of Philadelphia</p></div>
+    <div><h3>Capacity</h3><p>👥 200 participants → 7 finalist teams</p></div>
+    <div><h3>Dress code</h3><p>🕴️ Smart casual (<a href="https://rcop.com/dress-code/" target="_blank">details</a>)</p></div>
   </div>
-  <p style="margin-top:1.4rem;color:var(--muted)">2024 sold out — reserve early!</p>
+  <p style="margin-top:1.4rem;color:var(--muted)">2024 sold out – join the wait‑list early!</p>
 </section>
 
-<!-- AI EDGE -->
-<section id="ai" class="card">
-  <h2>🤖 Your AI edge</h2>
-  <p>Top teams treat AI as a teammate, not just a tool.</p>
-  <iframe height="340" src="https://www.youtube.com/embed/FW3Eflph0sQ" title="How to Win" allowfullscreen></iframe>
+<!-- HOW TO WIN -->
+<section id="how" class="card">
+  <h2>🚀 How to Win</h2>
+  <p>Five proven moves from past champions. Open each tip to dive deeper.</p>
 
-  <details><summary>Idea storms 🌩️</summary><div><p>Spin up 100+ concepts in minutes.</p></div></details>
-  <details><summary>Instant user feedback 🗣️</summary><div><p>AI personas surface objections early.</p></div></details>
-  <details><summary>Prototype lightning‑fast ⚡</summary><div><p>Mock‑ups & runnable code in record time.</p></div></details>
-  <details><summary>Bullet‑proof your pitch 🛡️</summary><div><p>Let AI grill you before the judges do.</p></div></details>
+  <details><summary>1. Idea Storm 🌩️</summary><div>
+    <p>Kick things off with volume. Use AI to map the challenge space and generate hundreds of raw concepts. Don’t judge—just capture.</p>
+    <ul><li>Prompt frontier models for “20 crazy + 20 practical + 20 hybrid” ideas.</li><li>Look for patterns, mashups, or surprising overlaps.</li></ul>
+  </div></details>
+
+  <details><summary>2. Instant User Feedback 🗣️</summary><div>
+    <p>Create detailed personas (age, profession, pain‑points) and let AI role‑play interviews. The objections and desires surfaced here will save hours of guess‑work.</p>
+    <ul><li>Ask: “If you had this solution tomorrow, what would delight/frustrate you?”</li><li>Refine positioning before writing a single line of code.</li></ul>
+  </div></details>
+
+  <details><summary>3. Prototype Light‑Speed ⚡</summary><div>
+    <p>Translate sketches into clickable Figma frames, generate hero copy, or spin up a Flask/Python proof‑of‑concept directly from prompts. Show, don’t tell.</p>
+    <ul><li>Use image generation for product renders.</li><li>Leverage low‑code to stitch APIs fast.</li></ul>
+  </div></details>
+
+  <details><summary>4. Stress‑Test 🛡️</summary><div>
+    <p>Before the judges do, fire every “yeah‑but” you can imagine: market size? edge‑cases? legal hurdles? Have AI debate you; plug each hole or pivot early.</p>
+  </div></details>
+
+  <details><summary>5. Nail the Narrative 🎤</summary><div>
+    <p>Winning pitches feel like great trailers: clear protagonist, sharp conflict, big reveal. Storyboard with AI, craft punchy headlines, rehearse Q&A.</p>
+    <p style="margin-top:.7rem"><strong>Toolkit:</strong> ChatGPT / Claude / Gemini (paid tiers) + agentic runner like <a href="https://manus.im/" target="_blank">Manus</a> to chain tasks.</p>
+  </div></details>
 </section>
 
-<!-- STRUCTURE -->
-<section id="structure" class="card">
-  <h2>🕰️ Weekend flow</h2>
-  <h3>Day 1 — Ideation sprint</h3>
-  <p>Teams form, brainstorm, build demos, and vote.</p>
-  <p class="badge">Sat · 10 AM – 5 PM</p><p class="badge">Social 🎉 5 PM – 7 PM</p>
-  <h3 style="margin-top:2.1rem">Day 2 — Final pitches</h3>
-  <p>Finalists refine & present.</p><p class="badge">Sun · 10 AM – 2 PM</p>
+<!-- WEEKEND FLOW -->
+<section id="format" class="card">
+  <h2>🕰️ Weekend Flow</h2>
+  <h3>Day 1 – Ideation Sprint</h3>
+  <p>Morning ice‑breakers → team formation → concept blitz → rapid prototyping → peer voting.</p>
+  <p class="badge">Saturday 10 AM – 5 PM</p><p class="badge">Social Mixer 5 PM – 7 PM</p>
+
+  <h3 style="margin-top:2.1rem">Day 2 – Final Pitches</h3>
+  <p>The top seven polish, rehearse, and present to a panel of investors, founders, and domain experts.</p>
+  <p class="badge">Sunday 10 AM – 2 PM</p>
+  <p style="margin-top:1rem;color:var(--muted)">Winners announced by 3 PM followed by celebratory toasts 🥂.</p>
 </section>
 
 <!-- PRIZES -->
 <section id="prizes" class="card">
-  <h2>🎁 Prizes</h2>
+  <h2>🎁 Rewards</h2>
   <ul>
-    <li><strong>$100 k AWS credits</strong></li>
-    <li><strong>$25 k + studio</strong> from NextFab Ventures</li>
-    <li>Trophy 🏆 + investor intros</li>
-    <li>Lifetime founder network</li>
+    <li><strong>$100 k AWS credits</strong> – scale your backend for free.</li>
+    <li><strong>$25 k + product studio</strong> from NextFab Ventures for hardware/greentech standouts.</li>
+    <li>Champion trophy 🏆, investor dinners, press features.</li>
+    <li>Lifetime membership in our founder network for ongoing support.</li>
   </ul>
-  <p style="color:var(--muted)">The relationships are priceless.</p>
+  <p style="color:var(--muted)">Ask any alum: the real value is the network you build.</p>
 </section>
 
-<!-- RESOURCES -->
-<section id="resources" class="card">
-  <h2>📚 Resources</h2>
-  <details open><summary>5‑minute demo site 🌐</summary><div><p><a href="https://lnupsupz.manus.space" target="_blank">View demo</a> &bull; <a href="https://manus.im/share/aoNH8bcsb75aKUUjSPzWJU?replay=1" target="_blank">watch build</a></p></div></details>
-  <h3>2024 highlights</h3>
+<!-- RESOURCES (inside Overview but still useful) -->
+<section class="card" style="margin-top:3rem">
+  <h2>📚 Useful Resources</h2>
+  <details open><summary>5‑minute Manus demo site 🌐</summary><div>
+    <p><a href="https://lnupsupz.manus.space" target="_blank">See a sample landing page</a> &bull;
+       <a href="https://manus.im/share/aoNH8bcsb75aKUUjSPzWJU?replay=1" target="_blank">Watch the build replay</a></p>
+  </div></details>
+
+  <h3>2024 Highlights</h3>
   <ul style="columns:2;max-width:620px">
     <li><a href="https://lu.ma/clcrvyvw" target="_blank">Participant list</a></li>
     <li><a href="https://www.linkedin.com/posts/josh-devon_innovation-philadelphia-entrepreneurship-activity-7256652680134111233-VFiN" target="_blank">Winners</a></li>
@@ -165,13 +166,13 @@ section[id]{scroll-margin-top:5.2rem}
   </ul>
 </section>
 
-<p class="back"><a href="#top">Back to top ⬆️</a></p>
+<p class="back"><a href="#top">Back to top ⬆️</a></p>
 </main>
 
 <!-- scroll‑spy -->
 <script>
 const links=[...document.querySelectorAll('#nav a')];
-const secs=[...document.querySelectorAll('main>section')];
+const secs=[...document.querySelectorAll('main>section[id]')];
 const spy=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
