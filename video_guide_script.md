@@ -14,7 +14,7 @@ Next, validate your ideas. Try, “What would Emily, a 34-year-old marketing dir
 
 Once your idea’s solid, it’s time to build. You can use ChatGPT to generate your code with prompts like, “Create a responsive webpage for a clean energy startup. Include sections for problem, solution, benefits, and team.” 🕐
 
-But here’s the key part—you need to actually deploy your page. We recommend Manus as the fastest and easiest way to get a live site up. Replit works well too. If you’ve got your own system, like GitHub Pages or anything else that gets the job done fast, that’s totally fine. The goal is to get something real and accessible—quickly. If you need help we will have a few coaches with access to Manus and they can help, but being self-reliant is the safest route, so practice before you come if you need to, it doesn't take long. 🕐
+But here’s the key part—you need to actually deploy your page. We recommend Manus as the fastest and easiest way to get a live site up. Replit works well too. If you’ve got your own system, like GitHub Pages or anything else that gets the job done fast, that’s totally fine. The goal is to get something real and accessible—quickly. If you need help we will have a few coaches with access to Manus and they can help, but being self-reliant is the safest route, so practice before you come if you need to, it doesn't take long. Just open Manus and tell it to make you a webpage, and make sure a friend can see that webpage from their device when you're done. 🕐
 
 After 1 PM, we break for lunch. Then in the afternoon, selected teams will get about an hour to practice and polish their one-minute pitches. 🕐
 
