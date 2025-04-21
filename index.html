@@ -11,8 +11,7 @@
   --accent:#007aff;--accent-hover:#0065d6;
   --cta:#28a745;--cta-hover:#1f8e39;
   --radius:14px;--shadow:0 8px 22px rgb(0 0 0 /.06);
-  --gap:clamp(.9rem,4vw,1.8rem);     /* unified horizontal padding */
-  --maxw:920px;
+  --gap:clamp(.9rem,4vw,1.8rem);--maxw:920px;
   --fs-hero:clamp(1.9rem,6.5vw,2.7rem);
   --fs-h2:clamp(1.3rem,3vw,1.65rem);--fs-h3:1rem;
 }
@@ -51,11 +50,16 @@ nav .cta:hover{background:var(--cta-hover)}
 .button{display:inline-block;background:var(--cta);color:#fff;font-weight:600;padding:.75em 1.6em;border-radius:40px;margin-top:1.4rem;transition:.25s}
 .button:hover{background:var(--cta-hover);transform:translateY(-2px)}
 
-/* ACCORDIONS */
+/* ACCORDIONS ------------------------------------------------------------- */
 details{background:var(--card-light);border-radius:var(--radius);margin:.95rem 0;border:1px solid #e1e1e5}
 summary{cursor:pointer;padding:1rem 1.2rem;font-weight:600;position:relative}
-summary::before{content:'+';position:absolute;left:.9rem;top:50%;translate:0 -50%;font-weight:700;color:var(--accent)}
-details[open] summary::before{content:'–'}details[open]{background:#eaf0ff}
+summary::marker,summary::-webkit-details-marker{display:none}   /* hide native triangle */
+summary::before{
+  content:'+';position:absolute;left:.9rem;top:50%;translate:0 -50%;
+  font-weight:700;color:var(--accent)
+}
+details[open] summary::before{content:'–'}
+details[open]{background:#eaf0ff}
 details>div{padding:0 1.2rem 1.1rem}
 details ul{list-style:none;margin:.55rem 0;padding:0}
 details li{padding-left:1.05em;position:relative;margin:.32rem 0}
@@ -135,15 +139,15 @@ section[id]{scroll-margin-top:5.1rem}
     </ul>
   </div></details>
 
-  <details><summary>Synthetic Feedback 🗣️ — AI focus group</summary><div>
+  <details><summary>Synthetic Feedback 🗣️ — AI focus group</summary><div>
     <p>Role‑play customers & regulators; surface objections instantly.</p>
   </div></details>
 
-  <details><summary>Prototype in 5 min ⚡ — Live page beats slides</summary><div>
+  <details><summary>Prototype in 5 min ⚡ — Live page beats slides</summary><div>
     <p>See <a href="https://lnupsupz.manus.space" target="_blank">Manus demo page</a>. Full build → <a href="https://manus.im/share/aoNH8bcsb75aKUUjSPzWJU?replay=1" target="_blank">walkthrough</a>.</p>
   </div></details>
 
-  <details><summary>Stress‑Test 🛡️ — Debate to improve</summary><div>
+  <details><summary>Stress‑Test 🛡️ — Debate to improve</summary><div>
     <p>Ask AI to be competitor, skeptic, and regulator—patch every hole.</p>
   </div></details>
 
@@ -151,11 +155,11 @@ section[id]{scroll-margin-top:5.1rem}
     <p>Problem → aha → impact. Rehearse Q&A with ChatGPT as the grumpiest investor.</p>
   </div></details>
 
-  <details open><summary>Starter Toolkit 🔧</summary><div>
+  <details open><summary>Starter Toolkit 🔧</summary><div>
     <ul>
       <li>📱 Smartphone.</li>
       <li>🤖 ChatGPT Plus, Claude Pro, or Gemini Advanced.</li>
-      <li>🛠️ Manus Starter/Basic (on‑site coaches).</li>
+      <li>🛠️ Manus Starter/Basic (coaches on‑site).</li>
     </ul>
   </div></details>
 </section>
