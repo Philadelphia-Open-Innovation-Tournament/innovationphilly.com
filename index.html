@@ -21,7 +21,15 @@
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 body{background:#fff;color:var(--text);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
-main{background:var(--bg);padding-top:2rem;}
+/* Fix for background to extend to the bottom */
+html, body {
+  height: 100%;
+}
+main{
+  background:var(--bg);
+  padding-top:2rem;
+  min-height: calc(100% - 235px); /* Adjust if needed to account for header height */
+}
 @media(max-width:500px){body{font-size:15px}}
 img,iframe{max-width:100%;display:block;border-radius:var(--radius)}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
@@ -122,6 +130,12 @@ section[id]{scroll-margin-top:5.1rem}
 /* HIGHLIGHTS */
 .highlights-list{columns:2;max-width:620px;gap:1.5rem;margin:0.8rem 0}
 .highlights-list li{margin-bottom:0.5rem}
+
+/* Fix for the resources section bullet alignment */
+.highlights-list li {
+  position: relative;
+  break-inside: avoid;
+}
 
 /* CATEGORIES */
 .leagues-grid {
@@ -376,7 +390,7 @@ section[id]{scroll-margin-top:5.1rem}
     <li><a href="https://www.linkedin.com/posts/josh-devon_innovation-philadelphia-entrepreneurship-activity-7256652680134111233-VFiN" target="_blank">Winners</a></li>
     <li><a href="https://innovationphilly.com/guide.pdf" target="_blank">Guide PDF</a></li>
     <li><a href="https://innovationphilly.com/guide.mp3" target="_blank">Audio Brief</a></li>
-    <li><a href="https://photos.app.goo.gl/MrFBjVSSjvspUu3k9" target="_blank">Photos</a></  
+    <li><a href="https://photos.app.goo.gl/MrFBjVSSjvspUu3k9" target="_blank">Photos</a></li>
   </ul>
   <h2>📎 Other Resources</h2>
   <ul class="highlights-list">
