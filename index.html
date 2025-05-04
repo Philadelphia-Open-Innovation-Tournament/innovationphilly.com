@@ -42,16 +42,18 @@ h3{font-size:var(--fs-h3);margin:1rem 0 0.4rem}
 .badge{display:inline-block;background:var(--card-light);padding:.45em .75em;border-radius:9999px;font-size:.8rem;margin:.2rem .5rem .2rem 0}
 .grid{display:grid;gap:1.2rem;margin:1.2rem 0}
 
-/* NAV - Improved for mobile */
-nav{
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(250,250,250,.95);
-  backdrop-filter: saturate(180%) blur(14px);
-  border-bottom: 1px solid #e7e7ea;
-  width: 100%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+/* NAV - Fixed position to stay on top */
+body nav {
+  position: fixed !important; /* Changed from sticky to fixed */
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(250, 250, 250, 0.95) !important;
+  backdrop-filter: saturate(180%) blur(14px) !important;
+  border-bottom: 1px solid #e7e7ea !important;
+  width: 100% !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
 }
 nav .shell{
   max-width:var(--maxw);
@@ -82,6 +84,11 @@ nav .cta:hover{background:var(--cta-hover)}
 @media(max-width:480px){
   nav ul{gap:.4rem;justify-content:space-between;padding:.7rem 0}
   nav a{padding:.4em .6em;font-size:.78rem;}
+}
+
+/* Add padding to account for the fixed nav */
+body {
+  padding-top: 50px;
 }
 
 /* HERO */
@@ -150,7 +157,7 @@ details li::before{content:'–';position:absolute;left:0;color:var(--accent)}
 .back{text-align:center;margin:3.3rem 0 3.8rem;font-size:.88rem}
 
 /* anchor offset */
-section[id]{scroll-margin-top:5.5rem}
+section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
 
 /* WEEKEND FLOW */
 .weekend-flow{margin:1rem 0}
@@ -515,7 +522,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (targetSection) {
         // Smooth scroll to target
         window.scrollTo({
-          top: targetSection.offsetTop - 70, // Offset to account for sticky nav
+          top: targetSection.offsetTop - 70, // Offset to account for fixed nav
           behavior: 'smooth'
         });
       }
