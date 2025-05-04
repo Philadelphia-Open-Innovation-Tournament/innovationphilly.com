@@ -457,7 +457,7 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
 </main>
 
 <script>
-// Improved navigation script with scroll-based highlighting
+// Enhanced navigation script with improved section detection
 document.addEventListener('DOMContentLoaded', function() {
   // Get all navigation links and sections
   const navLinks = Array.from(document.querySelectorAll('#nav a[href^="#"]'));
@@ -465,36 +465,70 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Function to update active navigation state based on scroll position
   function updateNavigation() {
-    // Get current scroll position with offset to trigger earlier
-    const scrollPosition = window.scrollY + 100;
+    // Get current scroll position - adjust the offset value as needed
+    const scrollPosition = window.scrollY + 150; // Increased from 100 to 150
     
     // Find the current section by checking which one is currently visible
-    let currentSection = null;
+    // We'll use a better algorithm to determine the "most visible" section
+    let mostVisibleSection = null;
+    let maxVisibleAmount = 0;
     
-    // Check each section's position to determine which is in view
     for (let i = 0; i < sections.length; i++) {
       const section = sections[i];
-      // Get section boundaries
-      const sectionTop = section.offsetTop - 100; // Offset for better detection
-      const sectionBottom = sectionTop + section.offsetHeight;
       
-      // If the current scroll position is within this section, mark it as current
-      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-        currentSection = section;
-        break;
+      // Get section dimensions
+      const rect = section.getBoundingClientRect();
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
+      
+      // Calculate how much of the section is visible in the viewport
+      const visibleTop = Math.max(0, sectionTop);
+      const visibleBottom = Math.min(window.innerHeight, sectionTop + sectionHeight);
+      const visibleAmount = Math.max(0, visibleBottom - visibleTop);
+      
+      // If this section has more visible area than previous sections, make it the current one
+      if (visibleAmount > maxVisibleAmount) {
+        maxVisibleAmount = visibleAmount;
+        mostVisibleSection = section;
+      }
+      
+      // Alternative approach: if a section is closer to the top of the viewport, prioritize it
+      // This helps when quickly scrolling between sections
+      if (sectionTop > -100 && sectionTop < 150) {
+        mostVisibleSection = section;
+        break; // Prioritize this section if it's near the top of the viewport
       }
     }
     
-    // If no section was found to be in view (e.g. at the very top), use the first section
-    if (!currentSection && sections.length > 0) {
-      currentSection = sections[0];
+    // If no section is visible enough, default to using a calculation based on scroll position
+    if (!mostVisibleSection && sections.length > 0) {
+      // Find section based on scroll position
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const nextSection = sections[i + 1];
+        
+        // Get section top position including scroll
+        const sectionTop = section.offsetTop - 100;
+        const sectionBottom = nextSection ? nextSection.offsetTop - 100 : document.body.scrollHeight;
+        
+        // If we're between this section's top and the next section's top, this is the active section
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          mostVisibleSection = section;
+          break;
+        }
+      }
+      
+      // If still no section found, use the first one
+      if (!mostVisibleSection) {
+        mostVisibleSection = sections[0];
+      }
     }
     
     // Update active class on navigation links
-    if (currentSection) {
+    if (mostVisibleSection) {
       navLinks.forEach(link => {
         const href = link.getAttribute('href').slice(1);
-        link.classList.toggle('active', href === currentSection.id);
+        link.classList.toggle('active', href === mostVisibleSection.id);
       });
     }
   }
@@ -509,7 +543,7 @@ document.addEventListener('DOMContentLoaded', function() {
       scrollTimeout = setTimeout(function() {
         updateNavigation();
         scrollTimeout = null;
-      }, 100);
+      }, 50); // Reduced from 100ms to 50ms for more responsive updates
     }
   });
   
@@ -525,6 +559,9 @@ document.addEventListener('DOMContentLoaded', function() {
           top: targetSection.offsetTop - 70, // Offset to account for fixed nav
           behavior: 'smooth'
         });
+        
+        // Update active navigation after scroll
+        setTimeout(updateNavigation, 500);
       }
     });
   });
