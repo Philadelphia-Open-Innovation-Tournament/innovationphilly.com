@@ -43,11 +43,40 @@ h3{font-size:var(--fs-h3);margin:1rem 0 0.4rem}
 .grid{display:grid;gap:1.2rem;margin:1.2rem 0}
 
 /* NAV - Improved for mobile */
-nav{position:sticky;top:0;z-index:10;background:rgba(250,250,250,.9);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid #e7e7ea}
-nav .shell{max-width:var(--maxw);margin:auto;padding-inline:var(--gap)}
-nav ul{margin:0;padding:.55rem 0;display:flex;justify-content:center;gap:.8rem;list-style:none;flex-wrap:wrap;}
-nav a{font-size:.84rem;color:var(--text);padding:.42em .95em;border-radius:9px;transition:.25s;white-space:nowrap;}
-nav a:hover{background:var(--card-light)}nav a.active{background:var(--accent);color:#fff}
+nav{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(250,250,250,.95);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid #e7e7ea;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+nav .shell{
+  max-width:var(--maxw);
+  margin:auto;
+  padding-inline:var(--gap);
+}
+nav ul{
+  margin:0;
+  padding:.55rem 0;
+  display:flex;
+  justify-content:center;
+  gap:.8rem;
+  list-style:none;
+  flex-wrap:wrap;
+}
+nav a{
+  font-size:.84rem;
+  color:var(--text);
+  padding:.42em .95em;
+  border-radius:9px;
+  transition:.25s;
+  white-space:nowrap;
+}
+nav a:hover{background:var(--card-light)}
+nav a.active{background:var(--accent);color:#fff}
 nav .cta{background:var(--cta);color:#fff;font-weight:600;border-radius:20px}
 nav .cta:hover{background:var(--cta-hover)}
 @media(max-width:480px){
@@ -63,20 +92,22 @@ nav .cta:hover{background:var(--cta-hover)}
 .button{display:inline-block;background:var(--cta);color:#fff;font-weight:600;padding:.75em 1.6em;border-radius:40px;margin-top:1.4rem;transition:.25s}
 .button:hover{background:var(--cta-hover);transform:translateY(-2px);text-decoration:none}
 
-/* HERO CTA BOX */
+/* HERO CTA BOX - Improved */
 .hero-cta-box {
   background: rgba(40, 167, 69, 0.08);
   border: 1px solid rgba(40, 167, 69, 0.2);
   border-radius: var(--radius);
   padding: 1.2rem;
   margin: 1.5rem auto 0;
-  max-width: 500px;
+  max-width: 380px; /* Reduced from 500px */
   text-align: center;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.08);
 }
 .hero-cta-box h3 {
   color: var(--cta);
   margin-top: 0;
   font-size: 1.1rem;
+  font-weight: 700;
 }
 .hero-cta-box ul {
   list-style: none;
@@ -90,6 +121,7 @@ nav .cta:hover{background:var(--cta-hover)}
   padding-left: 1.4em;
   margin-bottom: 0.5rem;
   font-weight: 500;
+  font-size: 0.95rem; /* Slightly smaller font */
 }
 .hero-cta-box li::before {
   content: '✓';
@@ -118,7 +150,7 @@ details li::before{content:'–';position:absolute;left:0;color:var(--accent)}
 .back{text-align:center;margin:3.3rem 0 3.8rem;font-size:.88rem}
 
 /* anchor offset */
-section[id]{scroll-margin-top:5.1rem}
+section[id]{scroll-margin-top:5.5rem}
 
 /* WEEKEND FLOW */
 .weekend-flow{margin:1rem 0}
@@ -204,6 +236,7 @@ section[id]{scroll-margin-top:5.1rem}
   summary::before{left:.8rem}
   .leagues-grid {grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));}
   .weekend-flow .badge {min-width: 100px;}
+  .hero-cta-box {max-width: 320px; padding: 1rem;}
 }
 </style>
 </head>
@@ -417,16 +450,78 @@ section[id]{scroll-margin-top:5.1rem}
 </main>
 
 <script>
-const navLinks=[...document.querySelectorAll('#nav a[href^="#"]')];
-const sections=[...document.querySelectorAll('main>section[id]')];
-const spy=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href').slice(1)===e.target.id));
+// Improved navigation script with scroll-based highlighting
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all navigation links and sections
+  const navLinks = Array.from(document.querySelectorAll('#nav a[href^="#"]'));
+  const sections = Array.from(document.querySelectorAll('main>section[id]'));
+  
+  // Function to update active navigation state based on scroll position
+  function updateNavigation() {
+    // Get current scroll position with offset to trigger earlier
+    const scrollPosition = window.scrollY + 100;
+    
+    // Find the current section by checking which one is currently visible
+    let currentSection = null;
+    
+    // Check each section's position to determine which is in view
+    for (let i = 0; i < sections.length; i++) {
+      const section = sections[i];
+      // Get section boundaries
+      const sectionTop = section.offsetTop - 100; // Offset for better detection
+      const sectionBottom = sectionTop + section.offsetHeight;
+      
+      // If the current scroll position is within this section, mark it as current
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        currentSection = section;
+        break;
+      }
+    }
+    
+    // If no section was found to be in view (e.g. at the very top), use the first section
+    if (!currentSection && sections.length > 0) {
+      currentSection = sections[0];
+    }
+    
+    // Update active class on navigation links
+    if (currentSection) {
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href').slice(1);
+        link.classList.toggle('active', href === currentSection.id);
+      });
+    }
+  }
+  
+  // Initialize navigation on page load
+  updateNavigation();
+  
+  // Add scroll event listener with throttling for performance
+  let scrollTimeout;
+  window.addEventListener('scroll', function() {
+    if (!scrollTimeout) {
+      scrollTimeout = setTimeout(function() {
+        updateNavigation();
+        scrollTimeout = null;
+      }, 100);
     }
   });
-},{rootMargin:'-55% 0px -40% 0px'});
-sections.forEach(s=>spy.observe(s));
+  
+  // Add click handlers for smooth scrolling
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        // Smooth scroll to target
+        window.scrollTo({
+          top: targetSection.offsetTop - 70, // Offset to account for sticky nav
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+});
 </script>
 </body>
 </html>
