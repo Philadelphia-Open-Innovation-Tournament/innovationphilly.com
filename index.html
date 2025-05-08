@@ -146,6 +146,17 @@ summary::before{
   content:'+';position:absolute;left:1.2rem;top:50%;translate:0 -50%;
   font-weight:700;color:var(--accent)
 }
+/* Fix for double disclosure indicators */
+details summary {
+  list-style: none;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+/* For Firefox */
+details summary::marker {
+  display: none;
+}
 details[open] summary::before{content:'–'}
 details[open]{background:#eaf0ff}
 details>div{padding:0.6rem 2.2rem 1rem}
