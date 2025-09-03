@@ -85,6 +85,7 @@ a:hover{color: var(--accent-hover); text-shadow: 0 0 8px var(--accent-hover); te
   box-shadow: 0 0 30px rgba(255, 0, 255, 0.6), 0 0 15px rgba(0, 247, 255, 0.6);
 }
 h1,h2,h3{font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.1em;}
+h2, summary{word-break: break-word;}
 h2{font-size:var(--fs-h2);margin:0 0 0.8rem;font-weight:700; color: var(--cta); text-shadow: 0 0 10px var(--cta);}
 h3{font-size:var(--fs-h3);margin:1rem 0 0.4rem; color: var(--accent); text-shadow: 0 0 8px var(--accent);}
 .badge{display:inline-block;background:var(--card-light);padding:.45em .75em;border-radius:9999px;font-size:.8rem;margin:.2rem .5rem .2rem 0; border: 1px solid var(--cta); color: var(--cta);}
@@ -203,14 +204,7 @@ body {
 
 /* ACCORDIONS ------------------------------------------------------------- */
 details{background:var(--card-light);border-radius:var(--radius);margin:0.8rem 0;border:1px solid var(--accent)}
-summary{cursor:pointer;padding:1rem 2.2rem;font-weight:600;position:relative; font-family: var(--font-heading);}
-summary::marker { display: none; }
-summary::-webkit-details-marker { display: none; }
-summary::before{
-  content:'+';position:absolute;left:1.2rem;top:50%;translate:0 -50%;
-  font-weight:700;color:var(--accent); text-shadow: 0 0 5px var(--accent);
-}
-details[open] summary::before{content:'–'}
+summary{cursor:pointer;padding:1rem 1.5rem;font-weight:600;position:relative; font-family: var(--font-heading);}
 details[open]{background:rgba(0, 247, 255, 0.1);}
 details>div{padding:0.6rem 2.2rem 1rem}
 details ul{list-style:none;margin:0.4rem 0;padding:0}
@@ -243,7 +237,7 @@ section[id]{scroll-margin-top:80px}
 
 /* WINNER PERKS */
 .winner-perks{margin:1rem 0}
-.winner-perks p{margin:0.3rem 0;padding-left:1.2em;position:relative}
+.winner-perks p{margin:0.3rem 0;padding-left:1.8em;position:relative}
 .winner-perks p::before{content:'🏆';position:absolute;left:0;color:var(--accent)}
 
 /* HIGHLIGHTS */
