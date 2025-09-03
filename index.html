@@ -4,56 +4,104 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Philadelphia Open Innovation Tournament 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#fafafa;--card:#fff;--card-light:#f3f5f7;--text:#1c1c1e;--muted:#6e6e73;
-  --accent:#007aff;--accent-hover:#0065d6;
-  --cta:#28a745;--cta-hover:#1f8e39;
-  --radius:14px;--shadow:0 8px 22px rgb(0 0 0 /.06);
-  --gap:clamp(.9rem,4vw,1.8rem);--maxw:920px;
-  --fs-hero:clamp(1.9rem,6.5vw,2.7rem);
-  --fs-h2:clamp(1.3rem,3vw,1.65rem);--fs-h3:1rem;
+  --bg:#0d0221;
+  --card:#1a0a3d;
+  --card-light: #2a1a5d;
+  --text:#f0f0f0;
+  --muted:#a0a0c0;
+  --accent:#00f7ff;
+  --accent-hover:#00d4e3;
+  --cta:#ff00ff;
+  --cta-hover:#e600e6;
+  --radius:14px;
+  --shadow: 0 0 20px rgba(255, 0, 255, 0.4), 0 0 10px rgba(0, 247, 255, 0.4);
+  --gap:clamp(.9rem,4vw,1.8rem);
+  --maxw:920px;
+  --fs-hero:clamp(2.2rem,7vw,3.5rem);
+  --fs-h2:clamp(1.5rem,3.5vw,2rem);
+  --fs-h3:1.1rem;
   --section-spacing: 1.2rem;
   --list-item-spacing: 0.4rem;
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body: 'Share Tech Mono', monospace;
+}
+@keyframes bg-pan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
 }
 /* reset & base */
 *,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-body{background:#fff;color:var(--text);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
+html,body{margin:0;padding:0;font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
+body{background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 247, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(to right, rgba(0, 247, 255, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  z-index: -1;
+  animation: bg-pan 90s linear infinite;
+}
 /* Fix for background to extend to the bottom */
 html, body {
   height: 100%;
 }
 main{
-  background:var(--bg);
+  background:transparent;
   padding-top:2rem;
   min-height: calc(100% - 235px); /* Adjust if needed to account for header height */
 }
 @media(max-width:500px){body{font-size:15px}}
-img,iframe{max-width:100%;display:block;border-radius:var(--radius)}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+img,iframe{max-width:100%;display:block;border-radius:var(--radius); border: 2px solid var(--accent);}
+a{color:var(--accent);text-decoration:none; transition: all 0.2s ease;}
+a:hover{color: var(--accent-hover); text-shadow: 0 0 8px var(--accent-hover); text-decoration:none;}
 
 /* layout */
 .wrapper{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gap)}
-.card{background:var(--card);border-radius:var(--radius);padding:1.8rem var(--gap);box-shadow:var(--shadow);transition:transform .25s;margin-bottom:2rem;}
-h2{font-size:var(--fs-h2);margin:0 0 0.8rem;font-weight:700}
-h3{font-size:var(--fs-h3);margin:1rem 0 0.4rem}
-.badge{display:inline-block;background:var(--card-light);padding:.45em .75em;border-radius:9999px;font-size:.8rem;margin:.2rem .5rem .2rem 0}
+.card{
+  background:rgba(26, 10, 61, 0.85);
+  border: 1px solid var(--accent);
+  backdrop-filter: blur(10px);
+  border-radius:var(--radius);
+  padding:1.8rem var(--gap);
+  box-shadow:var(--shadow);
+  transition:transform .25s, box-shadow .25s;
+  margin-bottom:2rem;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6), 0 0 15px rgba(0, 247, 255, 0.6);
+}
+h1,h2,h3{font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.1em;}
+h2{font-size:var(--fs-h2);margin:0 0 0.8rem;font-weight:700; color: var(--cta); text-shadow: 0 0 10px var(--cta);}
+h3{font-size:var(--fs-h3);margin:1rem 0 0.4rem; color: var(--accent); text-shadow: 0 0 8px var(--accent);}
+.badge{display:inline-block;background:var(--card-light);padding:.45em .75em;border-radius:9999px;font-size:.8rem;margin:.2rem .5rem .2rem 0; border: 1px solid var(--cta); color: var(--cta);}
 .grid{display:grid;gap:1.2rem;margin:1.2rem 0}
 
 /* NAV - Fixed position to stay on top */
 body nav {
-  position: fixed !important; /* Changed from sticky to fixed */
+  position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   z-index: 1000 !important;
-  background: rgba(250, 250, 250, 0.95) !important;
+  background: rgba(13, 2, 33, 0.8) !important;
   backdrop-filter: saturate(180%) blur(14px) !important;
-  border-bottom: 1px solid #e7e7ea !important;
+  border-bottom: 1px solid var(--accent) !important;
   width: 100% !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 2px 8px rgba(0, 247, 255, 0.2) !important;
 }
 nav .shell{
   max-width:var(--maxw);
@@ -70,17 +118,19 @@ nav ul{
   flex-wrap:wrap;
 }
 nav a{
-  font-size:.84rem;
+  font-family: var(--font-heading);
+  font-size:.9rem;
   color:var(--text);
   padding:.42em .95em;
   border-radius:9px;
   transition:.25s;
   white-space:nowrap;
+  border: 1px solid transparent;
 }
-nav a:hover{background:var(--card-light)}
-nav a.active{background:var(--accent);color:#fff}
-nav .cta{background:var(--cta);color:#fff;font-weight:600;border-radius:20px}
-nav .cta:hover{background:var(--cta-hover)}
+nav a:hover{background:var(--card-light); border-color: var(--accent);}
+nav a.active{background:var(--accent);color:#0d0221; text-shadow: none;}
+nav .cta{background:var(--cta);color:#fff;font-weight:600;border-radius:20px; text-shadow: 0 0 5px #fff;}
+nav .cta:hover{background:var(--cta-hover); box-shadow: 0 0 10px var(--cta-hover);}
 @media(max-width:480px){
   nav ul{gap:.4rem;justify-content:space-between;padding:.7rem 0}
   nav a{padding:.4em .6em;font-size:.78rem;}
@@ -88,33 +138,45 @@ nav .cta:hover{background:var(--cta-hover)}
 
 /* Add padding to account for the fixed nav */
 body {
-  padding-top: 50px;
+  padding-top: 60px;
 }
 
 /* HERO */
-.hero{text-align:center;padding:5.5rem var(--gap) 3.3rem;background:#fff}
-.hero h1{font-size:var(--fs-hero);font-weight:700;margin:0 0 .9rem;overflow-wrap:break-word}
-.hero p{font-size:1.03rem;color:var(--muted);max-width:38ch;margin:0 auto 1rem}
-.trophy{font-size:3.4rem;margin-bottom:1.2rem}
-.button{display:inline-block;background:var(--cta);color:#fff;font-weight:600;padding:.75em 1.6em;border-radius:40px;margin-top:1.4rem;transition:.25s}
-.button:hover{background:var(--cta-hover);transform:translateY(-2px);text-decoration:none}
+.hero{text-align:center;padding:5.5rem var(--gap) 3.3rem;background:transparent;}
+.hero h1{
+  font-size:var(--fs-hero);
+  font-weight:700;
+  margin:0 0 .9rem;
+  overflow-wrap:break-word;
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 15px var(--cta), 0 0 25px var(--cta);
+}
+.hero p{font-size:1.03rem;color:var(--muted);max-width:45ch;margin:0 auto 1rem}
+.trophy{font-size:3.4rem;margin-bottom:1.2rem; animation: float 3s ease-in-out infinite;}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+.button{display:inline-block;background:var(--cta);color:#fff;font-weight:600;padding:.75em 1.6em;border-radius:40px;margin-top:1.4rem;transition:.25s; font-family: var(--font-heading); text-transform: uppercase; border: 1px solid var(--cta); box-shadow: 0 0 15px var(--cta);}
+.button:hover{background:var(--cta-hover);transform:translateY(-2px);text-decoration:none; box-shadow: 0 0 25px var(--cta-hover);}
 
 /* HERO CTA BOX - Improved */
 .hero-cta-box {
-  background: rgba(40, 167, 69, 0.08);
-  border: 1px solid rgba(40, 167, 69, 0.2);
+  background: rgba(255, 0, 255, 0.1);
+  border: 1px solid var(--cta);
   border-radius: var(--radius);
   padding: 1.2rem;
   margin: 1.5rem auto 0;
-  max-width: 380px; /* Reduced from 500px */
+  max-width: 420px;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.08);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
 }
 .hero-cta-box h3 {
   color: var(--cta);
   margin-top: 0;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
+  text-shadow: 0 0 8px var(--cta);
 }
 .hero-cta-box ul {
   list-style: none;
@@ -128,7 +190,7 @@ body {
   padding-left: 1.4em;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  font-size: 0.95rem; /* Slightly smaller font */
+  font-size: 0.95rem;
 }
 .hero-cta-box li::before {
   content: '✓';
@@ -136,59 +198,43 @@ body {
   left: 0;
   color: var(--cta);
   font-weight: bold;
+  text-shadow: 0 0 5px var(--cta);
 }
 
 /* ACCORDIONS ------------------------------------------------------------- */
-details{background:var(--card-light);border-radius:var(--radius);margin:0.8rem 0;border:1px solid #e1e1e5}
-summary{cursor:pointer;padding:1rem 2.2rem;font-weight:600;position:relative}
-summary::marker,summary::-webkit-details-marker{display:none}   /* hide native triangle */
+details{background:var(--card-light);border-radius:var(--radius);margin:0.8rem 0;border:1px solid var(--accent)}
+summary{cursor:pointer;padding:1rem 2.2rem;font-weight:600;position:relative; font-family: var(--font-heading);}
+summary::marker,summary::-webkit-details-marker{display:none}
 summary::before{
   content:'+';position:absolute;left:1.2rem;top:50%;translate:0 -50%;
-  font-weight:700;color:var(--accent)
-}
-/* Fix for double disclosure indicators */
-details summary {
-  list-style: none;
-}
-details summary::-webkit-details-marker {
-  display: none;
-}
-/* For Firefox */
-details summary::marker {
-  display: none;
+  font-weight:700;color:var(--accent); text-shadow: 0 0 5px var(--accent);
 }
 details[open] summary::before{content:'–'}
-details[open]{background:#eaf0ff}
+details[open]{background:rgba(0, 247, 255, 0.1);}
 details>div{padding:0.6rem 2.2rem 1rem}
 details ul{list-style:none;margin:0.4rem 0;padding:0}
 details li{padding-left:1.05em;position:relative;margin:0.3rem 0}
-details li::before{content:'–';position:absolute;left:0;color:var(--accent)}
+details li::before{content:'»';position:absolute;left:0;color:var(--accent)}
 
 /* FOOTER */
 .back{text-align:center;margin:3.3rem 0 3.8rem;font-size:.88rem}
 
 /* anchor offset */
-section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
+section[id]{scroll-margin-top:80px}
 
 /* WEEKEND FLOW */
 .weekend-flow{margin:1rem 0}
 .weekend-flow p{margin:0.3rem 0}
-.weekend-flow .badge{min-width:120px;text-align:center;margin-bottom:.5rem}
+.weekend-flow .badge{min-width:120px;text-align:center;margin-bottom:.5rem; font-family: var(--font-body);}
 
 /* WINNER PERKS */
 .winner-perks{margin:1rem 0}
 .winner-perks p{margin:0.3rem 0;padding-left:1.2em;position:relative}
-.winner-perks p::before{content:'•';position:absolute;left:0;color:var(--accent)}
+.winner-perks p::before{content:'🏆';position:absolute;left:0;color:var(--accent)}
 
 /* HIGHLIGHTS */
 .highlights-list{columns:2;max-width:620px;gap:1.5rem;margin:0.8rem 0}
-.highlights-list li{margin-bottom:0.5rem}
-
-/* Fix for the resources section bullet alignment */
-.highlights-list li {
-  position: relative;
-  break-inside: avoid;
-}
+.highlights-list li{margin-bottom:0.5rem; break-inside: avoid;}
 
 /* CATEGORIES */
 .leagues-grid {
@@ -204,9 +250,14 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
   text-align: center;
   font-size: 0.9rem;
   font-weight: 500;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-heading);
 }
 .emoji {
   margin-right: 0.5rem;
+  display: block;
+  font-size: 1.5rem;
 }
 
 /* SPONSORS */
@@ -225,24 +276,32 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
   border-radius: var(--radius);
   font-size: 0.9rem;
   transition: transform 0.2s;
+  border: 1px solid var(--muted);
+  color: var(--muted);
 }
 .sponsor-name:hover {
   transform: translateY(-2px);
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 5px var(--accent);
 }
 
 /* INFO SECTION */
 .info-section {
-  background: rgba(0, 122, 255, 0.05);
-  border: 1px solid rgba(0, 122, 255, 0.1);
+  background: rgba(0, 122, 255, 0.1);
+  border: 1px solid var(--accent);
   border-radius: var(--radius);
   padding: 1.5rem var(--gap);
   margin: 0 0 2rem;
   font-size: 0.95rem;
+  box-shadow: 0 0 15px rgba(0, 122, 255, 0.2);
 }
 .info-header {
   color: var(--accent);
   font-weight: 600;
   margin-bottom: 0.8rem;
+  font-family: var(--font-heading);
+  text-shadow: 0 0 8px var(--accent);
 }
 
 .footnote {
@@ -262,6 +321,7 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
   .leagues-grid {grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));}
   .weekend-flow .badge {min-width: 100px;}
   .hero-cta-box {max-width: 320px; padding: 1rem;}
+  body {padding-top: 100px;}
 }
 </style>
 </head>
@@ -283,8 +343,8 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
 <header class="hero">
   <div class="wrapper">
     <div class="trophy">🏆</div>
-    <h1>Philadelphia Open Innovation Tournament 2025</h1>
-    <p>✨ A weekend where bright ideas collide with opportunity.</p>
+    <h1>Philly Open Innovation Tournament // 2025</h1>
+    <p>// A high-stakes tournament where brilliant minds interface with opportunity.</p>
     
     <!-- New Prize Highlight Box - UPDATED -->
     <div class="hero-cta-box">
@@ -305,17 +365,17 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
 
 <!-- OVERVIEW -->
 <section id="overview" class="card">
-  <h2>📋 Quick facts</h2>
+  <h2>// SYSTEM SPECS</h2>
   <p>Two days. Two hundred innovators. One spotlight. Day 1 is for everyone; Day 2 is a private finale for the <strong>top seven</strong>.</p>
 
   <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(250px,1fr));">
-    <div><h3>Date & Venue</h3><p>📅 Oct 25 (10 AM–5 PM) & Oct 26 (10 AM–2 PM)<br><a href="https://maps.app.goo.gl/5FFYdVTpHSjftoyd9?g_st=ipc" target="_blank">Racquet Club of Philadelphia</a></p></div>
-    <div><h3>Cost</h3><p>💸 $20 pass<br>🍻 +$20 Happy‑Hour wristband</p></div>
-    <div><h3>Capacity</h3><p>👥 200 participants → 7 finalists</p></div>
-    <div><h3>Dress code</h3><p>🕴️ Smart casual (<a href="https://rcop.com/dress-code/" target="_blank">details</a>)</p></div>
+    <div><h3>// TRANSMISSION DATE & LOCATION</h3><p>📅 Oct 25 (10 AM–5 PM) & Oct 26 (10 AM–2 PM)<br><a href="https://maps.app.goo.gl/5FFYdVTpHSjftoyd9?g_st=ipc" target="_blank">Racquet Club of Philadelphia</a></p></div>
+    <div><h3>// ACCESS FEE</h3><p>💸 $20 pass<br>🍻 +$20 Happy‑Hour wristband</p></div>
+    <div><h3>// NODE CAPACITY</h3><p>👥 200 participants → 7 finalists</p></div>
+    <div><h3>// PROTOCOL</h3><p>🕴️ Smart casual (<a href="https://rcop.com/dress-code/" target="_blank">details</a>)</p></div>
   </div>
 
-  <h3>🗓️ Weekend Flow</h3>
+  <h3>// MISSION TIMELINE</h3>
   <div class="weekend-flow">
     <p><span class="badge">Sat 10 AM–12 PM</span> Ideation sprint & AI-powered rapid prototyping</p>
     <p><span class="badge">Sat 12 PM–1 PM</span> Lunch & "From Idea to Business" session (while judges deliberate)</p>
@@ -330,7 +390,7 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
 
 <!-- PRIZES SECTION (moved up in nav, expanded details) - UPDATED WITH LINKS -->
 <section id="prizes" class="card">
-  <h2>🏆 Tournament Prizes</h2>
+  <h2>// REWARD_CACHE</h2>
   
   <div class="winner-perks" style="margin-top:0.8rem">
     <p><strong>AWS Credits:</strong> Up to $100,000 in cloud credits from the <a href="https://aws.amazon.com/activate/activate-landing/" target="_blank">AWS Activate Program</a> (for qualifying entries that pass AWS's additional prioritized screening)</p>
@@ -343,7 +403,7 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
 
 <!-- HOW TO WIN -->
 <section id="how" class="card">
-  <h2>🚀 How to Win</h2>
+  <h2>// STRATEGIC_DIRECTIVES</h2>
   <p>Five moves the champs used last year — tap to expand. 🎥 <a href="https://www.youtube.com/watch?v=FW3Eflph0sQ" target="_blank">5‑min guide</a></p>
 
   <details><summary>Idea Generation 💡 — Wharton Professor's AI Prompt</summary><div>
@@ -427,7 +487,7 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
 
 <!-- CATEGORIES SECTION -->
 <section id="categories" class="card">
-  <h2>🏢 Competition Categories</h2>
+  <h2>// SECTORS.EXE</h2>
   <p>While you can pitch ideas in any area, these categories are more likely to receive support and funding in Philadelphia's ecosystem:</p>
   
   <div class="leagues-grid">
@@ -442,7 +502,7 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
 
 <!-- SPONSORS SECTION - UPDATED WITH AWS -->
 <section id="sponsors" class="card">
-  <h2>🤝 Our Sponsors</h2>
+  <h2>// ALLIES & AFFILIATES</h2>
   <p style="font-size:0.9rem;color:var(--muted)">Note: This list will be updated as sponsorships are confirmed for 2025</p>
   
   <div class="sponsor-category">
@@ -474,7 +534,7 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
 
 <!-- HIGHLIGHTS SECTION -->
 <section id="highlights" class="card">
-  <h2>📊 2024 Highlights</h2>
+  <h2>// ARCHIVED_LOGS_2024</h2>
   <ul class="highlights-list">
     <li><a href="https://lu.ma/clcrvyvw" target="_blank">Participant list</a></li>
     <li><a href="https://www.linkedin.com/posts/josh-devon_innovation-philadelphia-entrepreneurship-activity-7256652680134111233-VFiN" target="_blank">Winners</a></li>
@@ -482,7 +542,7 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
     <li><a href="https://innovationphilly.com/guide.mp3" target="_blank">Audio Brief</a></li>
     <li><a href="https://photos.app.goo.gl/MrFBjVSSjvspUu3k9" target="_blank">Photos</a></li>
   </ul>
-  <h2>📎 Other Resources</h2>
+  <h2>// EXTERNAL_LINKS</h2>
   <ul class="highlights-list">
     <li><a href="https://github.com/Philadelphia-Open-Innovation-Tournament" target="_blank">Open‑source repos</a></li>
     <li><a href="https://www.youtube.com/watch?v=aRZCD8wU5bw" target="_blank">Innovation Tournaments Overview</a></li>
@@ -491,7 +551,7 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
 
 <!-- MISSION INFO SECTION -->
 <div class="info-section">
-  <div class="info-header">Our Mission</div>
+  <div class="info-header">// PRIMARY_DIRECTIVE</div>
   <p>"Our goal is to accelerate Philadelphia's growth by spotlighting and empowering the city's most promising innovators."</p>
   <p>The Philadelphia Open Innovation Tournament is inspired by the framework developed by Profs. Karl Ulrich and Christian Terwiesch at UPenn. It brings together diverse minds to solve real-world challenges through friendly competition.</p>
   <p style="margin-top:0.6rem">Join us in this exhilarating journey of innovation and impact. Be part of shaping Philadelphia's future!</p>
@@ -501,7 +561,7 @@ section[id]{scroll-margin-top:80px} /* Increased for the fixed nav */
   P.O.I.T. is organized by Medusa Intelligence Corporation.
 </p>
 
-<p class="back"><a href="#top">Back to top ⬆️</a></p>
+<p class="back"><a href="#top">Back to top // ⬆️</a></p>
 </main>
 
 <script>
