@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tournament Day Guide 2025 | Philadelphia Open Innovation Tournament</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0d0221;
+  --card:#1a0a3d;
+  --card-light: #2a1a5d;
+  --text:#f0f0f0;
+  --muted:#a0a0c0;
+  --accent:#00f7ff;
+  --accent-hover:#00d4e3;
+  --cta:#ff00ff;
+  --cta-hover:#e600e6;
+  --radius:14px;
+  --shadow: 0 0 20px rgba(255, 0, 255, 0.4), 0 0 10px rgba(0, 247, 255, 0.4);
+  --gap:clamp(.9rem,4vw,1.8rem);
+  --maxw:920px;
+  --fs-hero:clamp(2.2rem,7vw,3.5rem);
+  --fs-h2:clamp(1.5rem,3.5vw,2rem);
+  --fs-h3:1.1rem;
+  --section-spacing: 1.2rem;
+  --list-item-spacing: 0.4rem;
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body: 'Share Tech Mono', monospace;
+}
+@keyframes bg-pan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+/* reset & base */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
+body{background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 247, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(to right, rgba(0, 247, 255, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  z-index: -1;
+  animation: bg-pan 90s linear infinite;
+}
+html, body {
+  height: 100%;
+}
+main{
+  background:transparent;
+  padding-top:2rem;
+  min-height: calc(100% - 235px);
+}
+@media(max-width:500px){body{font-size:15px}}
+img,iframe{max-width:100%;display:block;border-radius:var(--radius); border: 2px solid var(--accent);}
+a{color:var(--accent);text-decoration:none; transition: all 0.2s ease;}
+a:hover{color: var(--accent-hover); text-shadow: 0 0 8px var(--accent-hover); text-decoration:none;}
+
+/* layout */
+.wrapper{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gap)}
+.card{
+  background:rgba(26, 10, 61, 0.85);
+  border: 1px solid var(--accent);
+  backdrop-filter: blur(10px);
+  border-radius:var(--radius);
+  padding:1.8rem var(--gap);
+  box-shadow:var(--shadow);
+  transition:transform .25s, box-shadow .25s;
+  margin-bottom:2rem;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6), 0 0 15px rgba(0, 247, 255, 0.6);
+}
+h1,h2,h3{font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.1em;}
+h2, summary{word-break: break-word;}
+h2{font-size:var(--fs-h2);margin:0 0 0.8rem;font-weight:700; color: var(--cta); text-shadow: 0 0 10px var(--cta);}
+h3{font-size:var(--fs-h3);margin:1rem 0 0.4rem; color: var(--accent); text-shadow: 0 0 8px var(--accent);}
+.badge{display:inline-block;background:var(--card-light);padding:.45em .75em;border-radius:9999px;font-size:.8rem;margin:.2rem .5rem .2rem 0; border: 1px solid var(--cta); color: var(--cta);}
+.grid{display:grid;gap:1.2rem;margin:1.2rem 0}
+
+/* NAV - Fixed position to stay on top */
+body nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(13, 2, 33, 0.8) !important;
+  backdrop-filter: saturate(180%) blur(14px) !important;
+  border-bottom: 1px solid var(--accent) !important;
+  width: 100% !important;
+  box-shadow: 0 2px 8px rgba(0, 247, 255, 0.2) !important;
+}
+nav .shell{
+  max-width:var(--maxw);
+  margin:auto;
+  padding-inline:var(--gap);
+}
+nav ul{
+  margin:0;
+  padding:.55rem 0;
+  display:flex;
+  justify-content:center;
+  gap:.8rem;
+  list-style:none;
+  flex-wrap:wrap;
+}
+nav a{
+  font-family: var(--font-heading);
+  font-size:.9rem;
+  color:var(--text);
+  padding:.42em .95em;
+  border-radius:9px;
+  transition:.25s;
+  white-space:nowrap;
+  border: 1px solid transparent;
+}
+nav a:hover{background:var(--card-light); border-color: var(--accent);}
+nav a.active{background:var(--accent);color:#0d0221; text-shadow: none;}
+nav .cta{background:var(--cta);color:#fff;font-weight:600;border-radius:20px; text-shadow: 0 0 5px #fff;}
+nav .cta:hover{background:var(--cta-hover); box-shadow: 0 0 10px var(--cta-hover);}
+@media(max-width:480px){
+  nav ul{gap:.4rem;justify-content:space-between;padding:.7rem 0}
+  nav a{padding:.4em .6em;font-size:.78rem;}
+}
+
+/* Add padding to account for the fixed nav */
+body {
+  padding-top: 60px;
+}
+
+/* HERO */
+.hero{text-align:center;padding:5.5rem var(--gap) 3.3rem;background:transparent;}
+.hero h1{
+  font-size:var(--fs-hero);
+  font-weight:700;
+  margin:0 0 .9rem;
+  overflow-wrap:break-word;
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 15px var(--cta), 0 0 25px var(--cta);
+}
+.hero p{font-size:1.03rem;color:var(--muted);max-width:45ch;margin:0 auto 1rem}
+.trophy{font-size:3.4rem;margin-bottom:1.2rem; animation: float 3s ease-in-out infinite;}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+.button{display:inline-block;background:var(--cta);color:#fff;font-weight:600;padding:.75em 1.6em;border-radius:40px;margin-top:1.4rem;transition:.25s; font-family: var(--font-heading); text-transform: uppercase; border: 1px solid var(--cta); box-shadow: 0 0 15px var(--cta);}
+.button:hover{background:var(--cta-hover);transform:translateY(-2px);text-decoration:none; box-shadow: 0 0 25px var(--cta-hover);}
+
+/* INFO SECTION */
+.info-section {
+  background: rgba(0, 122, 255, 0.1);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.5rem var(--gap);
+  margin: 0 0 2rem;
+  font-size: 0.95rem;
+  box-shadow: 0 0 15px rgba(0, 122, 255, 0.2);
+}
+.info-header {
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  font-family: var(--font-heading);
+  text-shadow: 0 0 8px var(--accent);
+}
+
+/* WIFI SECTION */
+.wifi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+.wifi-item {
+  background: var(--card-light);
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--accent);
+}
+.wifi-item h3 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+.wifi-item p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+.wifi-item strong {
+  color: var(--accent);
+}
+
+/* SCHEDULE */
+.schedule-item {
+  background: var(--card-light);
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius);
+  margin: 0.8rem 0;
+  border-left: 3px solid var(--cta);
+}
+.schedule-time {
+  color: var(--cta);
+  font-weight: 700;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+.schedule-desc {
+  color: var(--text);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* INVESTMENT TIERS */
+.investment-tiers {
+  margin: 1rem 0;
+}
+.tier-item {
+  background: var(--card-light);
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  margin: 0.6rem 0;
+  border-left: 3px solid var(--accent);
+}
+.tier-amount {
+  color: var(--cta);
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+/* PEOPLE LISTS */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+.person-item {
+  background: var(--card-light);
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius);
+  text-align: center;
+  font-size: 0.9rem;
+  border: 1px solid var(--muted);
+  color: var(--text);
+}
+
+/* PRIZES */
+.prize-item {
+  background: var(--card-light);
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius);
+  margin: 0.8rem 0;
+  border-left: 3px solid var(--cta);
+}
+.prize-item h3 {
+  margin-top: 0;
+  color: var(--cta);
+}
+.prize-item p {
+  margin: 0.3rem 0;
+  color: var(--text);
+}
+
+/* FOOTER */
+.back{text-align:center;margin:3.3rem 0 3.8rem;font-size:.88rem}
+
+/* anchor offset */
+section[id]{scroll-margin-top:80px}
+
+/* MOBILE IMPROVEMENTS */
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr !important}
+  .wifi-grid{grid-template-columns:1fr}
+  .people-grid{grid-template-columns:repeat(auto-fill, minmax(140px, 1fr))}
+}
+</style>
+</head>
+<body id="top">
+
+<nav id="nav">
+  <div class="shell">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#wifi">Wi-Fi</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#coaches">Coaches</a></li>
+      <li><a href="#judges">Judges</a></li>
+      <li><a href="#prizes">Prizes</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrapper">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="trophy">🏆</div>
+  <h1>Tournament Day Guide 2025</h1>
+  <p>Everything you need to know for the Philadelphia Open Innovation Tournament</p>
+</div>
+
+<!-- WI-FI SECTION -->
+<section id="wifi" class="card">
+  <h2>// Wi-Fi Access</h2>
+  <p>Stay connected throughout the tournament with these network options:</p>
+  
+  <div class="wifi-grid">
+    <div class="wifi-item">
+      <h3>Main Network</h3>
+      <p><strong>Network:</strong> RCOP WIFI</p>
+      <p><strong>Password:</strong> Password1</p>
+    </div>
+    
+    <div class="wifi-item">
+      <h3>Backup Network</h3>
+      <p><strong>Network:</strong> POIT WIFI</p>
+      <p><strong>Password:</strong> Justincase</p>
+    </div>
+    
+    <div class="wifi-item">
+      <h3>Backup Network 2</h3>
+      <p><strong>Network:</strong> Verizon-M3100-Guest-032B</p>
+      <p><strong>Password:</strong> 20c4dda7</p>
+      <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem;">⚠️ Limited to 30 devices</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE SECTION -->
+<section id="schedule" class="card">
+  <h2>// Tournament Schedule</h2>
+  
+  <h3>Saturday: Main Event</h3>
+  
+  <div class="schedule-item">
+    <div class="schedule-time">10:00 AM</div>
+    <p class="schedule-desc"><strong>Opening Remarks by Brad Flaugher</strong> (10 minutes)<br>Advice, purpose, and goals for the tournament</p>
+  </div>
+  
+  <div class="schedule-item">
+    <div class="schedule-time">10:30 AM</div>
+    <p class="schedule-desc"><strong>Christian's AI Demo</strong> (30 minutes)<br>Sample AI-powered project demonstrating what can be accomplished in a short period of time</p>
+  </div>
+  
+  <div class="schedule-item">
+    <div class="schedule-time">10:30 AM - 12:30 PM</div>
+    <p class="schedule-desc"><strong>Round 1: Coaches Invest</strong><br>Teams can request evaluations from coaches starting at 11:15 AM. Top tier individuals advance based on coach investment amounts. Coaches will use play money to invest in participants who demonstrate strong AI building skills.</p>
+  </div>
+  
+  <div class="info-section">
+    <div class="info-header">// Investment Guidelines</div>
+    <p>Coaches will be given fake $10 bills to "invest" in individuals based on their work:</p>
+    
+    <div class="investment-tiers">
+      <div class="tier-item">
+        <span class="tier-amount">$0 invested</span> → The individual didn't use AI tools or show interesting work product. They are invited to try again to earn at least $10.
+      </div>
+      
+      <div class="tier-item">
+        <span class="tier-amount">$10 invested</span> → The individual showed they know how to use AI tooling, even if output wasn't particularly inspiring.
+      </div>
+      
+      <div class="tier-item">
+        <span class="tier-amount">$20 invested</span> → The individual built a compelling website, video, image, agent, codebase, etc. in a short period of time.
+      </div>
+      
+      <div class="tier-item">
+        <span class="tier-amount">$30+ invested</span> → The individual blew the coach's mind! They not only know how to use AI tooling, they can create inspiring output. Their work will be showcased and shared with everyone.
+      </div>
+    </div>
+  </div>
+  
+  <div class="schedule-item">
+    <div class="schedule-time">12:00 PM - 1:00 PM</div>
+    <p class="schedule-desc"><strong>Lunch Break</strong></p>
+  </div>
+  
+  <div class="schedule-item">
+    <div class="schedule-time">1:00 PM</div>
+    <p class="schedule-desc"><strong>Showcase</strong><br>Approximately 3 best submissions from Round 1 will be presented</p>
+  </div>
+  
+  <div class="schedule-item">
+    <div class="schedule-time">1:30 PM</div>
+    <p class="schedule-desc"><strong>Gust Presentation: Idea to Business</strong></p>
+  </div>
+  
+  <div class="schedule-item">
+    <div class="schedule-time">2:00 PM</div>
+    <p class="schedule-desc"><strong>Round 2: Pitch Competition</strong><br>Teams may form. Top 5 advance based on applause. Teams (or individuals) give 1-minute pitches (speaking only, no slides or props). Applause strength tracked via web app at <a href="https://innovationphilly.com/pitch-voting" target="_blank">innovationphilly.com/pitch-voting</a><br><br><strong>Prize:</strong> $1,000 awarded by Ideas To Go at end of Round 2</p>
+  </div>
+  
+  <div class="schedule-item">
+    <div class="schedule-time">3:00 PM</div>
+    <p class="schedule-desc"><strong>Pitches and Voting</strong></p>
+  </div>
+  
+  <div class="schedule-item">
+    <div class="schedule-time">4:30 PM</div>
+    <p class="schedule-desc"><strong>Final 5 Announced</strong></p>
+  </div>
+  
+  <div class="schedule-item">
+    <div class="schedule-time">5:00 PM - 7:00 PM</div>
+    <p class="schedule-desc"><strong>Happy Hour and Networking</strong><br>Open bar for everyone (must show ID)</p>
+  </div>
+  
+  <h3 style="margin-top: 2rem;">Sunday: Finals (Invite Only)</h3>
+  
+  <div class="schedule-item">
+    <div class="schedule-time">10:00 AM - 2:00 PM</div>
+    <p class="schedule-desc"><strong>Round 3: "Shark Tank"</strong><br>Traditional pitches with slides and props allowed. New judges will assess the quality of the idea, team, and work product. Judges will be given play money to invest (investment choices kept secret until the end). Team with most investment wins, ties broken by committee vote.</p>
+  </div>
+</section>
+
+<!-- COACHES SECTION -->
+<section id="coaches" class="card">
+  <h2>// Round 1 Coaches</h2>
+  <p>These experienced professionals will evaluate and invest in Round 1 participants:</p>
+  
+  <div class="people-grid">
+    <div class="person-item">Jamie Catanach</div>
+    <div class="person-item">Adam Hansen</div>
+    <div class="person-item">Beth Storz</div>
+    <div class="person-item">Brad Flaugher</div>
+    <div class="person-item">Greg Cobb</div>
+    <div class="person-item">Josh Devon</div>
+  </div>
+</section>
+
+<!-- JUDGES SECTION -->
+<section id="judges" class="card">
+  <h2>// Round 3 Judges</h2>
+  <p>Meet the panel who will determine the final winners on Sunday:</p>
+  
+  <div class="people-grid">
+    <div class="person-item">Bo Motlagh</div>
+    <div class="person-item">Frank Schultz</div>
+    <div class="person-item">Danae Mobley</div>
+    <div class="person-item">Sheetal Singh</div>
+    <div class="person-item">Joseph Eubel</div>
+    <div class="person-item">Peter Swan</div>
+    <div class="person-item">Ryan Nash</div>
+    <div class="person-item">Jonathan Zaikowski</div>
+    <div class="person-item">Todor Raykov</div>
+  </div>
+</section>
+
+<!-- PRIZES SECTION -->
+<section id="prizes" class="card">
+  <h2>// Round 3 Prizes</h2>
+  <p>Winners of the final round will receive these incredible prizes and opportunities:</p>
+  
+  <div class="prize-item">
+    <h3>🏆 Name on Trophy</h3>
+    <p>Up to two teams may get their names on the trophy and declare themselves victorious.</p>
+  </div>
+  
+  <div class="prize-item">
+    <h3>☁️ AWS Credits</h3>
+    <p>Up to $100,000 in cloud credits from the AWS Activate Program (for qualifying entries that pass AWS's additional prioritized screening)</p>
+  </div>
+  
+  <div class="prize-item">
+    <h3>💰 Seed Investment</h3>
+    <p>$25,000 funding opportunity with NextFab Ventures (for qualifying robotics entries)</p>
+  </div>
+  
+  <div class="prize-item">
+    <h3>🚀 Gust Launch</h3>
+    <p>One team gets free incorporation and one year of legal, cap table & fundraising management from Gust</p>
+  </div>
+  
+  <div class="prize-item">
+    <h3>📈 Startup Acceleration</h3>
+    <p>Gust Mission Control access for 5 teams (CEO school & mentoring)</p>
+  </div>
+</section>
+
+<p class="back"><a href="#top">Back to top // ⬆️</a></p>
+
+</main>
+
+<script>
+// Enhanced navigation script with improved section detection
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all navigation links and sections
+  const navLinks = Array.from(document.querySelectorAll('#nav a[href^="#"]'));
+  const sections = Array.from(document.querySelectorAll('main>section[id]'));
+  
+  // Function to update active navigation state based on scroll position
+  function updateNavigation() {
+    // Get current scroll position - adjust the offset value as needed
+    const scrollPosition = window.scrollY + 150;
+    
+    // Find the current section by checking which one is currently visible
+    let mostVisibleSection = null;
+    let maxVisibleAmount = 0;
+    
+    for (let i = 0; i < sections.length; i++) {
+      const section = sections[i];
+      
+      // Get section dimensions
+      const rect = section.getBoundingClientRect();
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
+      
+      // Calculate how much of the section is visible in the viewport
+      const visibleTop = Math.max(0, sectionTop);
+      const visibleBottom = Math.min(window.innerHeight, sectionTop + sectionHeight);
+      const visibleAmount = Math.max(0, visibleBottom - visibleTop);
+      
+      // If this section has more visible area than previous sections, make it the current one
+      if (visibleAmount > maxVisibleAmount) {
+        maxVisibleAmount = visibleAmount;
+        mostVisibleSection = section;
+      }
+      
+      // Alternative approach: if a section is closer to the top of the viewport, prioritize it
+      if (sectionTop > -100 && sectionTop < 150) {
+        mostVisibleSection = section;
+        break;
+      }
+    }
+    
+    // If no section is visible enough, default to using a calculation based on scroll position
+    if (!mostVisibleSection && sections.length > 0) {
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const nextSection = sections[i + 1];
+        
+        const sectionTop = section.offsetTop - 100;
+        const sectionBottom = nextSection ? nextSection.offsetTop - 100 : document.body.scrollHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          mostVisibleSection = section;
+          break;
+        }
+      }
+      
+      if (!mostVisibleSection) {
+        mostVisibleSection = sections[0];
+      }
+    }
+    
+    // Update active class on navigation links
+    if (mostVisibleSection) {
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href').slice(1);
+        link.classList.toggle('active', href === mostVisibleSection.id);
+      });
+    }
+  }
+  
+  // Initialize navigation on page load
+  updateNavigation();
+  
+  // Add scroll event listener with throttling for performance
+  let scrollTimeout;
+  window.addEventListener('scroll', function() {
+    if (!scrollTimeout) {
+      scrollTimeout = setTimeout(function() {
+        updateNavigation();
+        scrollTimeout = null;
+      }, 50);
+    }
+  });
+  
+  // Add click handlers for smooth scrolling
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - 70,
+          behavior: 'smooth'
+        });
+        
+        setTimeout(updateNavigation, 500);
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
+
