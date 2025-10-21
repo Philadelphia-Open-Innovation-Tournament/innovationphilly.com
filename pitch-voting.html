@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pitch Voting - Applause Meter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0d0221;
+  --card:#1a0a3d;
+  --card-light: #2a1a5d;
+  --text:#f0f0f0;
+  --muted:#a0a0c0;
+  --accent:#00f7ff;
+  --accent-hover:#00d4e3;
+  --cta:#ff00ff;
+  --cta-hover:#e600e6;
+  --radius:14px;
+  --shadow: 0 0 20px rgba(255, 0, 255, 0.4), 0 0 10px rgba(0, 247, 255, 0.4);
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body: 'Share Tech Mono', monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;min-height:100vh;padding:20px;}
+
+.container{max-width:800px;margin:0 auto;}
+
+h1{
+  font-family:var(--font-heading);
+  font-size:clamp(1.8rem,5vw,2.5rem);
+  text-align:center;
+  margin:0 0 30px 0;
+  background: linear-gradient(90deg, var(--accent), var(--cta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:var(--shadow);
+}
+
+.input-group{
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  color:var(--accent);
+  font-weight:bold;
+}
+
+input[type="text"]{
+  width:100%;
+  padding:12px;
+  background:var(--card-light);
+  border:2px solid var(--accent);
+  border-radius:8px;
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+}
+
+input[type="text"]:focus{
+  outline:none;
+  border-color:var(--cta);
+  box-shadow:0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+button{
+  padding:14px 28px;
+  background:linear-gradient(135deg, var(--cta), var(--accent));
+  border:none;
+  border-radius:8px;
+  color:var(--text);
+  font-family:var(--font-heading);
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:all 0.3s;
+  box-shadow:0 4px 15px rgba(255, 0, 255, 0.4);
+}
+
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(255, 0, 255, 0.6);
+}
+
+button:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+  transform:none;
+}
+
+.meter-container{
+  margin:30px 0;
+  text-align:center;
+}
+
+.meter{
+  width:100%;
+  height:60px;
+  background:var(--card-light);
+  border-radius:30px;
+  overflow:hidden;
+  position:relative;
+  border:2px solid var(--accent);
+}
+
+.meter-fill{
+  height:100%;
+  background:linear-gradient(90deg, var(--accent), var(--cta));
+  transition:width 0.1s;
+  box-shadow:0 0 20px rgba(0, 247, 255, 0.8);
+}
+
+.meter-label{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  font-family:var(--font-heading);
+  font-size:24px;
+  font-weight:bold;
+  text-shadow:2px 2px 4px rgba(0,0,0,0.8);
+  z-index:10;
+}
+
+.status{
+  text-align:center;
+  font-size:18px;
+  margin:20px 0;
+  color:var(--cta);
+  font-weight:bold;
+}
+
+.rankings{
+  margin-top:30px;
+}
+
+.ranking-item{
+  background:var(--card-light);
+  padding:15px;
+  margin-bottom:10px;
+  border-radius:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-left:4px solid var(--accent);
+}
+
+.ranking-item.top-1{
+  border-left-color:#FFD700;
+  background:linear-gradient(90deg, rgba(255,215,0,0.1), var(--card-light));
+}
+
+.ranking-item.top-2{
+  border-left-color:#C0C0C0;
+  background:linear-gradient(90deg, rgba(192,192,192,0.1), var(--card-light));
+}
+
+.ranking-item.top-3{
+  border-left-color:#CD7F32;
+  background:linear-gradient(90deg, rgba(205,127,50,0.1), var(--card-light));
+}
+
+.ranking-name{
+  font-weight:bold;
+  flex:1;
+}
+
+.ranking-score{
+  font-family:var(--font-heading);
+  font-size:20px;
+  color:var(--cta);
+  margin-left:20px;
+}
+
+.medal{
+  font-size:24px;
+  margin-right:10px;
+}
+
+.controls{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.warning{
+  background:rgba(255, 0, 255, 0.2);
+  border:2px solid var(--cta);
+  border-radius:8px;
+  padding:15px;
+  margin-bottom:20px;
+  text-align:center;
+}
+
+@media (max-width: 600px){
+  .controls{flex-direction:column;}
+  button{width:100%;}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🎤 Applause Meter</h1>
+  
+  <div class="warning" id="warningBox" style="display:none;">
+    ⚠️ You have unsaved data! Refreshing will lose all measurements.
+  </div>
+
+  <div class="card">
+    <div class="input-group">
+      <label for="pitchName">Pitch/Participant Name:</label>
+      <input type="text" id="pitchName" placeholder="Enter name..." autocomplete="off">
+    </div>
+    
+    <div class="controls">
+      <button id="startBtn" onclick="startMeasurement()">🎙️ Start Measuring</button>
+      <button id="stopBtn" onclick="stopMeasurement()" disabled>⏹️ Stop & Save</button>
+    </div>
+  </div>
+
+  <div class="meter-container" id="meterContainer" style="display:none;">
+    <div class="status" id="status">Ready...</div>
+    <div class="meter">
+      <div class="meter-fill" id="meterFill" style="width:0%"></div>
+      <div class="meter-label" id="meterLabel">0</div>
+    </div>
+    <div style="margin-top:10px;color:var(--muted);font-size:14px;">
+      Peak: <span id="peakValue">0</span> | Current: <span id="currentValue">0</span>
+    </div>
+  </div>
+
+  <div class="rankings" id="rankings">
+    <h2 style="font-family:var(--font-heading);color:var(--accent);">🏆 Rankings</h2>
+    <div id="rankingsList"></div>
+  </div>
+</div>
+
+<script>
+// Local storage key
+const STORAGE_KEY = 'applause_meter_data';
+
+// State
+let audioContext;
+let analyser;
+let microphone;
+let dataArray;
+let animationId;
+let isRecording = false;
+let peakLevel = 0;
+let currentLevel = 0;
+let measurements = [];
+
+// Load data from localStorage
+function loadData() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    try {
+      measurements = JSON.parse(saved);
+      updateRankings();
+      showWarning();
+    } catch (e) {
+      console.error('Failed to load data:', e);
+    }
+  }
+}
+
+// Save data to localStorage
+function saveData() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(measurements));
+    showWarning();
+  } catch (e) {
+    console.error('Failed to save data:', e);
+    alert('Failed to save data to local storage!');
+  }
+}
+
+// Show warning if data exists
+function showWarning() {
+  const warningBox = document.getElementById('warningBox');
+  if (measurements.length > 0) {
+    warningBox.style.display = 'block';
+  } else {
+    warningBox.style.display = 'none';
+  }
+}
+
+// Warn before leaving page
+window.addEventListener('beforeunload', (e) => {
+  if (measurements.length > 0) {
+    e.preventDefault();
+    e.returnValue = 'You have unsaved measurements. Are you sure you want to leave?';
+    return e.returnValue;
+  }
+});
+
+// Initialize audio
+async function initAudio() {
+  try {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    analyser = audioContext.createAnalyser();
+    analyser.fftSize = 256;
+    
+    const bufferLength = analyser.frequencyBinCount;
+    dataArray = new Uint8Array(bufferLength);
+    
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    microphone = audioContext.createMediaStreamSource(stream);
+    microphone.connect(analyser);
+    
+    return true;
+  } catch (error) {
+    alert('Microphone access denied! Please allow microphone access to use the applause meter.');
+    console.error('Audio initialization error:', error);
+    return false;
+  }
+}
+
+// Start measurement
+async function startMeasurement() {
+  const nameInput = document.getElementById('pitchName');
+  const name = nameInput.value.trim();
+  
+  if (!name) {
+    alert('Please enter a pitch/participant name first!');
+    nameInput.focus();
+    return;
+  }
+  
+  // Check if name already exists
+  if (measurements.some(m => m.name.toLowerCase() === name.toLowerCase())) {
+    if (!confirm(`"${name}" already exists. Measure again and replace the score?`)) {
+      return;
+    }
+    // Remove old entry
+    measurements = measurements.filter(m => m.name.toLowerCase() !== name.toLowerCase());
+  }
+  
+  // Initialize audio if needed
+  if (!audioContext) {
+    const success = await initAudio();
+    if (!success) return;
+  }
+  
+  // Reset
+  peakLevel = 0;
+  currentLevel = 0;
+  isRecording = true;
+  
+  // UI updates
+  document.getElementById('startBtn').disabled = true;
+  document.getElementById('stopBtn').disabled = false;
+  document.getElementById('meterContainer').style.display = 'block';
+  document.getElementById('status').textContent = '🎙️ Measuring... Make some noise!';
+  nameInput.disabled = true;
+  
+  // Start animation
+  updateMeter();
+}
+
+// Stop measurement
+function stopMeasurement() {
+  const name = document.getElementById('pitchName').value.trim();
+  
+  if (!isRecording) return;
+  
+  isRecording = false;
+  cancelAnimationFrame(animationId);
+  
+  // Save measurement
+  measurements.push({
+    name: name,
+    score: Math.round(peakLevel),
+    timestamp: new Date().toISOString()
+  });
+  
+  saveData();
+  updateRankings();
+  
+  // UI updates
+  document.getElementById('startBtn').disabled = false;
+  document.getElementById('stopBtn').disabled = true;
+  document.getElementById('status').textContent = `✅ Saved! Peak applause: ${Math.round(peakLevel)}`;
+  document.getElementById('pitchName').value = '';
+  document.getElementById('pitchName').disabled = false;
+  document.getElementById('pitchName').focus();
+  
+  // Reset meter after a delay
+  setTimeout(() => {
+    document.getElementById('meterFill').style.width = '0%';
+    document.getElementById('meterLabel').textContent = '0';
+  }, 2000);
+}
+
+// Update meter animation
+function updateMeter() {
+  if (!isRecording) return;
+  
+  analyser.getByteFrequencyData(dataArray);
+  
+  // Calculate average volume
+  let sum = 0;
+  for (let i = 0; i < dataArray.length; i++) {
+    sum += dataArray[i];
+  }
+  currentLevel = sum / dataArray.length;
+  
+  // Update peak
+  if (currentLevel > peakLevel) {
+    peakLevel = currentLevel;
+  }
+  
+  // Update UI
+  const percentage = (currentLevel / 255) * 100;
+  document.getElementById('meterFill').style.width = percentage + '%';
+  document.getElementById('meterLabel').textContent = Math.round(currentLevel);
+  document.getElementById('peakValue').textContent = Math.round(peakLevel);
+  document.getElementById('currentValue').textContent = Math.round(currentLevel);
+  
+  animationId = requestAnimationFrame(updateMeter);
+}
+
+// Update rankings display
+function updateRankings() {
+  const rankingsList = document.getElementById('rankingsList');
+  
+  if (measurements.length === 0) {
+    rankingsList.innerHTML = '<div style="text-align:center;color:var(--muted);padding:20px;">No measurements yet. Start measuring to see rankings!</div>';
+    return;
+  }
+  
+  // Sort by score descending
+  const sorted = [...measurements].sort((a, b) => b.score - a.score);
+  
+  rankingsList.innerHTML = sorted.map((item, index) => {
+    const rank = index + 1;
+    const medals = ['🥇', '🥈', '🥉'];
+    const medal = rank <= 3 ? medals[rank - 1] : `#${rank}`;
+    const topClass = rank === 1 ? 'top-1' : rank === 2 ? 'top-2' : rank === 3 ? 'top-3' : '';
+    
+    return `
+      <div class="ranking-item ${topClass}">
+        <div style="display:flex;align-items:center;flex:1;">
+          <span class="medal">${medal}</span>
+          <span class="ranking-name">${escapeHtml(item.name)}</span>
+        </div>
+        <div class="ranking-score">${item.score}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Utility: escape HTML
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// Add clear data button
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();
+  
+  // Add clear button to rankings section
+  const rankingsDiv = document.getElementById('rankings');
+  const clearBtn = document.createElement('button');
+  clearBtn.textContent = '🗑️ Clear All Data';
+  clearBtn.style.marginTop = '20px';
+  clearBtn.style.background = 'linear-gradient(135deg, #ff0000, #cc0000)';
+  clearBtn.onclick = () => {
+    if (confirm('Are you sure you want to clear all measurements? This cannot be undone!')) {
+      measurements = [];
+      localStorage.removeItem(STORAGE_KEY);
+      updateRankings();
+      showWarning();
+      alert('All data cleared!');
+    }
+  };
+  rankingsDiv.appendChild(clearBtn);
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && document.activeElement.id === 'pitchName') {
+    e.preventDefault();
+    startMeasurement();
+  }
+  if (e.key === 'Escape' && isRecording) {
+    stopMeasurement();
+  }
+});
+</script>
+
+</body>
+</html>
+
