@@ -3,106 +3,88 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Philadelphia Open Innovation Tournament 2025</title>
+<title>Philadelphia Open Innovation Tournament</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#0d0221;
-  --card:#1a0a3d;
-  --card-light: #2a1a5d;
-  --text:#f0f0f0;
-  --muted:#a0a0c0;
-  --accent:#00f7ff;
-  --accent-hover:#00d4e3;
-  --cta:#ff00ff;
-  --cta-hover:#e600e6;
-  --radius:14px;
-  --shadow: 0 0 20px rgba(255, 0, 255, 0.4), 0 0 10px rgba(0, 247, 255, 0.4);
-  --gap:clamp(.9rem,4vw,1.8rem);
-  --maxw:920px;
-  --fs-hero:clamp(2.2rem,7vw,3.5rem);
-  --fs-h2:clamp(1.5rem,3.5vw,2rem);
-  --fs-h3:1.1rem;
-  --section-spacing: 1.2rem;
-  --list-item-spacing: 0.4rem;
-  --font-heading: 'Orbitron', sans-serif;
-  --font-body: 'Share Tech Mono', monospace;
+  --bg:#ffffff;
+  --bg-secondary:#f8f9fa;
+  --card:#ffffff;
+  --card-border:#e1e4e8;
+  --text:#24292e;
+  --text-secondary:#586069;
+  --muted:#6a737d;
+  --accent:#0366d6;
+  --accent-hover:#0256c7;
+  --accent-light:#e8f2ff;
+  --cta:#0366d6;
+  --cta-hover:#0256c7;
+  --success:#28a745;
+  --radius:8px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --gap:clamp(1rem,4vw,2rem);
+  --maxw:1100px;
+  --fs-hero:clamp(2.5rem,6vw,3.5rem);
+  --fs-h2:clamp(1.75rem,3.5vw,2.25rem);
+  --fs-h3:1.25rem;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
-@keyframes bg-pan {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
-}
+
 /* reset & base */
 *,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
+html,body{margin:0;padding:0;font-family:var(--font-main);-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
 body{background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;}
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-    linear-gradient(rgba(0, 247, 255, 0.2) 1px, transparent 1px),
-    linear-gradient(to right, rgba(0, 247, 255, 0.2) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.3;
-  z-index: -1;
-  animation: bg-pan 90s linear infinite;
-}
-/* Fix for background to extend to the bottom */
-html, body {
-  height: 100%;
-}
 main{
   background:transparent;
   padding-top:2rem;
-  min-height: calc(100% - 235px); /* Adjust if needed to account for header height */
+  min-height: calc(100vh - 200px);
 }
 @media(max-width:500px){body{font-size:15px}}
-img,iframe{max-width:100%;display:block;border-radius:var(--radius); border: 2px solid var(--accent);}
+img,iframe{max-width:100%;display:block;border-radius:var(--radius);}
 a{color:var(--accent);text-decoration:none; transition: all 0.2s ease;}
-a:hover{color: var(--accent-hover); text-shadow: 0 0 8px var(--accent-hover); text-decoration:none;}
+a:hover{color: var(--accent-hover); text-decoration:underline;}
 
 /* layout */
 .wrapper{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gap)}
 .card{
-  background:rgba(26, 10, 61, 0.85);
-  border: 1px solid var(--accent);
-  backdrop-filter: blur(10px);
+  background:var(--card);
+  border: 1px solid var(--card-border);
   border-radius:var(--radius);
-  padding:1.8rem var(--gap);
+  padding:2rem var(--gap);
   box-shadow:var(--shadow);
-  transition:transform .25s, box-shadow .25s;
   margin-bottom:2rem;
 }
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6), 0 0 15px rgba(0, 247, 255, 0.6);
+h1,h2,h3{font-weight:700; line-height:1.2;}
+h2{font-size:var(--fs-h2);margin:0 0 1rem;color: var(--text);}
+h3{font-size:var(--fs-h3);margin:1.5rem 0 0.75rem; color: var(--text);}
+.badge{
+  display:inline-block;
+  background:var(--accent-light);
+  color:var(--accent);
+  padding:.5em .875em;
+  border-radius:20px;
+  font-size:.875rem;
+  margin:.25rem .5rem .25rem 0;
+  font-weight:500;
 }
-h1,h2,h3{font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.1em;}
-h2, summary{word-break: break-word;}
-h2{font-size:var(--fs-h2);margin:0 0 0.8rem;font-weight:700; color: var(--cta); text-shadow: 0 0 10px var(--cta);}
-h3{font-size:var(--fs-h3);margin:1rem 0 0.4rem; color: var(--accent); text-shadow: 0 0 8px var(--accent);}
-.badge{display:inline-block;background:var(--card-light);padding:.45em .75em;border-radius:9999px;font-size:.8rem;margin:.2rem .5rem .2rem 0; border: 1px solid var(--cta); color: var(--cta);}
-.grid{display:grid;gap:1.2rem;margin:1.2rem 0}
+.grid{display:grid;gap:1.5rem;margin:1.5rem 0}
 
-/* NAV - Fixed position to stay on top */
+/* NAV */
 body nav {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   z-index: 1000 !important;
-  background: rgba(13, 2, 33, 0.8) !important;
-  backdrop-filter: saturate(180%) blur(14px) !important;
-  border-bottom: 1px solid var(--accent) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  border-bottom: 1px solid var(--card-border) !important;
   width: 100% !important;
-  box-shadow: 0 2px 8px rgba(0, 247, 255, 0.2) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
 }
 nav .shell{
   max-width:var(--maxw);
@@ -111,523 +93,443 @@ nav .shell{
 }
 nav ul{
   margin:0;
-  padding:.55rem 0;
+  padding:.75rem 0;
   display:flex;
   justify-content:center;
-  gap:.8rem;
+  gap:1rem;
   list-style:none;
   flex-wrap:wrap;
 }
 nav a{
-  font-family: var(--font-heading);
-  font-size:.9rem;
+  font-size:.9375rem;
   color:var(--text);
-  padding:.42em .95em;
-  border-radius:9px;
-  transition:.25s;
+  padding:.5em 1em;
+  border-radius:6px;
+  transition:.2s;
   white-space:nowrap;
-  border: 1px solid transparent;
+  font-weight:500;
 }
-nav a:hover{background:var(--card-light); border-color: var(--accent);}
-nav a.active{background:var(--accent);color:#0d0221; text-shadow: none;}
-nav .cta{background:var(--cta);color:#fff;font-weight:600;border-radius:20px; text-shadow: 0 0 5px #fff;}
-nav .cta:hover{background:var(--cta-hover); box-shadow: 0 0 10px var(--cta-hover);}
+nav a:hover{background:var(--bg-secondary); text-decoration:none;}
+nav a.active{background:var(--accent);color:#fff;}
 @media(max-width:480px){
-  nav ul{gap:.4rem;justify-content:space-between;padding:.7rem 0}
-  nav a{padding:.4em .6em;font-size:.78rem;}
+  nav ul{gap:.5rem;justify-content:space-between;padding:.75rem 0}
+  nav a{padding:.5em .75em;font-size:.875rem;}
 }
 
-/* Add padding to account for the fixed nav */
 body {
-  padding-top: 60px;
+  padding-top: 70px;
 }
 
 /* HERO */
-.hero{text-align:center;padding:5.5rem var(--gap) 3.3rem;background:transparent;}
+.hero{text-align:center;padding:4rem var(--gap) 3rem;background:transparent;}
 .hero h1{
   font-size:var(--fs-hero);
   font-weight:700;
-  margin:0 0 .9rem;
+  margin:0 0 1rem;
   overflow-wrap:break-word;
-  color: #fff;
-  text-shadow: 0 0 5px #fff, 0 0 15px var(--cta), 0 0 25px var(--cta);
+  color: var(--text);
 }
-.hero p{font-size:1.03rem;color:var(--muted);max-width:45ch;margin:0 auto 1rem}
-.trophy{font-size:3.4rem;margin-bottom:1.2rem; animation: float 3s ease-in-out infinite;}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+.hero .subtitle{
+  font-size:1.25rem;
+  color:var(--text-secondary);
+  max-width:50ch;
+  margin:0 auto 1.5rem;
+  line-height:1.5;
 }
-.button{display:inline-block;background:var(--cta);color:#fff;font-weight:600;padding:.75em 1.6em;border-radius:40px;margin-top:1.4rem;transition:.25s; font-family: var(--font-heading); text-transform: uppercase; border: 1px solid var(--cta); box-shadow: 0 0 15px var(--cta);}
-.button:hover{background:var(--cta-hover);transform:translateY(-2px);text-decoration:none; box-shadow: 0 0 25px var(--cta-hover);}
+.hero-icon{font-size:3rem;margin-bottom:1rem;}
 
-/* HERO CTA BOX - Improved */
+/* HERO CTA BOX */
 .hero-cta-box {
-  background: rgba(255, 0, 255, 0.1);
-  border: 1px solid var(--cta);
+  background: var(--accent-light);
+  border: 2px solid var(--accent);
   border-radius: var(--radius);
-  padding: 1.2rem;
-  margin: 1.5rem auto 0;
-  max-width: 420px;
+  padding: 1.5rem;
+  margin: 2rem auto 0;
+  max-width: 500px;
   text-align: center;
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
 }
 .hero-cta-box h3 {
-  color: var(--cta);
+  color: var(--accent);
   margin-top: 0;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  text-shadow: 0 0 8px var(--cta);
 }
-.hero-cta-box ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0.8rem 0 0.5rem;
-  display: inline-block;
-  text-align: left;
-}
-.hero-cta-box li {
-  position: relative;
-  padding-left: 1.4em;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  font-size: 0.95rem;
-}
-.hero-cta-box li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--cta);
-  font-weight: bold;
-  text-shadow: 0 0 5px var(--cta);
+.hero-cta-box p {
+  margin: 0.75rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
 }
 
-/* ACCORDIONS ------------------------------------------------------------- */
-details{background:var(--card-light);border-radius:var(--radius);margin:0.8rem 0;border:1px solid var(--accent)}
-summary{cursor:pointer;padding:1rem 1.5rem;font-weight:600;position:relative; font-family: var(--font-heading);}
-details[open]{background:rgba(0, 247, 255, 0.1);}
-details>div{padding:0.6rem 2.2rem 1rem}
-details ul{list-style:none;margin:0.4rem 0;padding:0}
-details li{padding-left:1.05em;position:relative;margin:0.3rem 0}
-details li::before{content:'»';position:absolute;left:0;color:var(--accent)}
+/* ACCORDIONS */
+details{background:var(--card);border-radius:var(--radius);margin:1rem 0;border:1px solid var(--card-border);box-shadow:var(--shadow);}
+summary{cursor:pointer;padding:1.25rem 1.5rem;font-weight:600;position:relative;}
+details[open]{background:var(--bg-secondary);}
+details>div{padding:0 1.5rem 1.25rem}
+details ul{list-style:none;margin:0.5rem 0;padding:0}
+details li{padding-left:1.5em;position:relative;margin:0.5rem 0}
+details li::before{content:'•';position:absolute;left:0.5em;color:var(--accent);font-weight:bold;}
 
 pre {
-  background: var(--card-light);
+  background: var(--bg-secondary);
   color: var(--text);
   padding: 1rem;
   border-radius: var(--radius);
-  border: 1px solid var(--accent);
+  border: 1px solid var(--card-border);
   overflow-x: auto;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  margin: 0.5rem 0;
-  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0.75rem 0;
 }
 
 /* FOOTER */
-.back{text-align:center;margin:3.3rem 0 3.8rem;font-size:.88rem}
+.back{text-align:center;margin:3rem 0 4rem;font-size:.9375rem}
 
 /* anchor offset */
-section[id]{scroll-margin-top:80px}
+section[id]{scroll-margin-top:90px}
 
 /* WEEKEND FLOW */
 .weekend-flow{margin:1rem 0}
-.weekend-flow p{margin:0.3rem 0}
-.weekend-flow .badge{min-width:120px;text-align:center;margin-bottom:.5rem; font-family: var(--font-body);}
-
-/* WINNER PERKS */
-.winner-perks{margin:1rem 0}
-.winner-perks p{margin:0.3rem 0;padding-left:1.8em;position:relative}
-.winner-perks p::before{content:var(--emoji, '💎');position:absolute;left:0;color:var(--accent)}
+.weekend-flow p{margin:0.5rem 0}
+.weekend-flow .badge{min-width:120px;text-align:center;margin-bottom:.75rem;}
 
 /* HIGHLIGHTS */
-.highlights-list{columns:2;max-width:620px;gap:1.5rem;margin:0.8rem 0}
-.highlights-list li{margin-bottom:0.5rem; break-inside: avoid;}
+.highlights-list{columns:2;max-width:700px;gap:2rem;margin:1rem 0}
+.highlights-list li{margin-bottom:0.75rem; break-inside: avoid;}
 
-
-/* SPONSORS */
-.sponsor-category {
-  margin-bottom: 1.2rem;
+/* FOUNDERS */
+.founders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
 }
-.sponsor-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 0.8rem;
-}
-.sponsor-name {
-  background: var(--card-light);
-  padding: 0.5rem 1rem;
+.founder-item {
+  background: var(--bg-secondary);
+  padding: 1.25rem;
   border-radius: var(--radius);
-  font-size: 0.9rem;
-  transition: transform 0.2s;
-  border: 1px solid var(--muted);
-  color: var(--muted);
+  border: 1px solid var(--card-border);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-.sponsor-name:hover {
+.founder-item:hover {
   transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.founder-item h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  color: var(--text);
+}
+.founder-item p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+.founder-item a {
   color: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 0 0 5px var(--accent);
+  font-weight: 500;
 }
 
 /* INFO SECTION */
 .info-section {
-  background: rgba(0, 122, 255, 0.1);
+  background: var(--accent-light);
   border: 1px solid var(--accent);
   border-radius: var(--radius);
-  padding: 1.5rem var(--gap);
+  padding: 2rem var(--gap);
   margin: 0 0 2rem;
-  font-size: 0.95rem;
-  box-shadow: 0 0 15px rgba(0, 122, 255, 0.2);
+  font-size: 1rem;
 }
 .info-header {
   color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 0.8rem;
-  font-family: var(--font-heading);
-  text-shadow: 0 0 8px var(--accent);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
 }
 
 .footnote {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: var(--muted);
   margin-top: 2rem;
   text-align: center;
+}
+
+/* VALUE PROPS */
+.value-props {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.value-prop {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+}
+.value-prop h3 {
+  margin-top: 0;
+  color: var(--accent);
+}
+.value-prop p {
+  margin: 0.5rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
 }
 
 /* MOBILE IMPROVEMENTS */
 @media(max-width:600px){
   .grid{grid-template-columns:1fr !important}
   .highlights-list{columns:1}
-  details>div{padding:.8rem 1.5rem 1rem}
-  summary{padding:1rem 1.8rem}
-  summary::before{left:.8rem}
+  details>div{padding:0 1.25rem 1.25rem}
+  summary{padding:1rem 1.25rem}
   .weekend-flow .badge {min-width: 100px;}
-  .hero-cta-box {max-width: 320px; padding: 1rem;}
-  body {padding-top: 100px;}
+  .hero-cta-box {max-width: 100%; padding: 1.25rem;}
+  body {padding-top: 80px;}
+  .value-props {grid-template-columns: 1fr;}
+  .founders-grid {grid-template-columns: 1fr;}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV - Simplified for mobile -->
+<!-- NAV -->
 <nav>
   <div class="shell">
     <ul id="nav">
-      <li><a href="#prizes">Prizes</a></li>
-      <li><a href="#how">How to Win</a></li>
-      <li><a href="2025.html">2025</a></li>
-      <li><a href="https://lu.ma/ydlynk0f" target="_blank" class="cta">Register</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#sponsors">Partner With Us</a></li>
+      <li><a href="2025.html">2025 Event</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO with prize info in CTA box -->
+<!-- HERO -->
 <header class="hero">
-  <div class="wrapper">
-    <div class="trophy">🏆</div>
-    <h1>Philly Open Innovation Tournament // 2025</h1>
-    <p>// A high-stakes tournament where brilliant minds interface with opportunity.</p>
-    
-    <!-- New Prize Highlight Box - UPDATED -->
-    <div class="hero-cta-box">
-      <h3>🏆 Prize Opportunities</h3>
-      <ul>
-        <li>$1000 cash prize (Day 1)</li>
-        <li>$100K in cloud compute credits</li>
-        <li>$25K seed investment</li>
-        <li>Startup acceleration</li>
-        <li>Investor connections</li>
-      </ul>
-    </div>
-    
-    <a class="button" href="https://lu.ma/ydlynk0f" target="_blank">Secure your spot</a>
+  <div class="hero-icon">🏆</div>
+  <h1>Philadelphia Open Innovation Tournament</h1>
+  <p class="subtitle">An annual AI-first hackathon connecting Philadelphia's top innovators with corporate sponsors to solve real-world challenges through competitive collaboration.</p>
+  
+  <div class="hero-cta-box">
+    <h3>Interested in Sponsoring?</h3>
+    <p>Partner with us to identify top talent and innovative solutions for your organization's most pressing challenges.</p>
+    <p style="margin-top:1rem;"><a href="#sponsors" style="font-weight:600;">Learn more about partnership opportunities →</a></p>
   </div>
 </header>
 
 <main class="wrapper">
 
-<!-- OVERVIEW -->
-<section id="overview" class="card">
-  <h2 id="system-specs">// SYSTEM SPECS</h2>
-  <p>Two days. One hundred innovators. One spotlight. Day 1 is for everyone; Day 2 is a private finale for the <strong>top five</strong>.</p>
-
-  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(250px,1fr));">
-    <div><h3>// TRANSMISSION DATE & LOCATION</h3><p>📅 Oct 25 (10 AM–5 PM) & Oct 26 (10 AM–2 PM)<br><a href="https://maps.app.goo.gl/5FFYdVTpHSjftoyd9?g_st=ipc" target="_blank">Racquet Club of Philadelphia</a></p></div>
-    <div><h3>// ACCESS FEE</h3><p>💸 $20 pass<br>🍻 +$20 Happy‑Hour wristband</p></div>
-    <div><h3>// NODE CAPACITY</h3><p>👥 100 participants → 5 finalists</p></div>
-    <div><h3>// PROTOCOL</h3><p>🕴️ Smart casual (<a href="https://rcop.com/dress-code/" target="_blank">details</a>)</p></div>
-  </div>
-
-  <h3>// MISSION TIMELINE</h3>
-  <div class="weekend-flow">
-    <p><span class="badge">Sat 10 AM–12 PM</span> Ideation sprint & AI-powered rapid prototyping</p>
-    <p><span class="badge">Sat 12 PM–1 PM</span> Lunch & "From Idea to Business" session (while judges deliberate)</p>
-    <p><span class="badge">Sat 1 PM–5 PM</span> 1-minute pitches & participant voting (participants select who advances!)</p>
-    <p><span class="badge">Sat 5 PM–7 PM</span> Happy‑Hour with open bar 🍻</p>
-    <p><span class="badge">Sun 10 AM–2 PM</span> Finalist pitches (invite‑only)</p>
-    <p><span class="badge">Sun 5 PM</span> Winners Announced</p>
-  </div>
-
-  <p style="margin-top:1.2rem;color:var(--muted)">2024 sold out – snag your ticket while you can!</p>
-</section>
-
-<!-- PRIZES SECTION (moved up in nav, expanded details) - UPDATED WITH LINKS -->
-<section id="prizes" class="card">
-  <h2 id="reward-cache">// REWARD_<wbr>CACHE</h2>
+<!-- ABOUT SECTION -->
+<section id="about" class="card">
+  <h2>What is the Philadelphia Open Innovation Tournament?</h2>
+  <p>The Philadelphia Open Innovation Tournament is an annual competitive event that brings together diverse teams of innovators, technologists, and problem-solvers to tackle real-world challenges using cutting-edge AI tools and methodologies. Inspired by the innovation tournament framework developed by Professors Karl Ulrich and Christian Terwiesch at the University of Pennsylvania, our event creates a structured environment where creativity meets competition.</p>
   
-  <div class="winner-perks" style="margin-top:0.8rem">
-    <p style="--emoji: '💵'"><strong>Day 1 Cash Prize:</strong> $1,000 cash to be announced at the end of Day 1, sponsored by <a href="https://www.ideastogo.com/" target="_blank">Ideas To Go</a>.</p>
-    <p style="--emoji: '☁️'"><strong>AWS Credits:</strong> Up to $100,000 in cloud credits from the <a href="https://aws.amazon.com/activate/activate-landing/" target="_blank">AWS Activate Program</a> (for qualifying entries that pass AWS's additional prioritized screening)</p>
-    <p style="--emoji: '🌱'"><strong>Seed Investment:</strong> $25,000 funding opportunity with <a href="https://nextfabventures.com" target="_blank">NextFab Ventures</a> (for qualifying robotics entries)</p>
-    <p style="--emoji: '🚀'"><strong>Gust Launch:</strong> Free incorporation and one year of legal, cap table & fundraising management from <a href="https://gust.com" target="_blank">Gust</a></p>
-    <p style="--emoji: '📈'"><strong>Startup Acceleration:</strong> <a href="https://gust.com/mission-control/" target="_blank">Gust Mission Control</a> access for 5 teams (CEO school & mentoring)</p>
-    <p style="--emoji: '⚖️'"><strong>Legal Launch Credit:</strong> $5,000 in legal service credits from <a href="https://www.lowenstein.com" target="_blank">Lowenstein Sandler LLP</a>, a leading startup and venture capital law firm. Use toward company formation, financing, or general startup legal support to help you launch the right way.</p>
+  <p>Each year, we partner with corporate sponsors to define a specific challenge or problem domain. Over an intensive weekend, participants work in teams to develop innovative solutions, leveraging AI-first approaches and modern technology stacks. Our rigorous judging process evaluates submissions based on innovation, feasibility, impact, and execution quality.</p>
+
+  <div class="value-props">
+    <div class="value-prop">
+      <h3>🎯 For Sponsors</h3>
+      <p>Access Philadelphia's top technical talent, generate innovative solutions to your challenges, and strengthen your brand presence in the local innovation ecosystem.</p>
+    </div>
+    <div class="value-prop">
+      <h3>💡 For Participants</h3>
+      <p>Compete for prizes, showcase your skills to industry leaders, collaborate with talented peers, and build solutions that matter.</p>
+    </div>
+    <div class="value-prop">
+      <h3>🌟 For Philadelphia</h3>
+      <p>Spotlight local talent, foster innovation, strengthen community connections, and position Philadelphia as a hub for technology and entrepreneurship.</p>
+    </div>
   </div>
 </section>
 
-<!-- BENEFITS SECTION -->
-<section id="benefits" class="card">
-  <h2 id="why-participate">// WHY_<wbr>PARTICIPATE</h2>
+<!-- PROCESS SECTION -->
+<section id="process" class="card">
+  <h2>How It Works</h2>
   
-  <p style="margin-bottom:1.5rem;">Beyond the prizes, here's what makes this tournament a unique opportunity for Philadelphia innovators:</p>
+  <h3>Tournament Structure</h3>
+  <p>Each Philadelphia Open Innovation Tournament follows a proven format designed to maximize creativity, collaboration, and output quality:</p>
   
-  <div class="winner-perks" style="margin-top:0.8rem">
-    <p style="--emoji: '🎓'"><strong>World-Class Learning:</strong> Get access to Wharton insights and methodologies at a fraction of the typical cost. Learn from experts who normally charge thousands per hour.</p>
-    <p style="--emoji: '🤖'"><strong>AI Skill Development:</strong> Challenge your AI skills, expand your thinking, and see great examples you can adapt. Hands-on experience with cutting-edge tools and techniques.</p>
-    <p style="--emoji: '🤝'"><strong>Network Building:</strong> Meet people who can help you succeed in Philadelphia's innovation ecosystem. Connect with fellow innovators, mentors, investors, and sponsors.</p>
-    <p style="--emoji: '📊'"><strong>Live Market Research:</strong> Test your ideas with 100 engaged participants. Get real-time feedback from potential customers and collaborators.</p>
-    <p style="--emoji: '💰'"><strong>Real Opportunities:</strong> Access funding, sponsorship, cloud credits, legal support, and potential investment. Turn your ideas into reality with tangible resources.</p>
+  <details>
+    <summary><strong>Phase 1: Challenge Definition & Team Formation</strong></summary>
+    <div>
+      <p>Working with our sponsor partners, we define a specific challenge or problem domain that addresses real business needs. Participants register individually or as teams, and we facilitate team formation to ensure diverse skill sets and perspectives.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><strong>Phase 2: Intensive Development Weekend</strong></summary>
+    <div>
+      <p>Teams gather for an intensive weekend of ideation, development, and iteration. We provide:</p>
+      <ul>
+        <li>Access to AI tools and development resources</li>
+        <li>Mentorship from industry experts</li>
+        <li>Structured checkpoints and guidance</li>
+        <li>Collaborative workspace and networking opportunities</li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary><strong>Phase 3: Judging & Recognition</strong></summary>
+    <div>
+      <p>Teams present their solutions to a panel of judges comprising sponsor representatives, industry experts, and community leaders. Evaluation criteria include:</p>
+      <ul>
+        <li>Innovation and creativity</li>
+        <li>Technical execution and feasibility</li>
+        <li>Potential impact and scalability</li>
+        <li>Alignment with challenge objectives</li>
+      </ul>
+      <p>Winners receive prizes, recognition, and opportunities for continued engagement with sponsor organizations.</p>
+    </div>
+  </details>
+
+  <h3>AI-First Approach</h3>
+  <p>Our tournament emphasizes AI-first methodologies, encouraging participants to leverage large language models, machine learning tools, and modern AI frameworks to accelerate development and enhance solution quality. This approach reflects the evolving landscape of technology and prepares participants for the future of work.</p>
+</section>
+
+<!-- TRACK RECORD SECTION -->
+<section id="track-record" class="card">
+  <h2>Our Track Record</h2>
+  <p>Since our inaugural event in 2024, the Philadelphia Open Innovation Tournament has established itself as a premier innovation event in the region. We have successfully executed two annual tournaments, each attracting dozens of talented participants and generating innovative solutions to real-world challenges.</p>
+
+  <div class="value-props">
+    <div class="value-prop">
+      <h3>📊 Proven Results</h3>
+      <p>Two successful annual events with strong participant turnout, high-quality submissions, and positive sponsor feedback.</p>
+    </div>
+    <div class="value-prop">
+      <h3>🤝 Strong Community</h3>
+      <p>Built a network of innovators, mentors, judges, and supporters committed to Philadelphia's growth.</p>
+    </div>
+    <div class="value-prop">
+      <h3>🚀 Real Impact</h3>
+      <p>Generated actionable solutions, connected talent with opportunities, and elevated Philadelphia's innovation profile.</p>
+    </div>
   </div>
+
+  <h3>Past Events</h3>
+  <ul class="highlights-list">
+    <li><a href="2025.html">2025 Tournament</a></li>
+    <li><a href="https://technical.ly/workforce/philadelphia-innovation-tournament-ai-lift/" target="_blank">Technical.ly Coverage: AI Lift for Philly</a></li>
+    <li><a href="https://lu.ma/clcrvyvw" target="_blank">2024 Tournament Participants</a></li>
+    <li><a href="https://www.linkedin.com/posts/josh-devon_innovation-philadelphia-entrepreneurship-activity-7256652680134111233-VFiN" target="_blank">2024 Winners Announcement</a></li>
+    <li><a href="https://innovationphilly.com/guide.pdf" target="_blank">2024 Guide PDF</a></li>
+    <li><a href="https://photos.app.goo.gl/MrFBjVSSjvspUu3k9" target="_blank">2024 Event Photos</a></li>
+  </ul>
 </section>
 
-<!-- HOW TO WIN -->
-<section id="how" class="card">
-  <h2 id="strategic-directives">// STRATEGIC_<wbr>DIRECTIVES</h2>
-  <p>Five moves the champs used last year — tap to expand.</p>
-
-  <details><summary>Idea Generation 💡 — Wharton Professor's AI Prompt</summary><div>
-    <p>Prof. Ethan Mollick from Wharton recommends this powerful prompt structure for product ideation:</p>
-    <pre>Generate new product ideas with the following requirements:
-  The product will target college students in the United States. It should be a physical good, not a service or software. I'd like a product that could be sold at a retail price of less than about USD 50. The ideas are just ideas. The product need not yet exist, nor may it necessarily be clearly feasible.
-  Follow these steps. Do each step, even if you think you do not need to:
-  1.First, generate a list of 100 ideas (short title only).
-  2.Second, go through the list and determine whether the ideas are different and bold. Modify the ideas as needed to make them bolder and more different. No two ideas should be the same. This is important!
-  3.Next, give the ideas a name and combine it with a product description. The name and idea are separated by a colon and followed by a description. The idea should be expressed as a paragraph of 40–80 words.
-  Do this step by step!</pre>
-    <ul>
-      <li>Simply modify the target market, product type, and price point for your needs.</li>
-      <li>This structured approach forces the AI to think broadly before refining.</li>
-      <li>The step-by-step instructions prevent AI from skipping important ideation stages.</li>
-      <li>Requiring uniqueness and boldness pushes past generic first-round ideas.</li>
-    </ul>
-  </div></details>
-
-  <details><summary>Synthetic Customer Feedback 🗣️ — AI as your ideal users</summary><div>
-    <p>Recent academic research shows that AI can effectively simulate diverse customer perspectives. Try this prompt structure:</p>
-    <pre>I'm developing [product name], which is [brief description].
-  
-  You will now act as my ideal customer persona with these characteristics:
-  - Demographics: [age, gender, location, income level]
-  - Goals: [what they're trying to accomplish]
-  - Pain points: [current frustrations]
-  - Values: [what matters most to them]
-  
-  As this persona, please:
-  1. Evaluate my product concept honestly
-  2. Tell me what you like and dislike about it
-  3. Describe how you would use it in your daily life 
-  4. Share how much you would pay for it and why
-  5. Explain what would make you choose this over alternatives
-  
-  Be specific and constructive. Don't hold back criticism—I need authentic feedback.</pre>
-    <ul>
-      <li>Create 5-7 diverse personas to identify blind spots in your concept.</li>
-      <li>Research suggests AI-generated feedback can surface more unique issues than traditional methods.</li>
-      <li>Use this approach to rapidly iterate before real customer testing.</li>
-      <li>Generate likely objections from different stakeholder groups.</li>
-    </ul>
-  </div></details>
-
-  <details><summary>Prototyping ⚡ — Make a landing page in minutes</summary><div>
-    <p>For an example of what can be done with almost no effort see <a href="https://lnupsupz.manus.space" target="_blank">our sample landing page</a> and how it was made by Manus with two prompts → <a href="https://manus.im/share/aoNH8bcsb75aKUUjSPzWJU?replay=1" target="_blank">see the full process here</a>.</p>
-    <ul>
-      <li>Generate UI mockups, product visualizations, and branding elements.</li>
-      <li>Develop marketing copy, documentation, and user guides.</li>
-      <li>Create code snippets or entire proof-of-concept applications.</li>
-    </ul>
-  </div></details>
-
-  <details><summary>Stress‑Test 🛡️ — Debate to improve</summary><div>
-    <ul>
-      <li>Ask AI to be competitor, skeptic, and regulator—patch every hole.</li>
-      <li>Have AI evaluate your concept against potential competitors.</li>
-      <li>Identify technical, operational, or market barriers.</li>
-      <li>Use AI to highlight potential compliance issues.</li>
-    </ul>
-  </div></details>
-
-  <details><summary>Nail the Narrative 🎤 — Pitch like a trailer</summary><div>
-    <ul>
-      <li>Problem → aha → impact. Rehearse Q&A with ChatGPT as the grumpiest investor.</li>
-      <li>Have AI help craft a compelling story around your innovation.</li>
-      <li>Generate professional slides and visual aids.</li>
-      <li>Practice with AI by simulating judge questions.</li>
-    </ul>
-  </div></details>
-
-  <details open><summary>Recommended AI Toolkit 🔧</summary><div>
-    <ul>
-      <li>📱 Smartphone or 💻 Laptop.</li>
-      <li>🤖 <strong>Frontier AI:</strong> <a href="https://chatgpt.com" target="_blank">ChatGPT Plus</a> or <a href="https://manus.im" target="_blank">Manus Basic</a> are recommended for beginners. Advanced users may prefer Claude Code, Gamma, AdamCAD or other AI tools based on their specific needs.</li>
-    </ul>
-    <p style="margin-top:0.5rem">We highly recommend using the <strong>paid tiers</strong> of most AI tools for access to the most advanced models and features.</p>
-  </div></details>
-</section>
-
-<!-- SPONSORS SECTION - UPDATED WITH AWS -->
+<!-- SPONSORS SECTION -->
 <section id="sponsors" class="card">
-  <h2 id="allies-&-affiliates">// ALLIES & AFFILIATES</h2>
-  
-  <div class="sponsor-category">
-    <h3>Founding Sponsors</h3>
-    <div class="sponsor-row">
-      <a href="https://www.sublimestrategy.com/" target="_blank" class="sponsor-name">Sublime Strategy</a>
-      <a href="https://bradflaugher.com" target="_blank" class="sponsor-name">Brad Flaugher</a>
-      <a href="https://www.ideastogo.com/" target="_blank" class="sponsor-name">Ideas To Go</a>
-      <a href="https://nextfabventures.com/" target="_blank" class="sponsor-name">NextFab Ventures</a>
-      <a href="https://www.sep.benfranklin.org/" target="_blank" class="sponsor-name">BFTP</a>
-      <a href="https://www.ioassociates.com/" target="_blank" class="sponsor-name">iO associates</a>
-    </div>
-  </div>
-  
-  <div class="sponsor-category">
-    <h3>Innovation Partners</h3>
-    <div class="sponsor-row">
-      <a href="https://aws.amazon.com" target="_blank" class="sponsor-name">AWS</a>
-      <a href="https://www.1phl.org/" target="_blank" class="sponsor-name">1Philadelphia</a>
-      <a href="https://gust.com/" target="_blank" class="sponsor-name">Gust</a>
-      <a href="https://www.claconnect.com/" target="_blank" class="sponsor-name">CLA</a>
-      <a href="https://www.lowenstein.com" target="_blank" class="sponsor-name">Lowenstein Sandler</a>
-      <a href="https://www.xpanse.com" target="_blank" class="sponsor-name">Xpanse</a>
-    </div>
-  </div>
+  <h2>Partner With Us</h2>
+  <p>We are actively seeking corporate sponsors for future tournaments. Partnership with the Philadelphia Open Innovation Tournament offers unique opportunities to:</p>
 
-  <div class="sponsor-category">
-    <h3>Media Partners</h3>
-    <div class="sponsor-row">
-      <a href="http://technical.ly/" target="_blank" class="sponsor-name">Technical.ly</a>
+  <ul style="list-style:none;padding:0;margin:1.5rem 0;">
+    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">✓</span> <strong>Access Top Talent:</strong> Connect with Philadelphia's most skilled technologists, innovators, and problem-solvers.</li>
+    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">✓</span> <strong>Generate Innovative Solutions:</strong> Receive multiple high-quality approaches to your specific business challenges.</li>
+    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">✓</span> <strong>Strengthen Brand Presence:</strong> Demonstrate your commitment to innovation and community engagement.</li>
+    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">✓</span> <strong>Shape the Challenge:</strong> Define the problem domain and evaluation criteria to align with your organizational priorities.</li>
+    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">✓</span> <strong>Recruit Talent:</strong> Identify potential hires and build relationships with emerging professionals.</li>
+  </ul>
+
+  <p style="margin-top:2rem;padding:1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1px solid var(--accent);"><strong>Interested in sponsoring a future tournament?</strong> We work with sponsors to customize partnership packages that align with your objectives and budget. Contact us to discuss opportunities.</p>
+
+  <h3 style="margin-top:2.5rem;">Tournament Founders</h3>
+  <div class="founders-grid">
+    <div class="founder-item">
+      <h3><a href="https://www.ideastogo.com/" target="_blank">Ideas To Go</a></h3>
+      <p>Innovation consulting firm</p>
+    </div>
+    <div class="founder-item">
+      <h3>Brad Flaugher</h3>
+      <p>Tournament co-founder</p>
+    </div>
+    <div class="founder-item">
+      <h3><a href="https://www.sublimedatastrategy.com/" target="_blank">Sublime Strategy</a></h3>
+      <p>Data strategy consulting</p>
+    </div>
+    <div class="founder-item">
+      <h3><a href="https://gsdat.work/" target="_blank">GSD at Work</a></h3>
+      <p>Productivity solutions</p>
     </div>
   </div>
 </section>
 
-<!-- HIGHLIGHTS SECTION -->
-<section id="highlights" class="card">
-  <h2 id="archived-logs-2025">// ARCHIVED_<wbr>LOGS_<wbr>2025</h2>
+<!-- EXTERNAL LINKS -->
+<section id="resources" class="card">
+  <h2>Resources</h2>
   <ul class="highlights-list">
-    <li><a href="2025.html">2025 Day Guide Webpage</a></li>
-    <li><a href="https://technical.ly/workforce/philadelphia-innovation-tournament-ai-lift/" target="_blank">AI Lift for Philly's Innovation Scene</a></li>
-  </ul>
-  <h2 id="archived-logs-2024">// ARCHIVED_<wbr>LOGS_<wbr>2024</h2>
-  <ul class="highlights-list">
-    <li><a href="https://lu.ma/clcrvyvw" target="_blank">Participant list</a></li>
-    <li><a href="https://www.linkedin.com/posts/josh-devon_innovation-philadelphia-entrepreneurship-activity-7256652680134111233-VFiN" target="_blank">Winners</a></li>
-    <li><a href="https://innovationphilly.com/guide.pdf" target="_blank">Guide PDF</a></li>
-    <li><a href="https://innovationphilly.com/guide.mp3" target="_blank">Audio Brief</a></li>
-    <li><a href="https://photos.app.goo.gl/MrFBjVSSjvspUu3k9" target="_blank">Photos</a></li>
-  </ul>
-  <h2 id="external-links">// EXTERNAL_<wbr>LINKS</h2>
-  <ul class="highlights-list">
-    <li><a href="https://github.com/Philadelphia-Open-Innovation-Tournament" target="_blank">Open‑source repos</a></li>
-    <li><a href="https://www.youtube.com/watch?v=aRZCD8wU5bw" target="_blank">Innovation Tournaments Overview</a></li>
+    <li><a href="https://github.com/Philadelphia-Open-Innovation-Tournament" target="_blank">Open-source repositories</a></li>
+    <li><a href="https://www.youtube.com/watch?v=aRZCD8wU5bw" target="_blank">Innovation Tournaments Overview (Video)</a></li>
   </ul>
 </section>
 
 <!-- MISSION INFO SECTION -->
 <div class="info-section">
-  <div class="info-header">// PRIMARY_<wbr>DIRECTIVE</div>
-  <p>"Our goal is to accelerate Philadelphia's growth by spotlighting and empowering the city's most promising innovators."</p>
-  <p>The Philadelphia Open Innovation Tournament is inspired by the framework developed by Profs. Karl Ulrich and Christian Terwiesch at UPenn. It brings together diverse minds to solve real-world challenges through friendly competition.</p>
-  <p style="margin-top:0.6rem">Join us in this exhilarating journey of innovation and impact. Be part of shaping Philadelphia's future!</p>
+  <div class="info-header">Our Mission</div>
+  <p><strong>"Accelerate Philadelphia's growth by spotlighting and empowering the city's most promising innovators."</strong></p>
+  <p>The Philadelphia Open Innovation Tournament is inspired by the framework developed by Professors Karl Ulrich and Christian Terwiesch at the University of Pennsylvania. We bring together diverse minds to solve real-world challenges through friendly competition, creating opportunities for talent to shine and for organizations to benefit from fresh perspectives and innovative solutions.</p>
+  <p style="margin-top:1rem">Join us in shaping Philadelphia's future as a hub for innovation, technology, and entrepreneurship.</p>
 </div>
 
 <p class="footnote">
-  P.O.I.T. is organized by Medusa Intelligence Corporation.
+  The Philadelphia Open Innovation Tournament is organized by Medusa Intelligence Corporation.
 </p>
 
-<p class="back"><a href="#top">Back to top // ⬆️</a></p>
+<p class="back"><a href="#top">Back to top ↑</a></p>
 </main>
 
 <script>
-// Enhanced navigation script with improved section detection
+// Navigation script
 document.addEventListener('DOMContentLoaded', function() {
-  // Get all navigation links and sections
   const navLinks = Array.from(document.querySelectorAll('#nav a[href^="#"]'));
   const sections = Array.from(document.querySelectorAll('main>section[id]'));
   
-  // Function to update active navigation state based on scroll position
   function updateNavigation() {
-    // Get current scroll position - adjust the offset value as needed
-    const scrollPosition = window.scrollY + 150; // Increased from 100 to 150
+    const scrollPosition = window.scrollY + 150;
     
-    // Find the current section by checking which one is currently visible
-    // We'll use a better algorithm to determine the "most visible" section
     let mostVisibleSection = null;
     let maxVisibleAmount = 0;
     
     for (let i = 0; i < sections.length; i++) {
       const section = sections[i];
-      
-      // Get section dimensions
       const rect = section.getBoundingClientRect();
       const sectionTop = rect.top;
       const sectionHeight = rect.height;
       
-      // Calculate how much of the section is visible in the viewport
       const visibleTop = Math.max(0, sectionTop);
       const visibleBottom = Math.min(window.innerHeight, sectionTop + sectionHeight);
       const visibleAmount = Math.max(0, visibleBottom - visibleTop);
       
-      // If this section has more visible area than previous sections, make it the current one
       if (visibleAmount > maxVisibleAmount) {
         maxVisibleAmount = visibleAmount;
         mostVisibleSection = section;
       }
       
-      // Alternative approach: if a section is closer to the top of the viewport, prioritize it
-      // This helps when quickly scrolling between sections
       if (sectionTop > -100 && sectionTop < 150) {
         mostVisibleSection = section;
-        break; // Prioritize this section if it's near the top of the viewport
+        break;
       }
     }
     
-    // If no section is visible enough, default to using a calculation based on scroll position
     if (!mostVisibleSection && sections.length > 0) {
-      // Find section based on scroll position
       for (let i = 0; i < sections.length; i++) {
         const section = sections[i];
         const nextSection = sections[i + 1];
         
-        // Get section top position including scroll
         const sectionTop = section.offsetTop - 100;
         const sectionBottom = nextSection ? nextSection.offsetTop - 100 : document.body.scrollHeight;
         
-        // If we're between this section's top and the next section's top, this is the active section
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
           mostVisibleSection = section;
           break;
         }
       }
       
-      // If still no section found, use the first one
       if (!mostVisibleSection) {
         mostVisibleSection = sections[0];
       }
     }
     
-    // Update active class on navigation links
     if (mostVisibleSection) {
       navLinks.forEach(link => {
         const href = link.getAttribute('href').slice(1);
@@ -636,34 +538,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Initialize navigation on page load
   updateNavigation();
   
-  // Add scroll event listener with throttling for performance
   let scrollTimeout;
   window.addEventListener('scroll', function() {
     if (!scrollTimeout) {
       scrollTimeout = setTimeout(function() {
         updateNavigation();
         scrollTimeout = null;
-      }, 50); // Reduced from 100ms to 50ms for more responsive updates
+      }, 50);
     }
   });
   
-  // Add click handlers for smooth scrolling
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const targetId = this.getAttribute('href');
       const targetSection = document.querySelector(targetId);
       if (targetSection) {
-        // Smooth scroll to target
         window.scrollTo({
-          top: targetSection.offsetTop - 70, // Offset to account for fixed nav
+          top: targetSection.offsetTop - 80,
           behavior: 'smooth'
         });
         
-        // Update active navigation after scroll
         setTimeout(updateNavigation, 500);
       }
     });
@@ -672,3 +569,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
+
