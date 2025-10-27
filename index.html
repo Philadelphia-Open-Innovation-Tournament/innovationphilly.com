@@ -32,6 +32,9 @@
   --fs-h2:clamp(1.75rem,3.5vw,2.25rem);
   --fs-h3:1.25rem;
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 }
 
 /* reset & base */
@@ -57,6 +60,11 @@ a:hover{color: var(--accent-hover); text-decoration:underline;}
   padding:2rem var(--gap);
   box-shadow:var(--shadow);
   margin-bottom:2rem;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 h1,h2,h3{font-weight:700; line-height:1.2;}
 h2{font-size:var(--fs-h2);margin:0 0 1rem;color: var(--text);}
@@ -121,13 +129,35 @@ body {
 }
 
 /* HERO */
-.hero{text-align:center;padding:4rem var(--gap) 3rem;background:transparent;}
+.hero{
+  text-align:center;
+  padding:4rem var(--gap) 3rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+  animation: pulse 15s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
 .hero h1{
   font-size:var(--fs-hero);
   font-weight:700;
   margin:0 0 1rem;
   overflow-wrap:break-word;
   color: var(--text);
+  position: relative;
+  z-index: 1;
 }
 .hero .subtitle{
   font-size:1.25rem;
@@ -135,8 +165,20 @@ body {
   max-width:50ch;
   margin:0 auto 1.5rem;
   line-height:1.5;
+  position: relative;
+  z-index: 1;
 }
-.hero-icon{font-size:3rem;margin-bottom:1rem;}
+.hero-icon{
+  font-size:3rem;
+  margin-bottom:1rem;
+  position: relative;
+  z-index: 1;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
 
 /* HERO CTA BOX */
 .hero-cta-box {
@@ -288,6 +330,38 @@ section[id]{scroll-margin-top:90px}
   .value-props {grid-template-columns: 1fr;}
   .founders-grid {grid-template-columns: 1fr;}
 }
+
+/* IMAGE GALLERY */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  aspect-ratio: 16 / 9;
+}
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+@media(max-width:600px){
+  .image-gallery {grid-template-columns: 1fr;}
+}
 </style>
 </head>
 <body>
@@ -416,6 +490,22 @@ section[id]{scroll-margin-top:90px}
     <li><a href="https://innovationphilly.com/guide.pdf" target="_blank">2024 Guide PDF</a></li>
     <li><a href="https://photos.app.goo.gl/MrFBjVSSjvspUu3k9" target="_blank">2024 Event Photos</a></li>
   </ul>
+
+  <h3>Event Highlights</h3>
+  <div class="image-gallery">
+    <div class="gallery-item">
+      <img src="images/event-stylized-1.jpg" alt="Philadelphia Open Innovation Tournament presentation session" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="images/event-stylized-2.jpg" alt="Tournament participants engaged in collaborative work" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="images/event-stylized-3.jpg" alt="Innovation tournament team meeting" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="images/event-stylized-4.jpg" alt="Networking and collaboration at the tournament" loading="lazy">
+    </div>
+  </div>
 </section>
 
 <!-- SPONSORS SECTION -->
@@ -440,8 +530,8 @@ section[id]{scroll-margin-top:90px}
       <p>Innovation consulting firm</p>
     </div>
     <div class="founder-item">
-      <h3>Brad Flaugher</h3>
-      <p>Tournament co-founder</p>
+      <h3><a href="https://bradflaugher.com/" target="_blank">Brad Flaugher</a></h3>
+      <p>Independent Consultant & Tournament Co-Founder</p>
     </div>
     <div class="founder-item">
       <h3><a href="https://www.sublimedatastrategy.com/" target="_blank">Sublime Strategy</a></h3>
