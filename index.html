@@ -162,7 +162,14 @@ body {
   gap: 1rem;
   margin: 2rem 0 1rem;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.hero-image-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 @media(max-width:1024px){
@@ -209,10 +216,21 @@ body {
   }
   .hero-image-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
   .hero-image-grid img {
     height: 150px;
     scroll-snap-align: start;
+  }
+}
+
+@media(max-width:480px){
+  .hero-image-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .hero-image-grid img {
+    height: 180px;
   }
 }
 
@@ -551,7 +569,7 @@ section[id]{scroll-margin-top:90px}
 <!-- PAST EVENTS SECTION -->
 <section id="past-events" class="card">
   <h2>Past Events</h2>
-  <p>Since our inaugural event in 2024, the Philadelphia Open Innovation Tournament has established itself as a premier innovation event in the region. We have successfully executed two annual tournaments, each attracting dozens of talented participants and generating innovative solutions to real-world challenges.</p>
+  <p>Since our inaugural event in 2024, the Philadelphia Open Innovation Tournament has established itself as a premier innovation event in the region. We have successfully executed two annual tournaments, attracting hundreds of talented participants and generating innovative solutions to real-world challenges.</p>
 
   <div class="past-events-grid">
     <div class="event-card">
