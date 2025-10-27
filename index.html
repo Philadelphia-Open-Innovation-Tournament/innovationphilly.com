@@ -161,20 +161,13 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin: 2rem 0 1rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
 }
 
-.hero-image-grid::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-
-@media(max-width:1024px){
+/* Responsive breakpoints to avoid 3+1 layout */
+/* Large screens: 4 across */
+@media(max-width:900px){
   .hero-image-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -215,16 +208,15 @@ body {
     font-size: 1rem;
   }
   .hero-image-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
   }
   .hero-image-grid img {
     height: 150px;
-    scroll-snap-align: start;
   }
 }
 
-@media(max-width:480px){
+/* Small mobile: 1 column (1x1x1x1) */
+@media(max-width:500px){
   .hero-image-grid {
     grid-template-columns: 1fr;
     gap: 0.5rem;
