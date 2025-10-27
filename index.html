@@ -158,9 +158,17 @@ body {
 
 .hero-image-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin: 2rem 0 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+@media(max-width:1024px){
+  .hero-image-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .hero-image-grid img {
@@ -200,10 +208,11 @@ body {
     font-size: 1rem;
   }
   .hero-image-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
   .hero-image-grid img {
     height: 150px;
+    scroll-snap-align: start;
   }
 }
 
@@ -566,21 +575,17 @@ section[id]{scroll-margin-top:90px}
     <div class="event-card">
       <div class="event-year">2024</div>
       <div class="event-links">
-        <a href="https://lu.ma/clcrvyvw" target="_blank" class="event-link">
+        <a href="guide.pdf" target="_blank" class="event-link">
           <span class="event-link-icon">📋</span>
-          <span class="event-link-text">Event Page</span>
+          <span class="event-link-text">Event Details</span>
         </a>
         <a href="https://www.linkedin.com/posts/josh-devon_innovation-philadelphia-entrepreneurship-activity-7256652680134111233-VFiN" target="_blank" class="event-link">
           <span class="event-link-icon">🏆</span>
-          <span class="event-link-text">Winners Announcement</span>
+          <span class="event-link-text">Winners</span>
         </a>
         <a href="https://photos.app.goo.gl/MrFBjVSSjvspUu3k9" target="_blank" class="event-link">
           <span class="event-link-icon">📸</span>
           <span class="event-link-text">Photo Album</span>
-        </a>
-        <a href="guide.pdf" target="_blank" class="event-link">
-          <span class="event-link-icon">📄</span>
-          <span class="event-link-text">Guide PDF</span>
         </a>
       </div>
     </div>
@@ -598,11 +603,11 @@ section[id]{scroll-margin-top:90px}
   <p>We are actively seeking corporate sponsors for future tournaments. Partnership with the Philadelphia Open Innovation Tournament offers unique opportunities to:</p>
 
   <ul style="list-style:none;padding:0;margin:1.5rem 0;">
-    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">✓</span> <strong>Access Top Talent:</strong> Connect with Philadelphia's most skilled technologists, innovators, and problem-solvers.</li>
-    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">✓</span> <strong>Generate Innovative Solutions:</strong> Receive multiple high-quality approaches to your specific business challenges.</li>
-    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">✓</span> <strong>Strengthen Brand Presence:</strong> Demonstrate your commitment to innovation and community engagement.</li>
-    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">✓</span> <strong>Shape the Challenge:</strong> Define the problem domain and evaluation criteria to align with your organizational priorities.</li>
-    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">✓</span> <strong>Recruit Talent:</strong> Identify potential hires and build relationships with emerging professionals.</li>
+    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">🎯</span> <strong>Access Top Talent:</strong> Connect with Philadelphia's most skilled technologists, innovators, and problem-solvers.</li>
+    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">💡</span> <strong>Generate Innovative Solutions:</strong> Receive multiple high-quality approaches to your specific business challenges.</li>
+    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">🚀</span> <strong>Strengthen Brand Presence:</strong> Demonstrate your commitment to innovation and community engagement.</li>
+    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">⚙️</span> <strong>Shape the Challenge:</strong> Define the problem domain and evaluation criteria to align with your organizational priorities.</li>
+    <li style="padding-left:2em;position:relative;margin:0.75rem 0;"><span style="position:absolute;left:0;color:var(--accent);font-weight:bold;">🤝</span> <strong>Recruit Talent:</strong> Identify potential hires and build relationships with emerging professionals.</li>
   </ul>
 
   <p style="margin-top:2rem;padding:1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1px solid var(--accent);"><strong>Interested in sponsoring a future tournament?</strong> We work with sponsors to customize partnership packages that align with your objectives and budget. <a href="#founders" style="font-weight:600;">Contact our founders below →</a></p>
@@ -633,20 +638,11 @@ section[id]{scroll-margin-top:90px}
   </div>
 </section>
 
-<!-- EXTERNAL LINKS -->
-<section id="resources" class="card">
-  <h2>Resources</h2>
-  <ul class="highlights-list">
-    <li><a href="https://github.com/Philadelphia-Open-Innovation-Tournament" target="_blank">Open-source repositories</a></li>
-    <li><a href="https://www.youtube.com/watch?v=aRZCD8wU5bw" target="_blank">Innovation Tournaments Overview (Video)</a></li>
-  </ul>
-</section>
-
 <!-- MISSION INFO SECTION -->
 <div class="info-section">
   <div class="info-header">Our Mission</div>
   <p><strong>"Accelerate Philadelphia's growth by spotlighting and empowering the city's most promising innovators."</strong></p>
-  <p>The Philadelphia Open Innovation Tournament is inspired by the framework developed by Professors Karl Ulrich and Christian Terwiesch at the University of Pennsylvania. We bring together diverse minds to solve real-world challenges through friendly competition, creating opportunities for talent to shine and for organizations to benefit from fresh perspectives and innovative solutions.</p>
+  <p>The Philadelphia Open Innovation Tournament is inspired by the <a href="https://innovationtournaments.com/" target="_blank">framework developed by Professors Karl Ulrich and Christian Terwiesch</a> at the University of Pennsylvania. We bring together diverse minds to solve real-world challenges through friendly competition, creating opportunities for talent to shine and for organizations to benefit from fresh perspectives and innovative solutions.</p>
   <p style="margin-top:1rem">Join us in shaping Philadelphia's future as a hub for innovation, technology, and entrepreneurship.</p>
 </div>
 
