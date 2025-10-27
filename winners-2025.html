@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Winners 2025 - Philadelphia Open Innovation Tournament</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a1a;
+  --bg-secondary:#151525;
+  --card:#1a1a2e;
+  --card-border:#2a2a3e;
+  --text:#e8e8f0;
+  --text-secondary:#b0b0c8;
+  --muted:#8080a0;
+  --accent:#667eea;
+  --accent-hover:#7e8ef5;
+  --accent-light:#2a2a4e;
+  --gold:#ffd700;
+  --silver:#c0c0c0;
+  --bronze:#cd7f32;
+  --radius:12px;
+  --shadow: 0 4px 6px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.2);
+  --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.5), 0 10px 10px -5px rgba(0,0,0,0.3);
+  --gap:clamp(1rem,4vw,2rem);
+  --maxw:1100px;
+  --fs-hero:clamp(2.5rem,6vw,3.5rem);
+  --fs-h2:clamp(1.75rem,3.5vw,2.25rem);
+  --fs-h3:1.25rem;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:var(--font-main);-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
+body{background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;}
+main{
+  background:transparent;
+  padding-top:2rem;
+  min-height: calc(100vh - 200px);
+}
+img{max-width:100%;display:block;border-radius:var(--radius);}
+a{color:var(--accent);text-decoration:none; transition: all 0.2s ease;}
+a:hover{color: var(--accent-hover); text-decoration:underline;}
+
+.wrapper{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gap)}
+.card{
+  background:var(--card);
+  border: 1px solid var(--card-border);
+  border-radius:var(--radius);
+  padding:2rem var(--gap);
+  box-shadow:var(--shadow);
+  margin-bottom:2rem;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+h1,h2,h3{font-weight:700; line-height:1.2;}
+h1{font-size:var(--fs-hero);margin:0 0 1rem;color: var(--text);}
+h2{font-size:var(--fs-h2);margin:0 0 1rem;color: var(--text);}
+h3{font-size:var(--fs-h3);margin:1.5rem 0 0.75rem; color: var(--text);}
+
+/* NAV */
+body nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  background: rgba(10, 10, 26, 0.95) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  border-bottom: 1px solid var(--card-border) !important;
+  width: 100% !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4) !important;
+}
+nav .shell{
+  max-width:var(--maxw);
+  margin:auto;
+  padding-inline:var(--gap);
+}
+nav ul{
+  margin:0;
+  padding:.75rem 0;
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  list-style:none;
+  flex-wrap:wrap;
+}
+nav a{
+  font-size:.9375rem;
+  color:var(--text);
+  padding:.5em 1em;
+  border-radius:6px;
+  transition:.2s;
+  white-space:nowrap;
+  font-weight:500;
+}
+nav a:hover{background:var(--bg-secondary); text-decoration:none;}
+nav a.active{background:var(--accent);color:#fff;}
+
+body {
+  padding-top: 70px;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:4rem var(--gap) 3rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero h1{
+  font-size:var(--fs-hero);
+  font-weight:700;
+  margin:0 0 1rem;
+  color: var(--text);
+}
+.hero .subtitle{
+  font-size:1.25rem;
+  color:var(--text-secondary);
+  max-width:50ch;
+  margin:0 auto 1.5rem;
+  line-height:1.5;
+}
+
+/* WINNER CARDS */
+.winners-grid {
+  display: grid;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.winner-card {
+  background: var(--card);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.winner-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent);
+}
+
+.winner-card.best-team::before {
+  background: linear-gradient(90deg, var(--gold), #ffed4e);
+}
+
+.winner-card.best-idea::before {
+  background: linear-gradient(90deg, var(--gold), #ffed4e);
+}
+
+.winner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 35px -5px rgba(0,0,0,0.6), 0 15px 15px -5px rgba(0,0,0,0.4);
+  border-color: var(--accent);
+}
+
+.winner-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.winner-info h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+  color: var(--text);
+}
+
+.winner-creator {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.winner-creator a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.award-badge {
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid var(--accent);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.award-badge.trophy {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 237, 78, 0.2));
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.winner-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.prize-list {
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prize-list h4 {
+  margin: 0 0 0.75rem;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.prize-list ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: none;
+}
+
+.prize-list li {
+  margin: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.prize-list li::before {
+  content: '🏆';
+  position: absolute;
+  left: 0;
+}
+
+.winner-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.winner-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.winner-link:hover {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.link-icon {
+  font-size: 1.125rem;
+}
+
+.back{text-align:center;margin:3rem 0 4rem;font-size:.9375rem}
+
+@media(max-width:768px){
+  .winner-header {
+    flex-direction: column;
+  }
+  .winner-links {
+    flex-direction: column;
+  }
+  .winner-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="shell">
+    <ul id="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="2025.html">2025 Event</a></li>
+      <li><a href="winners-2025.html" class="active">Winners 2025</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <h1>🏆 2025 Winners</h1>
+  <p class="subtitle">Celebrating the innovative solutions and talented creators from the 2025 Philadelphia Open Innovation Tournament.</p>
+</header>
+
+<main class="wrapper">
+
+<div class="winners-grid">
+  
+  <!-- WriteQuest -->
+  <div class="winner-card best-team">
+    <div class="winner-header">
+      <div class="winner-info">
+        <h3>WriteQuest</h3>
+        <div class="winner-creator">
+          by <a href="https://www.linkedin.com/in/megan-kane-92a6a1120" target="_blank">Megan Kane</a>
+        </div>
+      </div>
+      <div class="award-badge trophy">🏆 Best Team</div>
+    </div>
+    
+    <p class="winner-description">
+      An innovative platform that gamifies the writing experience, helping writers develop their craft through structured quests and engaging challenges.
+    </p>
+    
+    <div class="prize-list">
+      <h4>Prizes Awarded:</h4>
+      <ul>
+        <li>Trophy</li>
+        <li>Gust Incorporation Package</li>
+      </ul>
+    </div>
+    
+    <div class="winner-links">
+      <a href="https://archive.is/9ncjI" target="_blank" class="winner-link">
+        <span class="link-icon">🔗</span>
+        <span>View Project (Archive)</span>
+      </a>
+      <a href="https://web.archive.org/web/20251027162140/https://genre-guru-academy.lovable.app/" target="_blank" class="winner-link">
+        <span class="link-icon">📦</span>
+        <span>Backup Archive</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- FitQuest -->
+  <div class="winner-card best-idea">
+    <div class="winner-header">
+      <div class="winner-info">
+        <h3>FitQuest</h3>
+        <div class="winner-creator">
+          by <a href="https://linkedin.com/in/randspence" target="_blank">Randall Spence</a>
+        </div>
+      </div>
+      <div class="award-badge trophy">🏆 Best Idea</div>
+    </div>
+    
+    <p class="winner-description">
+      A gamified RPG health app that transforms fitness and wellness into an engaging adventure, motivating users to achieve their health goals through immersive gameplay mechanics.
+    </p>
+    
+    <div class="prize-list">
+      <h4>Prizes Awarded:</h4>
+      <ul>
+        <li>Trophy</li>
+        <li>$1,000 Cash Prize</li>
+      </ul>
+    </div>
+    
+    <div class="winner-links">
+      <a href="https://archive.is/iK9pX" target="_blank" class="winner-link">
+        <span class="link-icon">🔗</span>
+        <span>View Project (Archive)</span>
+      </a>
+      <a href="https://web.archive.org/web/20251027162212/https://realm-forge-fit.lovable.app/" target="_blank" class="winner-link">
+        <span class="link-icon">📦</span>
+        <span>Backup Archive</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- GEO -->
+  <div class="winner-card">
+    <div class="winner-header">
+      <div class="winner-info">
+        <h3>GEO</h3>
+        <div class="winner-creator">
+          by <a href="https://linkedin.com/in/abhijnan-prakash" target="_blank">Abhijnan Prakash</a>
+        </div>
+      </div>
+      <div class="award-badge">💎 Special Award</div>
+    </div>
+    
+    <p class="winner-description">
+      A generative AI-powered SEO tool that leverages advanced language models to optimize content strategy, keyword research, and search engine performance.
+    </p>
+    
+    <div class="prize-list">
+      <h4>Prizes Awarded:</h4>
+      <ul>
+        <li>$100,000 AWS Credits</li>
+        <li>Lowenstein C-Corp Package</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BlueBookBot -->
+  <div class="winner-card">
+    <div class="winner-header">
+      <div class="winner-info">
+        <h3>BlueBookBot</h3>
+        <div class="winner-creator">
+          by Stephen Malkowicz
+        </div>
+      </div>
+      <div class="award-badge">🚀 Incubation Award</div>
+    </div>
+    
+    <p class="winner-description">
+      An intelligent assistant designed to streamline academic and professional workflows, providing automated support for research, documentation, and knowledge management.
+    </p>
+    
+    <div class="prize-list">
+      <h4>Prizes Awarded:</h4>
+      <ul>
+        <li>$25,000 NextFab Ventures Incubation</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="card">
+  <h2>About the 2025 Tournament</h2>
+  <p>The 2025 Philadelphia Open Innovation Tournament brought together talented innovators to develop AI-powered solutions addressing real-world challenges. Over an intensive weekend, participants leveraged cutting-edge AI tools and frameworks to create innovative applications across various domains including education, health, SEO, and productivity.</p>
+  
+  <p>Each winning project demonstrated exceptional creativity, technical execution, and potential for real-world impact. The diversity of solutions showcases the breadth of talent in Philadelphia's innovation ecosystem and the transformative potential of AI-first development approaches.</p>
+  
+  <p style="margin-top:1.5rem;">
+    <a href="2025.html">Learn more about the 2025 event →</a>
+  </p>
+</div>
+
+<p class="back"><a href="index.html">← Back to home</a></p>
+
+</main>
+
+</body>
+</html>
+
