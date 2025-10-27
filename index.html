@@ -133,111 +133,77 @@ body {
   padding-top: 70px;
 }
 
-/* HERO CAROUSEL */
-.hero-carousel {
-  position: relative;
-  width: 100%;
-  height: 70vh;
-  min-height: 500px;
-  max-height: 800px;
-  overflow: hidden;
-  background: #000;
-}
-
-.carousel-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.carousel-slide.active {
-  opacity: 1;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0;
-}
-
-.carousel-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(10,10,26,0.3) 0%, rgba(10,10,26,0.7) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/* HERO SECTION */
+.hero-section {
   text-align: center;
-  padding: 2rem;
-  z-index: 10;
+  padding: 3rem 0 2rem;
+  background: var(--bg-secondary);
+  margin-bottom: 2rem;
 }
 
-.carousel-overlay h1 {
+.hero-section h1 {
   font-size: var(--fs-hero);
   font-weight: 700;
   margin: 0 0 1rem;
-  color: #fff;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.8);
-  max-width: 900px;
+  color: var(--text);
 }
 
-.carousel-overlay .subtitle {
+.hero-section .subtitle {
   font-size: 1.25rem;
-  color: #e8e8f0;
-  max-width: 50ch;
-  margin: 0 auto 1.5rem;
+  color: var(--text-secondary);
+  max-width: 60ch;
+  margin: 0 auto 2rem;
   line-height: 1.5;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 
-.carousel-controls {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.75rem;
-  z-index: 20;
+.hero-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 1rem;
 }
 
-.carousel-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.4);
-  border: 2px solid rgba(255,255,255,0.6);
-  cursor: pointer;
-  transition: all 0.3s ease;
+.hero-image-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.carousel-dot.active {
-  background: #fff;
-  transform: scale(1.2);
+.hero-image-grid img:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-lg);
 }
 
-.carousel-dot:hover {
-  background: rgba(255,255,255,0.8);
+.photo-source-link {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.photo-source-link a {
+  color: var(--muted);
+  text-decoration: underline;
+}
+
+.photo-source-link a:hover {
+  color: var(--accent);
 }
 
 @media(max-width:768px){
-  .hero-carousel {
-    height: 60vh;
-    min-height: 400px;
-  }
-  .carousel-overlay h1 {
+  .hero-section h1 {
     font-size: 2rem;
   }
-  .carousel-overlay .subtitle {
+  .hero-section .subtitle {
     font-size: 1rem;
+  }
+  .hero-image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  .hero-image-grid img {
+    height: 150px;
   }
 }
 
@@ -477,38 +443,30 @@ section[id]{scroll-margin-top:90px}
       <li><a href="#process">Process</a></li>
       <li><a href="#past-events">Past Events</a></li>
       <li><a href="#sponsors">Partner With Us</a></li>
-      <li><a href="2025.html">2025 Event</a></li>
-      <li><a href="winners-2025.html">Winners 2025</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO CAROUSEL -->
-<div class="hero-carousel">
-  <div class="carousel-slide active">
-    <img src="images/event-stylized-1.jpg" alt="Philadelphia Open Innovation Tournament presentation">
-  </div>
-  <div class="carousel-slide">
-    <img src="images/event-stylized-2.jpg" alt="Tournament participants in session">
-  </div>
-  <div class="carousel-slide">
-    <img src="images/event-stylized-3.jpg" alt="Innovation tournament team meeting">
-  </div>
-  <div class="carousel-slide">
-    <img src="images/event-stylized-4.jpg" alt="Networking at the tournament">
-  </div>
-  
-  <div class="carousel-overlay">
+<!-- HERO SECTION -->
+<div class="hero-section">
+  <div class="wrapper">
     <h1>Philadelphia Open Innovation Tournament</h1>
     <p class="subtitle">An annual AI-first hackathon connecting Philadelphia's top innovators with corporate sponsors to solve real-world challenges through competitive collaboration.</p>
+    
+    <div class="hero-image-grid">
+      <img src="images/event-stylized-1.jpg" alt="Philadelphia Open Innovation Tournament presentation">
+      <img src="images/event-stylized-2.jpg" alt="Tournament participants in session">
+      <img src="images/event-stylized-3.jpg" alt="Innovation tournament team meeting">
+      <img src="images/event-stylized-4.jpg" alt="Networking at the tournament">
+    </div>
+    
+    <div class="photo-source-link">
+      Stylized images from our events. See source photos: 
+      <a href="https://photos.app.goo.gl/dxz92fNzH7NDcgxN7" target="_blank">2025</a> | 
+      <a href="https://photos.app.goo.gl/MrFBjVSSjvspUu3k9" target="_blank">2024</a>
+    </div>
   </div>
-  
-  <div class="carousel-controls">
-    <div class="carousel-dot active" data-slide="0"></div>
-    <div class="carousel-dot" data-slide="1"></div>
-    <div class="carousel-dot" data-slide="2"></div>
-    <div class="carousel-dot" data-slide="3"></div>
-  </div>
+</div>
 </div>
 
 <main class="wrapper">
@@ -540,18 +498,18 @@ section[id]{scroll-margin-top:90px}
 <section id="process" class="card">
   <h2>How It Works</h2>
   
-  <h3>Tournament Structure</h3>
+  <h3>🏆 Tournament Structure</h3>
   <p>Each Philadelphia Open Innovation Tournament follows a proven format designed to maximize creativity, collaboration, and output quality:</p>
   
   <details>
-    <summary><strong>Phase 1: Challenge Definition & Team Formation</strong></summary>
+    <summary><strong>📋 Phase 1: Challenge Definition & Team Formation</strong></summary>
     <div>
       <p>Working with our sponsor partners, we define a specific challenge or problem domain that addresses real business needs. Participants register individually or as teams, and we facilitate team formation to ensure diverse skill sets and perspectives.</p>
     </div>
   </details>
 
   <details>
-    <summary><strong>Phase 2: Intensive Development Weekend</strong></summary>
+    <summary><strong>💻 Phase 2: Intensive Development Weekend</strong></summary>
     <div>
       <p>Teams gather for an intensive weekend of ideation, development, and iteration. We provide:</p>
       <ul>
@@ -564,7 +522,7 @@ section[id]{scroll-margin-top:90px}
   </details>
 
   <details>
-    <summary><strong>Phase 3: Judging & Recognition</strong></summary>
+    <summary><strong>🏅 Phase 3: Judging & Recognition</strong></summary>
     <div>
       <p>Teams present their solutions to a panel of judges comprising sponsor representatives, industry experts, and community leaders. Evaluation criteria include:</p>
       <ul>
@@ -577,7 +535,7 @@ section[id]{scroll-margin-top:90px}
     </div>
   </details>
 
-  <h3>AI-First Approach</h3>
+  <h3>🤖 AI-First Approach</h3>
   <p>Our tournament emphasizes AI-first methodologies, encouraging participants to leverage large language models, machine learning tools, and modern AI frameworks to accelerate development and enhance solution quality. This approach reflects the evolving landscape of technology and prepares participants for the future of work.</p>
 </section>
 
@@ -653,24 +611,24 @@ section[id]{scroll-margin-top:90px}
   <p style="margin-bottom:1.5rem;color:var(--text-secondary);"><strong>Main Contact:</strong> Brad Flaugher - <a href="mailto:brad@bradflaugher.com">brad@bradflaugher.com</a></p>
   <div class="founders-grid">
     <div class="founder-item">
-      <h3>Greg Cobb</h3>
+      <h3><a href="https://bradflaugher.com/" target="_blank">Brad Flaugher</a></h3>
+      <p>Independent Consultant</p>
+      <p style="margin-top:0.5rem;"><a href="mailto:brad@bradflaugher.com">brad@bradflaugher.com</a></p>
+    </div>
+    <div class="founder-item">
+      <h3><a href="https://gsdat.work/" target="_blank">Christian Ulstrup</a></h3>
+      <p>GSD at Work</p>
+      <p style="margin-top:0.5rem;"><a href="https://www.linkedin.com/in/christianulstrup/" target="_blank">Connect on LinkedIn</a></p>
+    </div>
+    <div class="founder-item">
+      <h3><a href="https://www.ideastogo.com/" target="_blank">Greg Cobb</a></h3>
       <p>CEO, Ideas To Go</p>
       <p style="margin-top:0.5rem;"><a href="mailto:greg.cobb@ideastogo.com">greg.cobb@ideastogo.com</a></p>
     </div>
     <div class="founder-item">
-      <h3>Brad Flaugher</h3>
-      <p>Independent Consultant & Tournament Co-Founder</p>
-      <p style="margin-top:0.5rem;"><a href="mailto:brad@bradflaugher.com">brad@bradflaugher.com</a></p>
-    </div>
-    <div class="founder-item">
-      <h3>Josh Devon</h3>
-      <p>Sublime Strategy</p>
-      <p style="margin-top:0.5rem;"><a href="mailto:josh@sublimestrategy.com">josh@sublimestrategy.com</a></p>
-    </div>
-    <div class="founder-item">
-      <h3>Christian Ulstrup</h3>
-      <p>GSD at Work</p>
-      <p style="margin-top:0.5rem;"><a href="https://www.linkedin.com/in/christianulstrup/" target="_blank">Connect on LinkedIn</a></p>
+      <h3><a href="https://www.sondera.ai/" target="_blank">Josh Devon</a></h3>
+      <p>Sondera</p>
+      <p style="margin-top:0.5rem;"><a href="mailto:jdevon@sondera.ai">jdevon@sondera.ai</a></p>
     </div>
   </div>
 </section>
@@ -700,34 +658,6 @@ section[id]{scroll-margin-top:90px}
 </main>
 
 <script>
-// Carousel functionality
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-const dots = document.querySelectorAll('.carousel-dot');
-
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle('active', i === index);
-  });
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === index);
-  });
-  currentSlide = index;
-}
-
-function nextSlide() {
-  const next = (currentSlide + 1) % slides.length;
-  showSlide(next);
-}
-
-// Auto-advance carousel
-setInterval(nextSlide, 5000);
-
-// Dot click handlers
-dots.forEach((dot, index) => {
-  dot.addEventListener('click', () => showSlide(index));
-});
-
 // Navigation script
 document.addEventListener('DOMContentLoaded', function() {
   const navLinks = Array.from(document.querySelectorAll('#nav a[href^="#"]'));
